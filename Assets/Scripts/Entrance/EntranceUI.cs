@@ -20,8 +20,9 @@ public class EntranceUI : MonoBehaviour
         AudioManager.instance.Play("ButtonClick");
         SceneManager.LoadScene(1);
     }
-    public void OpenLevels()
+     public void OpenLevelScene()
     {
-        //Open levels
+        AudioManager.instance.Play("ButtonClick");
+        SceneManager.LoadScene("LevelScene");
     }
 }

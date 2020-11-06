@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ZenGameDataManager : MonoBehaviour
 {
-    [SerializeField] RailManager railManager;        
     void Awake()
     {
+        RailManager railManager = FindObjectOfType<RailManager>();
         GameDataManager.instance.zenSceneDataManager.LoadZenSceneData();
         foreach (Rail item in railManager.GetRails())
         {

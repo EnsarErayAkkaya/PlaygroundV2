@@ -5,12 +5,18 @@ using System.Linq;
 
 public class RailMover : MonoBehaviour
 {
+    ObjectChooser objectChooser;
+    PlaygroundManager playgroundManager;
+
     public Vector3 lastPosition;
-    [SerializeField] ObjectChooser objectChooser;
-    [SerializeField] PlaygroundManager playgroundManager;
     public bool moving;
     public List<InteractibleBase> movingObjects;
     public float minX, maxX, minZ, maxZ;
+    
+    private void Start() {
+        playgroundManager = FindObjectOfType<PlaygroundManager>();
+        objectChooser = FindObjectOfType<ObjectChooser>();
+    }
     public void StartMoving()
     {
         minX = 0; maxX = 0; minZ = 0; maxZ = 0;

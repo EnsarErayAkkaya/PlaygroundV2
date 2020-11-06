@@ -15,8 +15,11 @@ public class GameDataManager: MonoBehaviour
     public List<PlaygroundData> allPlaygrounds;
     public List<TrainData> allTrains;
 
+    public CreatedLevels createdLevels;
+
     void Awake()
     {
+        levels = createdLevels.createdLevels;
 		if(instance != null)
 		{
 			Debug.LogWarning("More than one instance of DataManager found");
@@ -85,5 +88,40 @@ public class GameDataManager: MonoBehaviour
                 SaveAndLoadGameData.instance.Save();
             }
         }
+    }
+    public void SaveCreatedLevel(ZenSceneData levelSceneData, int Budget, List<RailType> ChoosenRails)
+    {
+        Debug.Log("level data saving... ");
+        LevelData levelData;
+        
+        if(createdLevels.createdLevels.Count > 0)
+        {
+            LevelData lastLevel = createdLevels.createdLevels.Last();
+            levelData = new LevelData()
+            {
+                levelIndex = lastLevel.levelIndex + 1,
+                levelSceneIndex = -1,
+                isUnlocked = false,
+                mark = 0,
+                choosenRails = ChoosenRails,
+                budget = Budget,
+                levelData = levelSceneData
+            };
+        }
+        else
+        {
+            levelData = new LevelData()
+            {
+                levelIndex = 1,
+                levelSceneIndex = -1,
+                isUnlocked = true,
+                mark = 0,
+                choosenRails = ChoosenRails,
+                budget = Budget,
+                levelData = levelSceneData
+            };
+        }       
+        createdLevels.createdLevels.Add(levelData);
+        levels = createdLevels.createdLevels;
     }
 }

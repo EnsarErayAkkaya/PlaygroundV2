@@ -6,8 +6,9 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     // Level geçildiğinide ödülleri verecek oyun sonu ekranını tetikleyecek
-    [SerializeField] RailManager railManager;
-    [SerializeField] LevelUI levelUI;
+    RailManager railManager;
+    LevelUI levelUI;
+    
     [Header("Level Budget")]
     public int budget;
     int startingBudget;
@@ -34,10 +35,12 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        startingBudget = budget;
+        levelUI = FindObjectOfType<LevelUI>();
+        railManager = FindObjectOfType<RailManager>();
+        
         gdm = GameDataManager.instance;
         railManager.AddCreatedRails();
-        levelUI = FindObjectOfType<LevelUI>();
+        
         StartCoroutine( CheckGameEnded() );
     }
     
@@ -141,5 +144,10 @@ public class LevelManager : MonoBehaviour
         collectedCount++;
         if(collectedCount > collectableCount)
             collectedCount = collectableCount;
+    }
+    public void SetBudgetFirstTime(int b)
+    {
+        startingBudget = budget;
+        levelUI.SetBudgetText();
     }
 }

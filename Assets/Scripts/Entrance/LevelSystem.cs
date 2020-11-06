@@ -7,9 +7,13 @@ public class LevelSystem : MonoBehaviour
 {
     public GameObject levelButton;
     public Transform levelsContent;
+    public ZenSceneDataManager sceneDataManager;
+    public EntranceUI entranceUI;
 
     void Start()
     {
+        entranceUI = FindObjectOfType<EntranceUI>();
+        sceneDataManager = GameDataManager.instance.zenSceneDataManager;
         Set();
     }
 
@@ -21,7 +25,7 @@ public class LevelSystem : MonoBehaviour
         }
         foreach (var item in GameDataManager.instance.levels)
         {
-            LevelButton lb = Instantiate(levelButton).GetComponent<LevelButton>();
+            LevelButton lb = Instantiate(levelButton, levelsContent).GetComponent<LevelButton>();
 
             if(SaveAndLoadGameData.instance.savedData.unlockedLevels.Any(s => s.levelIndex == item.levelIndex))
             {
@@ -30,19 +34,28 @@ public class LevelSystem : MonoBehaviour
                 lb.Set(item.levelIndex, ld.mark, ld.isUnlocked );
                 
                 if(ld.isUnlocked)
-                    lb.GetComponent<Button>().onClick.AddListener( delegate{ LevelButtonOnClick(item.levelSceneIndex, item.levelIndex); } );
+                    lb.GetComponent<Button>().onClick.AddListener( delegate{ LevelButtonOnClick(item); } );
             }
             else
             {
                 lb.Set(item.levelIndex, 0, false );
             }
-            lb.transform.SetParent(levelsContent, false);
+            //lb.transform.SetParent(levelsContent, false);
         }
     }
 
-    public void LevelButtonOnClick(int sceneIndex, int levelIndex)
+    public void LevelButtonOnClick(LevelData ld)
     {
-        SceneManager.LoadScene(sceneIndex);
-        GameDataManager.instance.currentlyPlayingLevelIndex = levelIndex;
+        if(ld.levelSceneIndex != -1)
+        {
+            SceneManager.LoadScene(ld.levelSceneIndex);
+            GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex;
+        }
+        else
+        {
+            sceneDataManager.LoadingScene = ld.levelData;
+            sceneDataManager.isLoad = true;
+            entranceUI.OpenLevelScene();
+        }
     }
 }

@@ -73,22 +73,112 @@ MonoBehaviour:
     levelSceneIndex: 2
     isUnlocked: 0
     mark: 0
+    budget: 0
+    levelData:
+      imagePath: 
+      railsData: []
+      envsData: []
+      trainsData: []
+      playgroundData:
+        id: 0
+        isStatic: 0
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        playgroundType: 0
   - levelIndex: 2
     levelSceneIndex: 3
     isUnlocked: 0
     mark: 0
+    budget: 0
+    levelData:
+      imagePath: 
+      railsData: []
+      envsData: []
+      trainsData: []
+      playgroundData:
+        id: 0
+        isStatic: 0
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        playgroundType: 0
   - levelIndex: 3
     levelSceneIndex: 4
     isUnlocked: 0
     mark: 0
+    budget: 0
+    levelData:
+      imagePath: 
+      railsData: []
+      envsData: []
+      trainsData: []
+      playgroundData:
+        id: 0
+        isStatic: 0
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        playgroundType: 0
   - levelIndex: 4
     levelSceneIndex: 5
     isUnlocked: 0
     mark: 0
+    budget: 0
+    levelData:
+      imagePath: 
+      railsData: []
+      envsData: []
+      trainsData: []
+      playgroundData:
+        id: 0
+        isStatic: 0
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        playgroundType: 0
   - levelIndex: 5
     levelSceneIndex: 6
     isUnlocked: 0
     mark: 0
+    budget: 0
+    levelData:
+      imagePath: 
+      railsData: []
+      envsData: []
+      trainsData: []
+      playgroundData:
+        id: 0
+        isStatic: 0
+        position:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+        playgroundType: 0
   allRails:
   - railPrefab: {fileID: 8323822674832324993, guid: 3cea314ca89a6284ca0b81947d8beeef,
       type: 3}
@@ -209,6 +299,7 @@ MonoBehaviour:
       type: 3}
     trainType: 1
     cost: 80
+  createdLevels: {fileID: 11400000, guid: b56d6022947ad0d488a1eac310e06b32, type: 2}
 --- !u!114 &3692831815383879226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,11 +314,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataManager: {fileID: 3692831814693116279}
   LoadingScene:
+    imagePath: 
     railsData: []
     envsData: []
     trainsData: []
     playgroundData:
       id: 0
+      isStatic: 0
       position:
         x: 0
         y: 0

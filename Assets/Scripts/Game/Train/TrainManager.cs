@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class TrainManager : MonoBehaviour
 {
-    [SerializeField] LevelManager levelManager;
+    LevelManager levelManager;
+
     [SerializeField] float height;
     public SpeedType speedType = SpeedType.x;
     public float normalSpeed, middleSpeed, fastSpeed;
@@ -15,6 +16,7 @@ public class TrainManager : MonoBehaviour
 
     void Start()
     {
+        levelManager = FindObjectOfType<LevelManager>();
         foreach (Train item in FindObjectsOfType<Train>().ToList())
         {
             trains.Add(item);

@@ -7,12 +7,15 @@ using System.Collections;
 
 public class LevelUI : MonoBehaviour
 {
-    public LevelManager levelManager;
+    LevelManager levelManager;
     [SerializeField] GameObject endUI;
     [SerializeField] Image markImage;
     [SerializeField] Button nextButton,restartButton;
     [SerializeField] TextMeshProUGUI lostText, rewardText, budgetText;
     public Sprite[] stars;
+
+    public GameObject startCanvas;
+    public GameObject endCanvas;
 
     void Start()
     {
@@ -32,7 +35,7 @@ public class LevelUI : MonoBehaviour
             return false;
         }
     }
-    void SetBudgetText()
+    public void SetBudgetText()
     {
         budgetText.text = levelManager.budget.ToString();
     }

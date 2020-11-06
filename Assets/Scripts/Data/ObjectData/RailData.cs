@@ -9,6 +9,8 @@ public class RailData
     public RailType railType;
     public GameObject railButton;
     public int cost;
+    public bool isStart;
+    public bool isEnd;
 }
 public enum RailType
 {

@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.EventSystems;
 public class Rail : InteractibleBase
 {
+    [Header("Referances")]
     public SplineManager splineManager;
     RailManager railManager;
     ObjectPlacementManager placementManager;
@@ -13,15 +14,21 @@ public class Rail : InteractibleBase
     RailMover railMover;
     LevelUI levelUI;
 
+    [Header("Data")]
     RailConnectionPoint currentOutputPoint;// active way
     public int floorAdder; 
     public int currentFloor;
 
     public uint index;
     public RailType railType;
+
     // Bir sonraki rayların bağlanabileceği noktaların serisi
     [SerializeField] RailConnectionPoint[] connectionPoints;
+
     public Animator animator;
+
+    public bool isStart, isEnd;
+
     void Start()
     {
         railManager = FindObjectOfType<RailManager>();
@@ -31,6 +38,16 @@ public class Rail : InteractibleBase
         levelUI = FindObjectOfType<LevelUI>();
 
         currentOutputPoint = GetOutputConnectionPoints().FirstOrDefault();
+        if(isStart)
+        {
+            var go = Instantiate(levelUI.startCanvas, transform);
+            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
+        }
+        else if( isEnd )
+        {
+            var go = Instantiate(levelUI.endCanvas, transform);
+            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
+        }
     }
     public void OnCollisionCallBack( CollidableBase collidedObject)
     {

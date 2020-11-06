@@ -6,24 +6,29 @@ using UnityEngine.EventSystems;
 
 public class ObjectChooser : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] ObjectPlacementManager placementManager;
+    ObjectPlacementManager placementManager;
     GameUIManager uIManager;
-    [SerializeField] RailManager railManager;
-    [SerializeField] CameraManager cameraManager;
+    RailManager railManager;
+    CameraManager cameraManager;
+
+    [HideInInspector]
     public Transform multipleObjectParent;
 
-    [Header("")]
+    [Header("Data")]
     public InteractibleBase choosenObject;
     public List<InteractibleBase> choosenObjects;
     public bool isMulitipleSelected;
     public float maxDistance = 100;
     public LayerMask choosenLayers;
+
     bool choosing = true;
 
     private void Start() {
         cameraManager = FindObjectOfType<CameraManager>();
         uIManager = FindObjectOfType<GameUIManager>();
+        railManager = FindObjectOfType<RailManager>();
+        placementManager = FindObjectOfType<ObjectPlacementManager>();
+        multipleObjectParent = FindObjectOfType<RailMover>().transform;
     }
     void FixedUpdate()
     {
@@ -202,7 +207,7 @@ public class ObjectChooser : MonoBehaviour
         
         if(obj == null )
         {
-            uIManager.SetUI(null);
+            uIManager.SetInteractible(null);
             return;
         }
 

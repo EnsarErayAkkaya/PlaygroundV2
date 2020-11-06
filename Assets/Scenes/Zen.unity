@@ -503,7 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425852c82a9af514f9624d60cd14aa6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railManager: {fileID: 179739205}
 --- !u!4 &1110304370
 Transform:
   m_ObjectHideFlags: 0
@@ -591,9 +590,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 471830624}
     m_Modifications:
-    - target: {fileID: 1977999964, guid: 7f86c48e439437a488b321ed652f75e3, type: 3}
+    - target: {fileID: 2931867394497320485, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931867394497320485, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931867394497320485, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 32.399902
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4125143960631894592, guid: 7f86c48e439437a488b321ed652f75e3,
         type: 3}
@@ -765,10 +775,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6962749189461385316, guid: 7f86c48e439437a488b321ed652f75e3,
+    - target: {fileID: 4664366103935965081, guid: 7f86c48e439437a488b321ed652f75e3,
         type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664366103935965081, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664366103935965081, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270442928372326256, guid: 7f86c48e439437a488b321ed652f75e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7289753295581515649, guid: 7f86c48e439437a488b321ed652f75e3,
         type: 3}
@@ -1002,34 +1027,9 @@ PrefabInstance:
       objectReference: {fileID: 716581524}
     - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
         type: 3}
-      propertyPath: objectChooser
-      value: 
-      objectReference: {fileID: 2146189456}
-    - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
-        type: 3}
       propertyPath: lightManager
       value: 
       objectReference: {fileID: 253504549}
-    - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
-        type: 3}
-      propertyPath: playgroundManager
-      value: 
-      objectReference: {fileID: 53041842773582700}
-    - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
-        type: 3}
-      propertyPath: placementManager
-      value: 
-      objectReference: {fileID: 294144657}
-    - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
-        type: 3}
-      propertyPath: cameraManager
-      value: 
-      objectReference: {fileID: 447375419}
-    - target: {fileID: 3135135774104642962, guid: f60de0eb48dd837428cd018e5fe454a7,
-        type: 3}
-      propertyPath: uIManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3135135774104642963, guid: f60de0eb48dd837428cd018e5fe454a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1355,11 +1355,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188733021120118564, guid: 54f37f40a8060a04eb8e6d13bc2605fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7188733021120118586, guid: 54f37f40a8060a04eb8e6d13bc2605fb,
         type: 3}

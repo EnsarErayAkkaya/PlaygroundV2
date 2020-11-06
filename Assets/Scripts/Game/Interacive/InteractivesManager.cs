@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InteractivesManager : MonoBehaviour
 {
-    [SerializeField]PlaygroundManager playgroundManager;
+    PlaygroundManager playgroundManager;
     PlayGround p;
+    
     [Header("baloons")]
     #region baloons
         public GameObject baloonPrefab;
@@ -20,6 +21,7 @@ public class InteractivesManager : MonoBehaviour
     #endregion
     void Start()
     {
+        playgroundManager = FindObjectOfType<PlaygroundManager>();
         StartCoroutine( InitializeCoroutine() );
     }
     IEnumerator InitializeCoroutine()

@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
+using TMPro;
+
 public class GameUIManager : MonoBehaviour
 {
-    [Header("Managers")]
+    [Header("Referances")]
+    public GameControllUI gameControlUI;
+    public StartEndToggles startEndToggles;
+    public RailChoosePanel railChoosePanel;
 
+    #region privateReferances
     ObjectChooser objectChooser;
     RailManager railManager;
     EnvironmentManager environmentManager;
@@ -15,13 +22,21 @@ public class GameUIManager : MonoBehaviour
     NavbarUIManager navbarUI;
     LevelUI levelUI;
     ScreenshotHandler screenshotHandler;
+    #endregion
 
-    [SerializeField] Button changeRailWayButton, setConnectionButton, deleteButton, rotateButton, saveButton;
-    [SerializeField] Button moveButton, playStopButton, trainSpeedButton, changeCamera, cleanButton, flipButton;
+    [Header("Data")]
+
+    [SerializeField] Button changeRailWayButton;
+    [SerializeField] Button moveButton, setConnectionButton, deleteButton, rotateButton, saveButton
+        , levelSaveButton, playStopButton, trainSpeedButton, changeCamera, cleanButton, flipButton;
     [SerializeField] Image playImage, stopImage;
-    bool isPlaying, isMultiple;
-    public bool buttonLock = false;
+    [SerializeField] TMP_InputField budgetField;
+
+    public GameObject levelCreatingPanel;
+
+    public bool buttonLock = false, levelCreatingMode = false;
     
+    bool isPlaying, isMultiple;
     InteractibleBase interactible;
     List<InteractibleBase> interactibles;
     
@@ -46,6 +61,7 @@ public class GameUIManager : MonoBehaviour
         {
             levelUI = FindObjectOfType<LevelUI>();
             saveButton.gameObject.SetActive(false);
+            gameControlUI.SetIsLevel();
         }
     }
     public void DeleteButtonClick()
@@ -228,6 +244,17 @@ public class GameUIManager : MonoBehaviour
 
         screenshotHandler.TakeScreenshot();
     }
+    public void SaveLevelButtonClick()
+    {
+        PlayButtonSound();
+        int budget = int.Parse(budgetField.text);
+        if(budget > 5000)
+            budget = 5000;
+        else if(budget < 100 )
+            budget = 1000;
+
+        GameDataManager.instance.zenSceneDataManager.SaveLevelSceneData(budget, railChoosePanel.GetChoosenRails());
+    }
     public void SetCamerasButton()
     {
         PlayButtonSound();
@@ -292,6 +319,24 @@ public class GameUIManager : MonoBehaviour
         }
         SetUI(null);
     }
+
+    public void ToggleLevelCreationUI()
+    {
+        // toggle level creting stuff
+        if(levelCreatingMode == true) // mode active
+        {
+            // disable mode
+            levelCreatingPanel.SetActive(false);
+            saveButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            // enable mode
+            levelCreatingPanel.SetActive(true);
+            saveButton.gameObject.SetActive(false);
+        }
+    }
+
     void PlayButtonSound()
     {
         AudioManager.instance.Play("ButtonClick");
@@ -300,9 +345,16 @@ public class GameUIManager : MonoBehaviour
     {
         try
         {
-            if(interactible.GetComponent<Rail>() != null && interactible.GetComponent<Rail>().GetOutputConnectionPoints().Length > 1 )
+            if(interactible != null)
             {
-                interactible.GetComponent<SplineManager>().HideTracks();
+                if(interactible.GetGameObject().GetComponent<Rail>() != null)
+                {
+                    
+                    if( interactible.GetComponent<Rail>().GetOutputConnectionPoints().Length > 1 )
+                    {
+                        interactible.GetComponent<SplineManager>().HideTracks();
+                    }
+                }
             }
         }
         catch (System.Exception e)
@@ -327,6 +379,8 @@ public class GameUIManager : MonoBehaviour
             setConnectionButton.gameObject.SetActive(false);
             changeRailWayButton.gameObject.SetActive(false);
             flipButton.gameObject.SetActive(false);
+
+            startEndToggles.HideToggles();
 
             if(trainManager.isStarted)
             {
@@ -354,10 +408,14 @@ public class GameUIManager : MonoBehaviour
 
                 if(interactible.GetComponent<Rail>() != null)
                 {
-                    if(interactible.GetComponent<Rail>().GetOutputConnectionPoints().Length > 1 )
+                    Rail r = interactible.GetComponent<Rail>();
+
+                    startEndToggles.SetToggles( r );
+
+                    if(r.GetOutputConnectionPoints().Length > 1 )
                     {
                         changeRailWayButton.gameObject.SetActive(true);
-                        interactible.GetComponent<SplineManager>().ShowTrack();
+                        r.splineManager.ShowTrack();
                     }
                     else
                     {
@@ -365,7 +423,10 @@ public class GameUIManager : MonoBehaviour
                     }
                 }
                 else
+                {
+                    startEndToggles.HideToggles();
                     changeRailWayButton.gameObject.SetActive(false);
+                }
             }
             else
             {
@@ -374,11 +435,15 @@ public class GameUIManager : MonoBehaviour
                 flipButton.gameObject.SetActive(true);
                 if(interactible.GetComponent<Rail>() != null)
                 {
+                    Rail r = interactible.GetComponent<Rail>();
+
+                    startEndToggles.SetToggles( r );
+
                     setConnectionButton.gameObject.SetActive(true);
-                    if(interactible.GetComponent<Rail>().GetOutputConnectionPoints().Length > 1 )
+                    if(r.GetOutputConnectionPoints().Length > 1 )
                     {
                         changeRailWayButton.gameObject.SetActive(true);
-                        interactible.GetComponent<SplineManager>().ShowTrack();
+                        r.splineManager.ShowTrack();
                     }
                     else
                     {
@@ -387,6 +452,8 @@ public class GameUIManager : MonoBehaviour
                 }
                 else if( interactible.GetComponent<Train>() != null )
                 {
+                    startEndToggles.HideToggles();
+
                     deleteButton.gameObject.SetActive(true);
 
                     rotateButton.gameObject.SetActive(false);
@@ -394,6 +461,8 @@ public class GameUIManager : MonoBehaviour
                     changeRailWayButton.gameObject.SetActive(false);
                     flipButton.gameObject.SetActive(false);
                 }
+                else
+                    startEndToggles.HideToggles();
             }            
         }
         else if(obj != null && trainManager.isStarted)
@@ -403,15 +472,23 @@ public class GameUIManager : MonoBehaviour
             
             if(interactible.GetComponent<Rail>() != null)
             {
-                if(interactible.GetComponent<Rail>().GetOutputConnectionPoints().Length > 1 )
+                Rail r = interactible.GetComponent<Rail>();
+
+                startEndToggles.SetToggles( r );
+
+                if(r.GetOutputConnectionPoints().Length > 1 )
                 {
                     changeRailWayButton.gameObject.SetActive(true);
-                    interactible.GetComponent<SplineManager>().ShowTrack();
+                    r.splineManager.ShowTrack();
                 }
                 else
                 {
                     changeRailWayButton.gameObject.SetActive(false);
                 }
+            }
+            else
+            {
+                startEndToggles.HideToggles();
             }
         }
     }
@@ -437,4 +514,8 @@ public class GameUIManager : MonoBehaviour
         }
         
     } 
+    public GameObject GetChoosed()
+    {
+        return interactible.gameObject;
+    }
 }

@@ -7,11 +7,14 @@ using UnityEngine.EventSystems;
 public class RailManager : MonoBehaviour
 {
     GameUIManager uIManager;
-    [SerializeField] ObjectChooser objectChooser;
+    ObjectChooser objectChooser;
+
+    [HideInInspector]
     public LightManager lightManager;
-    [SerializeField] PlaygroundManager playgroundManager;
-    [SerializeField] ObjectPlacementManager placementManager;
-    [SerializeField] CameraManager cameraManager;
+
+    PlaygroundManager playgroundManager;
+    ObjectPlacementManager placementManager;
+    CameraManager cameraManager;
 
     // connectingRail yeni ve var olan ray bağlantısı yaparken bağlanan rayı işaret eder
     Rail connectingRail, newCreatedRail;
@@ -33,6 +36,10 @@ public class RailManager : MonoBehaviour
      private void Start() {
         cameraManager = FindObjectOfType<CameraManager>();
         uIManager = FindObjectOfType<GameUIManager>();
+        playgroundManager = FindObjectOfType<PlaygroundManager>();
+        lightManager = FindObjectOfType<LightManager>();
+        placementManager = FindObjectOfType<ObjectPlacementManager>();
+        objectChooser = FindObjectOfType<ObjectChooser>();
     }
 
     void Update()

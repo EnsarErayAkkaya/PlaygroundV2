@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class ObjectPlacementManager : MonoBehaviour
 {   
-    [Header("References")]
     GameUIManager uIManager;
-    [SerializeField] RailManager railManager;
-    [SerializeField] ObjectChooser objectChooser;
-    [SerializeField] PlaygroundManager playgroundManager;
-    [SerializeField] CameraManager cameraManager;
-
-    [Header("")]
+    RailManager railManager;
+    ObjectChooser objectChooser;
+    PlaygroundManager playgroundManager;
+    CameraManager cameraManager;
+    RailMover railMover;
+    
+    [Header("Data")]
+    
     public bool isPlacing = false;
     public LayerMask placementLayer;
-
     PlacementType placementType;  
     GameObject placingObject;
     float height;
-    [SerializeField] RailMover railMover;
     private Touch touch;
-     private void Start() {
+
+    private void Start() 
+    {
         cameraManager = FindObjectOfType<CameraManager>();
         uIManager = FindObjectOfType<GameUIManager>();
+        railMover = FindObjectOfType<RailMover>();
+        playgroundManager = FindObjectOfType<PlaygroundManager>();
+        objectChooser = FindObjectOfType<ObjectChooser>();
+        railManager = FindObjectOfType<RailManager>();
     }
     void Update()
     {
