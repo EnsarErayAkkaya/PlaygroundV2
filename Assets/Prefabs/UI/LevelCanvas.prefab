@@ -1267,7 +1267,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9af65c77f0f0f4f468588eae4b111e01, type: 3}
   startCanvas: {fileID: 872193486292531022, guid: 839938a77acb9f24490a09f27303bd5e,
     type: 3}
-  endCanvas: {fileID: 0}
+  endCanvas: {fileID: 6606342083971210042, guid: 70f17628a7379014aa2df0f1e5d02e6c,
+    type: 3}
 --- !u!1 &8842102362247921664
 GameObject:
   m_ObjectHideFlags: 0

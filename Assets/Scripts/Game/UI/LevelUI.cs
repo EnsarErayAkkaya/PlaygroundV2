@@ -7,7 +7,8 @@ using System.Collections;
 
 public class LevelUI : MonoBehaviour
 {
-    LevelManager levelManager;
+    [HideInInspector]
+    public LevelManager levelManager;
     [SerializeField] GameObject endUI;
     [SerializeField] Image markImage;
     [SerializeField] Button nextButton,restartButton;
@@ -19,7 +20,8 @@ public class LevelUI : MonoBehaviour
 
     void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
+        if(levelManager == null)
+            levelManager = FindObjectOfType<LevelManager>();
     }
     public bool SetBudget(int c)
     {
@@ -64,7 +66,7 @@ public class LevelUI : MonoBehaviour
     public void NextLevelButtonClick()
     {
         LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 1 );
-        GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex;
+        GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
         SceneManager.LoadScene(ld.levelSceneIndex);
     }
     public void RestartLevelButtonClick()

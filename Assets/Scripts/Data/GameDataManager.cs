@@ -71,17 +71,17 @@ public class GameDataManager: MonoBehaviour
     }
     public void SaveLevelMark(int _mark)
     {
-        SaveAndLoadGameData.instance.savedData.unlockedLevels.First( s => s.levelIndex == currentlyPlayingLevelIndex).mark = _mark;
+        SaveAndLoadGameData.instance.savedData.unlockedLevels.First( s => s.levelIndex == currentlyPlayingLevelIndex + 1 ).mark = _mark;
                 
         SaveAndLoadGameData.instance.Save();
     }
     public void UnlockNextLevel()
     {
-        if(levels.Count > currentlyPlayingLevelIndex )
+        if(levels.Count > currentlyPlayingLevelIndex + 1  )
         {
-            if( SaveAndLoadGameData.instance.savedData.unlockedLevels.Any(s => s.levelIndex == currentlyPlayingLevelIndex+1) == false )
+            if( SaveAndLoadGameData.instance.savedData.unlockedLevels.Any(s => s.levelIndex == currentlyPlayingLevelIndex+2) == false )
             {
-                LevelData ld = levels[currentlyPlayingLevelIndex];
+                LevelData ld = levels[currentlyPlayingLevelIndex + 1];
                 ld.isUnlocked = true;
                 SaveAndLoadGameData.instance.savedData.unlockedLevels.Add(ld);
                     

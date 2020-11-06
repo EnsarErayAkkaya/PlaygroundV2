@@ -13,7 +13,15 @@ public class LevelDataManager : MonoBehaviour
         foreach (Rail item in railManager.GetRails())
         {
             railManager.ConnectCollidingRailPoints(item);
+            if( item.isEnd )
+            {
+                levelManager.targetRail = item; 
+            }
         }
-        levelManager.SetBudgetFirstTime(GameDataManager.instance.levels[GameDataManager.instance.currentlyPlayingLevelIndex].budget);
+        LevelData ld = GameDataManager.instance.levels[GameDataManager.instance.currentlyPlayingLevelIndex];
+        levelManager.SetBudgetFirstTime(ld.budget);
+        levelManager.levelRails = ld.choosenRails;
+
+        levelManager.targetedTrainCount = ld.levelData.trainsData.Count;
     }
 }

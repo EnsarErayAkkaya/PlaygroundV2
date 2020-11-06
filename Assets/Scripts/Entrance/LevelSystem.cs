@@ -49,10 +49,11 @@ public class LevelSystem : MonoBehaviour
         if(ld.levelSceneIndex != -1)
         {
             SceneManager.LoadScene(ld.levelSceneIndex);
-            GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex;
+            GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
         }
         else
         {
+            GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
             sceneDataManager.LoadingScene = ld.levelData;
             sceneDataManager.isLoad = true;
             entranceUI.OpenLevelScene();

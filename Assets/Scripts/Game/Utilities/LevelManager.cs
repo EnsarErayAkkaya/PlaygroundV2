@@ -35,7 +35,10 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        levelUI = FindObjectOfType<LevelUI>();
+        //SetLevelData();
+        if( levelUI == null )
+            levelUI = FindObjectOfType<LevelUI>();
+
         railManager = FindObjectOfType<RailManager>();
         
         gdm = GameDataManager.instance;
@@ -43,6 +46,11 @@ public class LevelManager : MonoBehaviour
         
         StartCoroutine( CheckGameEnded() );
     }
+    /* void SetLevelData()
+    {
+        //LevelData ld = GameDataManager.instance.levels[currentlyPlayingLevelIndex]
+
+    } */
     
     public bool TrainReachedTarget(Rail r)
     {
@@ -147,7 +155,10 @@ public class LevelManager : MonoBehaviour
     }
     public void SetBudgetFirstTime(int b)
     {
+        budget = b;
         startingBudget = budget;
+        levelUI = FindObjectOfType<LevelUI>();
+        levelUI.levelManager = this;
         levelUI.SetBudgetText();
     }
 }
