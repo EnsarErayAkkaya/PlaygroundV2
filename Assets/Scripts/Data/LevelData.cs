@@ -6,7 +6,6 @@ public class LevelData
     public int levelSceneIndex;
     public bool isUnlocked;
     public int mark;
-    public int budget;
-    public List<RailType> choosenRails;
+    public LevelContentData levelContent;
     public ZenSceneData levelData;
 }

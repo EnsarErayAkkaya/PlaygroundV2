@@ -9,7 +9,7 @@ public class GameUIManager : MonoBehaviour
     [Header("Referances")]
     public GameControllUI gameControlUI;
     public StartEndToggles startEndToggles;
-    public RailChoosePanel railChoosePanel;
+    public LevelCreationManager levelCreationManager;
 
     #region privateReferances
     ObjectChooser objectChooser;
@@ -30,7 +30,6 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Button moveButton, setConnectionButton, deleteButton, rotateButton, saveButton
         , levelSaveButton, playStopButton, trainSpeedButton, changeCamera, cleanButton, flipButton;
     [SerializeField] Image playImage, stopImage;
-    [SerializeField] TMP_InputField budgetField;
 
     public GameObject levelCreatingPanel;
 
@@ -247,13 +246,8 @@ public class GameUIManager : MonoBehaviour
     public void SaveLevelButtonClick()
     {
         PlayButtonSound();
-        int budget = int.Parse(budgetField.text);
-        if(budget > 5000)
-            budget = 5000;
-        else if(budget < 100 )
-            budget = 1000;
 
-        GameDataManager.instance.zenSceneDataManager.SaveLevelSceneData(budget, railChoosePanel.GetChoosenRails());
+        GameDataManager.instance.zenSceneDataManager.SaveLevelSceneData(levelCreationManager.GetLevelContentData());
     }
     public void SetCamerasButton()
     {

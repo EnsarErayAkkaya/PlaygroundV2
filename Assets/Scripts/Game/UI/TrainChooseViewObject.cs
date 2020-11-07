@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-
-public class RailChooseViewObject : MonoBehaviour
+public class TrainChooseViewObject : MonoBehaviour
 {
-    public RailType railType;
+    public TrainType trainType;
     TMP_Dropdown dropdown;
     private void Start() {
         dropdown = transform.GetChild(0).GetComponent<TMP_Dropdown>();
         dropdown.ClearOptions();
-        dropdown.AddOptions(GenericTypeToList.Set<RailType>());
+        dropdown.AddOptions(GenericTypeToList.Set<TrainType>());
     }
     public void Remove()
     {
@@ -19,6 +18,6 @@ public class RailChooseViewObject : MonoBehaviour
     }
     public void ChooseType()
     {
-        railType = (RailType)Enum.Parse(typeof(RailType), dropdown.options[dropdown.value].text);
+        trainType = (TrainType)Enum.Parse(typeof(TrainType), dropdown.options[dropdown.value].text);
     }
 }

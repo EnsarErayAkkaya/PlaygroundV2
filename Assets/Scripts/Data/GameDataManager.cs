@@ -89,7 +89,7 @@ public class GameDataManager: MonoBehaviour
             }
         }
     }
-    public void SaveCreatedLevel(ZenSceneData levelSceneData, int Budget, List<RailType> ChoosenRails)
+    public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
         Debug.Log("level data saving... ");
         LevelData levelData;
@@ -103,8 +103,7 @@ public class GameDataManager: MonoBehaviour
                 levelSceneIndex = -1,
                 isUnlocked = false,
                 mark = 0,
-                choosenRails = ChoosenRails,
-                budget = Budget,
+                levelContent = LevelContent,
                 levelData = levelSceneData
             };
         }
@@ -116,8 +115,7 @@ public class GameDataManager: MonoBehaviour
                 levelSceneIndex = -1,
                 isUnlocked = true,
                 mark = 0,
-                choosenRails = ChoosenRails,
-                budget = Budget,
+                levelContent = LevelContent,
                 levelData = levelSceneData
             };
         }       

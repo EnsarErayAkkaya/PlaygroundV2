@@ -62,7 +62,7 @@ public class ZenSceneDataManager : MonoBehaviour
 
         SaveData(data);
     }
-    public void SaveLevelSceneData(int budget, List<RailType> choosenRails)
+    public void SaveLevelSceneData(LevelContentData levelContentData)
     {
         ZenSceneData data = new ZenSceneData();
 
@@ -118,7 +118,7 @@ public class ZenSceneDataManager : MonoBehaviour
             id = 0
         };
 
-        SaveLevelData(data, budget, choosenRails);
+        SaveLevelData(data, levelContentData);
     }
     public void LoadZenSceneData()
     {
@@ -178,8 +178,8 @@ public class ZenSceneDataManager : MonoBehaviour
         }
         SaveAndLoadGameData.instance.Save();
     }
-    void SaveLevelData(ZenSceneData data, int budget, List<RailType> choosenRails)
+    void SaveLevelData(ZenSceneData data, LevelContentData levelContentData)
     {
-        dataManager.SaveCreatedLevel(data, budget, choosenRails);
+        dataManager.SaveCreatedLevel(data, levelContentData);
     }
 }
