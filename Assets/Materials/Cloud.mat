@@ -93,8 +93,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_166161E: {r: 0, g: 0.044659164, b: 0.23053783, a: 0}
-    - Color_C0E9EB72: {r: 0, g: 1.1016766, b: 3.9296644, a: 0}
+    - Color_166161E: {r: 0, g: 0.23137255, b: 0.183266, a: 0}
+    - Color_C0E9EB72: {r: 0, g: 2.894047, b: 3.9296644, a: 0}
     - Vector2_CC42B34A: {r: 1.8, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

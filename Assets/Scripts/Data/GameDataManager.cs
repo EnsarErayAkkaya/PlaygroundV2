@@ -14,6 +14,8 @@ public class GameDataManager: MonoBehaviour
     public List<EnvironmentData> allEnvs;
     public List<PlaygroundData> allPlaygrounds;
     public List<TrainData> allTrains;
+    public GameObject collectablePrefab;
+    public GameObject generalButtonPrefab;
 
     public CreatedLevels createdLevels;
 
@@ -81,9 +83,11 @@ public class GameDataManager: MonoBehaviour
         {
             if( SaveAndLoadGameData.instance.savedData.unlockedLevels.Any(s => s.levelIndex == currentlyPlayingLevelIndex+2) == false )
             {
-                LevelData ld = levels[currentlyPlayingLevelIndex + 1];
-                ld.isUnlocked = true;
-                SaveAndLoadGameData.instance.savedData.unlockedLevels.Add(ld);
+                
+                SaveAndLoadGameData.instance.savedData.unlockedLevels.Add(new PlayerLevelData(){
+                    levelIndex = currentlyPlayingLevelIndex + 2,
+                    mark = 0
+                });
                     
                 SaveAndLoadGameData.instance.Save();
             }
@@ -101,8 +105,6 @@ public class GameDataManager: MonoBehaviour
             {
                 levelIndex = lastLevel.levelIndex + 1,
                 levelSceneIndex = -1,
-                isUnlocked = false,
-                mark = 0,
                 levelContent = LevelContent,
                 levelData = levelSceneData
             };
@@ -113,13 +115,68 @@ public class GameDataManager: MonoBehaviour
             {
                 levelIndex = 1,
                 levelSceneIndex = -1,
-                isUnlocked = true,
-                mark = 0,
                 levelContent = LevelContent,
                 levelData = levelSceneData
             };
         }       
         createdLevels.createdLevels.Add(levelData);
         levels = createdLevels.createdLevels;
+    }
+    public void DeleteLevel(int lvlIndex)
+    {
+        Debug.Log(lvlIndex);
+        if( !createdLevels.createdLevels[lvlIndex].isMaster )
+        {
+            createdLevels.createdLevels.RemoveAt(lvlIndex);
+
+            foreach (var item in createdLevels.createdLevels) // decrease index by 1
+            {
+                if( item.levelIndex >= lvlIndex + 1 )
+                {
+                    item.levelIndex -= 1;
+                }
+            }
+            foreach (var item in  SaveAndLoadGameData.instance.savedData.unlockedLevels)
+            {
+                if( item.levelIndex >= lvlIndex + 1 )
+                {
+                    item.levelIndex -= 1;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("One of the levels you wnat to edit is master!");
+        }
+    }
+    public void MoveLevelToLeft(int lvlIndex)
+    {
+        if( !createdLevels.createdLevels[lvlIndex].isMaster && !createdLevels.createdLevels[lvlIndex - 1].isMaster )
+        {
+            createdLevels.createdLevels.Swap( lvlIndex, lvlIndex - 1 );
+
+            createdLevels.createdLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            createdLevels.createdLevels[lvlIndex - 1].levelIndex = lvlIndex;
+
+            SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex - 1].levelIndex = lvlIndex;
+        }
+        else
+        {
+            Debug.Log("One of the levels you want to edit is master!");
+        }
+    }
+    public void MoveLevelToRight(int lvlIndex)
+    {
+        if( !createdLevels.createdLevels[lvlIndex].isMaster && lvlIndex + 1 < createdLevels.createdLevels.Count )
+        {
+            createdLevels.createdLevels.Swap( lvlIndex, lvlIndex + 1 );
+            createdLevels.createdLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            createdLevels.createdLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
+        }
+        else
+        {
+            Debug.Log("One of the levels you wnat to edit is master or out of bound!");
+        }
     }
 }

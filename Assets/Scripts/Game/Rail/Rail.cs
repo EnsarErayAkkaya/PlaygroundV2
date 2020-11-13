@@ -41,12 +41,12 @@ public class Rail : InteractibleBase
         if(isStart)
         {
             var go = Instantiate(levelUI.startCanvas, transform);
-            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 180, 0);
+            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
         }
         else if( isEnd )
         {
             var go = Instantiate(levelUI.endCanvas, transform);
-            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 180, 0);
+            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
         }
     }
     public void OnCollisionCallBack( CollidableBase collidedObject)

@@ -133,6 +133,10 @@ public class ObjectPlacementManager : MonoBehaviour
         {
             placingObject.GetComponent<RailMover>().MovingComplated();
         }
+        else if(placementType == PlacementType.Collectable)
+        {
+            objectChooser.Choose(placingObject);
+        }
         uIManager.buttonLock = false;
         placingObject = null;
     }
@@ -166,5 +170,5 @@ public class ObjectPlacementManager : MonoBehaviour
 }
 public enum PlacementType
 {
-    Rail, Env, RailSystem
+    Rail, Env, RailSystem, Collectable
 }

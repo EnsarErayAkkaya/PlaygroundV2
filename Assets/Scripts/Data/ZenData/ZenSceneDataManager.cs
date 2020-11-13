@@ -107,6 +107,7 @@ public class ZenSceneDataManager : MonoBehaviour
                 startingRailId = item.startingRailId
             });
         }
+
         // save playground
         PlayGround pl = FindObjectOfType<PlaygroundManager>().playground;
         data.playgroundData = new PlaygroundSaveData()
@@ -117,6 +118,16 @@ public class ZenSceneDataManager : MonoBehaviour
             playgroundType = pl.playgroundType,
             id = 0
         };
+        
+        foreach ( var item in FindObjectsOfType<TrainCollectable>() )
+        {
+            data.collectableData.Add(new CollectableSaveData(){
+                isStatic = false,
+                position = item.transform.transform.position,
+                rotation = item.transform.rotation.eulerAngles,
+                id = 0
+            });
+        }
 
         SaveLevelData(data, levelContentData);
     }
@@ -160,6 +171,11 @@ public class ZenSceneDataManager : MonoBehaviour
                 t.startingRailId = item.startingRailId;
                 t.rail = rails.FirstOrDefault( f => f.index == item.startingRailId );
                 t.isStatic = item.isStatic;
+            }
+            foreach (var item in LoadingScene.collectableData)
+            {
+                TrainCollectable c = Instantiate( dataManager.collectablePrefab , item.position, Quaternion.Euler(item.rotation) ).GetComponent<TrainCollectable>();
+                c.isStatic = item.isStatic;            
             }            
         }   
     }

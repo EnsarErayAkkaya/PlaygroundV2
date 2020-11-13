@@ -66,8 +66,11 @@ MonoBehaviour:
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 3245282087632981812}
+  isMoving: 0
   mesh: {fileID: 3245282087635146569}
   isSelected: 0
+  isSelectable: 1
+  cost: 0
   height: 0
   envType: 0
 --- !u!54 &7353443351052935522
@@ -111,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -127,11 +130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_RootOrder
@@ -139,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -152,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 952942f0aabd31d44b9031f160a2b0d9, type: 2}
+      objectReference: {fileID: 2100000, guid: a6724292437a65a479c930c5e0c465fc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47ef729e1d339e4e8587f112c4f4e64, type: 3}
 --- !u!1 &3245282087632947593 stripped

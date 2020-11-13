@@ -7,7 +7,8 @@ public class RailData
 {
     public GameObject railPrefab;
     public RailType railType;
-    public GameObject railButton;
+    public Sprite railImage;
+    public string name;
     public int cost;
     public bool isStart;
     public bool isEnd;

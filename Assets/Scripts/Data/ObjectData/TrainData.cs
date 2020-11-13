@@ -6,7 +6,8 @@ using UnityEngine;
 public class TrainData 
 {
     public GameObject trainPrefab;
-    public GameObject trainButton;
+    public Sprite trainImage;
+    public string name;
     public TrainType trainType;
     public int cost;
 }  

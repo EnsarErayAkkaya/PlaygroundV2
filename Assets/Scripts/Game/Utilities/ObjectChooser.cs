@@ -10,6 +10,7 @@ public class ObjectChooser : MonoBehaviour
     GameUIManager uIManager;
     RailManager railManager;
     CameraManager cameraManager;
+    LevelUI levelUI;
 
     [HideInInspector]
     public Transform multipleObjectParent;
@@ -28,6 +29,7 @@ public class ObjectChooser : MonoBehaviour
         uIManager = FindObjectOfType<GameUIManager>();
         railManager = FindObjectOfType<RailManager>();
         placementManager = FindObjectOfType<ObjectPlacementManager>();
+        levelUI = FindObjectOfType<LevelUI>();
         multipleObjectParent = FindObjectOfType<RailMover>().transform;
     }
     void FixedUpdate()
@@ -212,10 +214,13 @@ public class ObjectChooser : MonoBehaviour
         }
 
         choosenObject = obj.GetComponent<InteractibleBase>();
-        choosenObject.Glow( true );
-        choosenObject.isSelected = true;
+        if(choosenObject.isSelectable)
+        {
+            choosenObject.Glow( true );
+            choosenObject.isSelected = true;
+            uIManager.SetInteractible(obj);
+        }
         
-        uIManager.SetInteractible(obj);
     }
     public void ChooseMultiple()
     {

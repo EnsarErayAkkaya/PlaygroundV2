@@ -57,7 +57,7 @@ public class LevelUI : MonoBehaviour
             rewardText.gameObject.SetActive(true);
             StartCoroutine( FadeTextToZeroAlpha() );
         
-            if( GameDataManager.instance.levels.Any(s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex+1) )
+            if( GameDataManager.instance.levels.Any(s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 2) )
                 nextButton.gameObject.SetActive(true);
             else
                 nextButton.gameObject.SetActive(false);
@@ -65,12 +65,15 @@ public class LevelUI : MonoBehaviour
     }
     public void NextLevelButtonClick()
     {
-        LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 1 );
+        LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 2 );
         GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
-        SceneManager.LoadScene(ld.levelSceneIndex);
+        GameDataManager.instance.zenSceneDataManager.LoadingScene = ld.levelData;
+        GameDataManager.instance.zenSceneDataManager.isLoad = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void RestartLevelButtonClick()
     {
+        GameDataManager.instance.zenSceneDataManager.isLoad = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     IEnumerator FadeTextToZeroAlpha()

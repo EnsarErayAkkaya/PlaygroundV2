@@ -35,7 +35,6 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        //SetLevelData();
         if( levelUI == null )
             levelUI = FindObjectOfType<LevelUI>();
 
@@ -46,11 +45,7 @@ public class LevelManager : MonoBehaviour
         
         StartCoroutine( CheckGameEnded() );
     }
-    /* void SetLevelData()
-    {
-        //LevelData ld = GameDataManager.instance.levels[currentlyPlayingLevelIndex]
 
-    } */
     
     public bool TrainReachedTarget(Rail r)
     {

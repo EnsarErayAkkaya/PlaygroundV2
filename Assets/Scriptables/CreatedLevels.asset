@@ -12,4 +12,287 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c73de1923a5a54aaea2a4e51a38046, type: 3}
   m_Name: CreatedLevels
   m_EditorClassIdentifier: 
-  createdLevels: []
+  createdLevels:
+  - levelIndex: 1
+    levelSceneIndex: -1
+    levelContent:
+      budget: 1000
+      levelRails: 000000000300000004000000
+      levelEnvs: 
+      levelTrains: 
+      rewardRails: 
+      rewardEnvs: 
+      rewardTrains: 
+    levelData:
+      imagePath: 
+      railsData:
+      - id: 1
+        isStatic: 1
+        position:
+          x: 5.4845443
+          y: 0.24
+          z: -2.869676
+        rotation:
+          x: 0
+          y: 270
+          z: 0
+        scale:
+          x: 1
+          y: 1
+          z: 1
+        railType: 0
+        isStart: 0
+        isEnd: 1
+      - id: 2
+        isStatic: 1
+        position:
+          x: 5.974545
+          y: 0.24
+          z: -8.645677
+        rotation:
+          x: 0
+          y: 270
+          z: 0
+        scale:
+          x: 1.0000002
+          y: 1
+          z: 1.0000002
+        railType: 3
+        isStart: 1
+        isEnd: 0
+      - id: 6
+        isStatic: 1
+        position:
+          x: -0.6604507
+          y: 0.24
+          z: -24.904177
+        rotation:
+          x: -0
+          y: 0.000010017912
+          z: 0
+        scale:
+          x: 1
+          y: 1
+          z: 1
+        railType: 0
+        isStart: 0
+        isEnd: 0
+      - id: 11
+        isStatic: 1
+        position:
+          x: -6.7734804
+          y: 0.24
+          z: -2.8449225
+        rotation:
+          x: -0
+          y: 90
+          z: -0
+        scale:
+          x: 1.0000002
+          y: 1
+          z: 1.0000002
+        railType: 0
+        isStart: 0
+        isEnd: 0
+      - id: 27
+        isStatic: 1
+        position:
+          x: -7.2634797
+          y: 0.24
+          z: 2.931079
+        rotation:
+          x: -0
+          y: 90
+          z: -0
+        scale:
+          x: 1.0000002
+          y: 1
+          z: 1.0000002
+        railType: 3
+        isStart: 0
+        isEnd: 0
+      - id: 31
+        isStatic: 1
+        position:
+          x: -0.6284778
+          y: 0.24
+          z: 19.189579
+        rotation:
+          x: 0
+          y: 180
+          z: 0
+        scale:
+          x: 1
+          y: 1
+          z: 1
+        railType: 0
+        isStart: 0
+        isEnd: 0
+      envsData:
+      - id: 0
+        isStatic: 1
+        position:
+          x: 11.472717
+          y: 0
+          z: -1.5516243
+        rotation:
+          x: 0
+          y: 270
+          z: 0
+        envType: 4
+      - id: 0
+        isStatic: 1
+        position:
+          x: -1.9394073
+          y: 0
+          z: -15.632809
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 1
+      - id: 0
+        isStatic: 1
+        position:
+          x: -15.418533
+          y: 0
+          z: -9.020597
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 1
+      - id: 0
+        isStatic: 1
+        position:
+          x: 13.53642
+          y: 0.65
+          z: -13.169035
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      - id: 0
+        isStatic: 1
+        position:
+          x: 14.420941
+          y: 0.65
+          z: -21.243633
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      - id: 0
+        isStatic: 1
+        position:
+          x: 9.069807
+          y: 0.65
+          z: -27.977112
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      - id: 0
+        isStatic: 1
+        position:
+          x: 13.388761
+          y: 0.65
+          z: 19.09069
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      - id: 0
+        isStatic: 1
+        position:
+          x: 5.0855827
+          y: 0.65
+          z: 23
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      - id: 0
+        isStatic: 1
+        position:
+          x: -2.0409498
+          y: 0
+          z: 8.879715
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 1
+      - id: 0
+        isStatic: 1
+        position:
+          x: 15.843777
+          y: 0.65
+          z: 8.9034195
+        rotation:
+          x: -0
+          y: 0
+          z: 0
+        envType: 3
+      trainsData:
+      - id: 0
+        isStatic: 0
+        position:
+          x: 5.4845448
+          y: 1.44
+          z: -6.164676
+        rotation:
+          x: 0
+          y: 270
+          z: 0
+        trainType: 1
+        startingRailId: 2
+      collectableData:
+      - id: 0
+        isStatic: 0
+        position:
+          x: -11.220704
+          y: 0
+          z: -4.0566664
+        rotation:
+          x: -0
+          y: 90
+          z: 0
+      - id: 0
+        isStatic: 0
+        position:
+          x: -9.627755
+          y: 0
+          z: -2.870315
+        rotation:
+          x: -0
+          y: 90
+          z: -0
+      - id: 0
+        isStatic: 0
+        position:
+          x: -9.908767
+          y: 0
+          z: -5.4157104
+        rotation:
+          x: -0
+          y: 90
+          z: 0
+      playgroundData:
+        id: 0
+        isStatic: 1
+        position:
+          x: -22.8
+          y: -0.34
+          z: -25.8
+        rotation:
+          x: -0
+          y: 44.999996
+          z: -0
+        playgroundType: 0
+    isMaster: 0

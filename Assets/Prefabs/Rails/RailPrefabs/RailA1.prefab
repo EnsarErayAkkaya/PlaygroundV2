@@ -185,8 +185,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980908431023522541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.887, y: 0, z: -0.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8719997, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4077282367365210825}
@@ -283,7 +283,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2812925974243377831}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -321,6 +321,7 @@ MonoBehaviour:
   isMoving: 0
   mesh: {fileID: 746269033179962885}
   isSelected: 0
+  isSelectable: 1
   cost: 0
   splineManager: {fileID: 7388436884176833245}
   floorAdder: 0
@@ -331,6 +332,8 @@ MonoBehaviour:
   - {fileID: 3167361514496830569}
   - {fileID: 5810475390486632067}
   animator: {fileID: 1076403426267803777}
+  isStart: 0
+  isEnd: 0
 --- !u!114 &7388436884176833245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,8 +460,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5550293275686211193}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.386, y: 0, z: -0.013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.382, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3452026088010661464}
@@ -527,11 +530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: -1.877301, y: 1, z: 0}
+  m_position: {x: -20.334301, y: 1, z: -3.785}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: -2.877301, y: 1, z: 0}
+  m_precedingControlPointPosition: {x: -21.334301, y: 1, z: -3.785}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: -0.877301, y: 1, z: 0}
+  m_followingControlPointPosition: {x: -19.334301, y: 1, z: -3.785}
   m_handleMode: 2
   extraData:
     c1: 0
@@ -581,11 +584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: 2.4551284, y: 1, z: 0}
+  m_position: {x: -16.001873, y: 1, z: -3.785}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: 1.4551284, y: 1, z: 0}
+  m_precedingControlPointPosition: {x: -17.001873, y: 1, z: -3.785}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: 3.4551284, y: 1, z: 0}
+  m_followingControlPointPosition: {x: -15.001872, y: 1, z: -3.785}
   m_handleMode: 2
   extraData:
     c1: 0

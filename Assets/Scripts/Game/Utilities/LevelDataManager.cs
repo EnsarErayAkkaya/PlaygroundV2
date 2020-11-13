@@ -24,6 +24,8 @@ public class LevelDataManager : MonoBehaviour
         SetLevelContent( ld.levelContent );
 
         levelManager.targetedTrainCount = ld.levelData.trainsData.Count;
+        levelManager.collectableCount = ld.levelData.collectableData.Count;
+        GameDataManager.instance.zenSceneDataManager.isLoad = false;
     }
     void SetLevelContent(LevelContentData levelContent)
     {

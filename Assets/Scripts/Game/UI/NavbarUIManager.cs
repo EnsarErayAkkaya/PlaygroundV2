@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NavbarUIManager : MonoBehaviour
 {
@@ -10,19 +11,20 @@ public class NavbarUIManager : MonoBehaviour
     [SerializeField] ScrollRect contentScrollRect;
 
     [SerializeField] Transform railsContent, envsContent, trainsContent;
-    [SerializeField] Image navbarImage;
     public RectTransform navbarTransform;
+    public RectTransform buttonsTransform;
+    public Image barImage;
 
     [Header("Navbar Poses")]
 
     [SerializeField] Vector3 hidePos;
     [SerializeField] Vector3 showPos;
 
-    [Header("Content Colors")]
+    [Header("Content Bars")]
 
-    [SerializeField] Color railColor;
-    [SerializeField] Color envColor;
-    [SerializeField] Color trainColor;
+    [SerializeField] Sprite railBar;
+    [SerializeField] Sprite envBar;
+    [SerializeField] Sprite trainBar;
 
     bool navbarShowing;
 
@@ -30,8 +32,6 @@ public class NavbarUIManager : MonoBehaviour
     {
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         uIManager = FindObjectOfType<GameUIManager>();
-
-        navbarTransform.anchoredPosition = hidePos;
 
         // Clean
         foreach (Transform child in railsContent)
@@ -53,22 +53,28 @@ public class NavbarUIManager : MonoBehaviour
             foreach (var item in SaveAndLoadGameData.instance.savedData.playerRails)
             {
                 RailData data = GameDataManager.instance.allRails.Find(s => s.railType == item);
-                GameObject e = Instantiate(data.railButton);
-                e.transform.SetParent(railsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, railsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.railImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.RailButtonClick(data.railPrefab, data.cost); } );
             }
             foreach (var item in SaveAndLoadGameData.instance.savedData.playerEnvs)
             {
                 EnvironmentData data = GameDataManager.instance.allEnvs.Find(s => s.envType == item);
-                GameObject e = Instantiate(data.envButton);
-                e.transform.SetParent(envsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, envsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.envImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); } );
             }
             foreach (var item in SaveAndLoadGameData.instance.savedData.playerTrains)
             {
                 TrainData data = GameDataManager.instance.allTrains.Find(s => s.trainType == item);
-                GameObject e = Instantiate(data.trainButton);
-                e.transform.SetParent(trainsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, trainsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.trainImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.TrainCreateButtonClick(data.trainPrefab, data.cost); } );
             }
         }
@@ -78,22 +84,28 @@ public class NavbarUIManager : MonoBehaviour
             foreach (var item in levelManager.levelRails)
             {
                 RailData data = GameDataManager.instance.allRails.Find(s => s.railType == item);
-                GameObject e = Instantiate(data.railButton);
-                e.transform.SetParent(railsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, railsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.railImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.RailButtonClick(data.railPrefab, data.cost); } );
             }
             foreach (var item in levelManager.levelEnvs)
             {
                 EnvironmentData data = GameDataManager.instance.allEnvs.Find(s => s.envType == item);
-                GameObject e = Instantiate(data.envButton);
-                e.transform.SetParent(envsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, envsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.envImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); } );
             }
             foreach (var item in levelManager.levelTrains)
             {
                 TrainData data = GameDataManager.instance.allTrains.Find(s => s.trainType == item);
-                GameObject e = Instantiate(data.trainButton);
-                e.transform.SetParent(trainsContent, false);
+
+                GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, trainsContent);
+                e.transform.GetChild(0).GetComponent<Image>().sprite = data.trainImage;
+                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.TrainCreateButtonClick(data.trainPrefab, data.cost); } );
             }
         }
@@ -111,7 +123,7 @@ public class NavbarUIManager : MonoBehaviour
     {
         ShowNavbar();
 
-        navbarImage.color = railColor;
+        barImage.sprite = railBar;
 
         railsContent.gameObject.SetActive(true);
 
@@ -124,7 +136,7 @@ public class NavbarUIManager : MonoBehaviour
     {
         ShowNavbar();
 
-        navbarImage.color = envColor;
+        barImage.sprite = envBar;
 
         envsContent.gameObject.SetActive(true);
 
@@ -137,7 +149,7 @@ public class NavbarUIManager : MonoBehaviour
     {
         ShowNavbar();
 
-        navbarImage.color = trainColor;
+        barImage.sprite = trainBar;
 
         trainsContent.gameObject.SetActive(true);
 
@@ -150,11 +162,23 @@ public class NavbarUIManager : MonoBehaviour
     {
         navbarShowing = true;
         RefreshPosition();
+        HideButtons();
+        uIManager.OnNavbarActive();
     }
     public void HideNavbar()
     {
         navbarShowing = false;
-        RefreshPosition();        
+        RefreshPosition();  
+        ShowButtons();      
+        uIManager.OnNavbarDeactive();
+    }
+    public void ShowButtons()
+    {
+        buttonsTransform.gameObject.SetActive(true);
+    }
+    public void HideButtons()
+    {
+        buttonsTransform.gameObject.SetActive(false);
     }
     void RefreshPosition()
     {

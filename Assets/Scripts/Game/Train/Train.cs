@@ -29,6 +29,9 @@ public class Train : InteractibleBase
     }
     void OnTriggerEnter(Collider other)
     {
+        if( other.gameObject.layer == 13 )
+            return;
+
         CollidableBase collidedObject = null;
 
         if(other.GetComponent<CollidableBase>() != null )
@@ -205,6 +208,7 @@ public class Train : InteractibleBase
         StopTrain();
         started = false;
         
+        if(walker.spline != null)
         walker.spline.splineEnded = false;
 
         walker.NormalizedT = 0;

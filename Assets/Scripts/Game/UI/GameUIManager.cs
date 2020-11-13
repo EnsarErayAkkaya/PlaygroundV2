@@ -22,13 +22,14 @@ public class GameUIManager : MonoBehaviour
     NavbarUIManager navbarUI;
     LevelUI levelUI;
     ScreenshotHandler screenshotHandler;
+    CollectableManager collectableManager;
     #endregion
 
     [Header("Data")]
 
     [SerializeField] Button changeRailWayButton;
     [SerializeField] Button moveButton, setConnectionButton, deleteButton, rotateButton, saveButton
-        , levelSaveButton, playStopButton, trainSpeedButton, changeCamera, cleanButton, flipButton;
+        , levelSaveButton, playStopButton, trainSpeedButton, camerasButton, cleanButton, flipButton, pauseButton, resetButton ;
     [SerializeField] Image playImage, stopImage;
 
     public GameObject levelCreatingPanel;
@@ -55,6 +56,7 @@ public class GameUIManager : MonoBehaviour
         railWayChooser = FindObjectOfType<RailWayChooser>();
         environmentManager = FindObjectOfType<EnvironmentManager>();
         screenshotHandler = FindObjectOfType<ScreenshotHandler>();
+        collectableManager = FindObjectOfType<CollectableManager>();
         
         if(FindObjectOfType<LevelUI>() != null)
         {
@@ -87,6 +89,7 @@ public class GameUIManager : MonoBehaviour
             interactible.Destroy();
 
             objectChooser.Unchoose();
+            SetInteractible(null);
 
             if( trainManager.trains.Count <= 0 )
             {
@@ -114,6 +117,8 @@ public class GameUIManager : MonoBehaviour
                 railManager.RotateRail(interactible.GetComponent<Rail>());
             else if(interactible.GetComponent<EnvironmentObject>() != null)
                 environmentManager.RotateEnv(interactible.GetComponent<EnvironmentObject>());
+            else if(interactible.GetComponent<TrainCollectable>() != null)
+                collectableManager.Rotate(interactible.gameObject);
         }
     }
     public void FlipRailButtonClick()
@@ -192,6 +197,15 @@ public class GameUIManager : MonoBehaviour
             }
         }
         buttonLock = false;   
+    }
+    public void CreateCollectableButton()
+    {
+        if(buttonLock)
+            return;
+        
+        PlayButtonSound();
+
+        collectableManager.CreateCollectable();
     }
     public void ChangeRailWayButtonClick()
     {
@@ -319,12 +333,14 @@ public class GameUIManager : MonoBehaviour
         // toggle level creting stuff
         if(levelCreatingMode == true) // mode active
         {
+            levelCreatingMode = false;
             // disable mode
             levelCreatingPanel.SetActive(false);
             saveButton.gameObject.SetActive(true);
         }
         else
         {
+            levelCreatingMode = true;
             // enable mode
             levelCreatingPanel.SetActive(true);
             saveButton.gameObject.SetActive(false);
@@ -335,6 +351,20 @@ public class GameUIManager : MonoBehaviour
     {
         AudioManager.instance.Play("ButtonClick");
     }
+
+    public void OnNavbarActive()
+    {
+        camerasButton.gameObject.SetActive(false);
+        pauseButton.gameObject.SetActive(false);
+        resetButton.gameObject.SetActive(false);
+    }
+    public void OnNavbarDeactive()
+    {
+        camerasButton.gameObject.SetActive(true);
+        pauseButton.gameObject.SetActive(true);
+        resetButton.gameObject.SetActive(true);
+    }
+
     public void SetInteractible(GameObject obj)
     {
         try
@@ -374,7 +404,8 @@ public class GameUIManager : MonoBehaviour
             changeRailWayButton.gameObject.SetActive(false);
             flipButton.gameObject.SetActive(false);
 
-            startEndToggles.HideToggles();
+            if(levelUI == null)
+                startEndToggles.HideToggles();
 
             if(trainManager.isStarted)
             {
@@ -403,8 +434,8 @@ public class GameUIManager : MonoBehaviour
                 if(interactible.GetComponent<Rail>() != null)
                 {
                     Rail r = interactible.GetComponent<Rail>();
-
-                    startEndToggles.SetToggles( r );
+                    if(levelUI == null)
+                        startEndToggles.SetToggles( r );
 
                     if(r.GetOutputConnectionPoints().Length > 1 )
                     {
@@ -418,7 +449,8 @@ public class GameUIManager : MonoBehaviour
                 }
                 else
                 {
-                    startEndToggles.HideToggles();
+                    if(levelUI == null)
+                        startEndToggles.HideToggles();
                     changeRailWayButton.gameObject.SetActive(false);
                 }
             }
@@ -426,12 +458,15 @@ public class GameUIManager : MonoBehaviour
             {
                 deleteButton.gameObject.SetActive(true);
                 rotateButton.gameObject.SetActive(true);
-                flipButton.gameObject.SetActive(true);
+                
                 if(interactible.GetComponent<Rail>() != null)
                 {
                     Rail r = interactible.GetComponent<Rail>();
-
-                    startEndToggles.SetToggles( r );
+                    
+                    flipButton.gameObject.SetActive(true);
+                    
+                    if(levelUI == null)
+                        startEndToggles.SetToggles( r );
 
                     setConnectionButton.gameObject.SetActive(true);
                     if(r.GetOutputConnectionPoints().Length > 1 )
@@ -446,7 +481,8 @@ public class GameUIManager : MonoBehaviour
                 }
                 else if( interactible.GetComponent<Train>() != null )
                 {
-                    startEndToggles.HideToggles();
+                    if(levelUI == null)
+                        startEndToggles.HideToggles();
 
                     deleteButton.gameObject.SetActive(true);
 
@@ -456,7 +492,10 @@ public class GameUIManager : MonoBehaviour
                     flipButton.gameObject.SetActive(false);
                 }
                 else
-                    startEndToggles.HideToggles();
+                {
+                    if(levelUI == null)
+                        startEndToggles.HideToggles();
+                }
             }            
         }
         else if(obj != null && trainManager.isStarted)
@@ -468,7 +507,8 @@ public class GameUIManager : MonoBehaviour
             {
                 Rail r = interactible.GetComponent<Rail>();
 
-                startEndToggles.SetToggles( r );
+                if(levelUI == null)
+                    startEndToggles.SetToggles( r );
 
                 if(r.GetOutputConnectionPoints().Length > 1 )
                 {
@@ -482,7 +522,8 @@ public class GameUIManager : MonoBehaviour
             }
             else
             {
-                startEndToggles.HideToggles();
+                if(levelUI == null)
+                    startEndToggles.HideToggles();
             }
         }
     }

@@ -24,10 +24,8 @@ public class SaveAndLoadGameData : MonoBehaviour
             savedData.playerEnvs.AddRange( new List<EnvType>{EnvType.R0, EnvType.R1, EnvType.ST, EnvType.OT});
             savedData.playerTrains.Add( TrainType.A );
             savedData.choosenPlayground = PlaygroundType.PuzzleCarpet;
-            savedData.unlockedLevels.Add(new LevelData(){
+            savedData.unlockedLevels.Add(new PlayerLevelData(){
                 levelIndex = 1,
-                levelSceneIndex = 2,
-                isUnlocked = true,
                 mark = 0
             });
             savedData.playerPlaygrounds.AddRange( new List<PlaygroundType>{PlaygroundType.PuzzleCarpet, PlaygroundType.CarpetDull});
@@ -50,7 +48,7 @@ public class SaveAndLoadGameData : MonoBehaviour
         if(File.Exists(Application.persistentDataPath + "/gameData.gd")) {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/gameData.gd", FileMode.Open);
-            savedData = (GameData)bf.Deserialize(file);
+            savedData = (GameData)bf.Deserialize(file); 
             file.Close();
         }
     }
