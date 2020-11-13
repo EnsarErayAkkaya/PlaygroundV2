@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlaygroundData 
 {
     public GameObject playgroundGamePrefab;
-    public GameObject playgroundUIPrefab;
     public PlaygroundType playgroundType;
 }
 public enum PlaygroundType

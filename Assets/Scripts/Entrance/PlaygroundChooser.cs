@@ -19,8 +19,7 @@ public class PlaygroundChooser : MonoBehaviour
         {
             PlaygroundData data = GameDataManager.instance.allPlaygrounds.Find(s => s.playgroundType == item);
 
-            GameObject obj = Instantiate(data.playgroundGamePrefab);
-            obj.transform.parent = scene;
+            GameObject obj = Instantiate(data.playgroundGamePrefab, scene);
 
             playgrounds.Add(obj);
             playgroundTypes.Add(item);
