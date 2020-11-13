@@ -1077,6 +1077,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7434099031795573767, guid: 5dd61915dd9ed564b9b87a13a404b598,
+        type: 3}
+      propertyPath: choosenLayers.m_Bits
+      value: 20992
+      objectReference: {fileID: 0}
     - target: {fileID: 7434099031795573784, guid: 5dd61915dd9ed564b9b87a13a404b598,
         type: 3}
       propertyPath: m_Name
@@ -1380,6 +1385,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightNavbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207726012789905089, guid: a00ef1adac51d9d49afeadb90611e132,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207726012789905089, guid: a00ef1adac51d9d49afeadb90611e132,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207726012789905089, guid: a00ef1adac51d9d49afeadb90611e132,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207726012789905089, guid: a00ef1adac51d9d49afeadb90611e132,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00ef1adac51d9d49afeadb90611e132, type: 3}

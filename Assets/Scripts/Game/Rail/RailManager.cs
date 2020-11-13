@@ -351,7 +351,6 @@ public class RailManager : MonoBehaviour
 
             // açıyı ayarla
             connectingPoint.connectedPoint.transform.rotation = Quaternion.Euler(connectingPoint.rail.transform.rotation.eulerAngles - new Vector3(0, connectingPoint.connectedPoint.extraAngle,0));
-            Debug.Log(connectingPoint.rail.transform.rotation.eulerAngles + " :: " +connectingPoint.connectedPoint.transform.eulerAngles);
         }
 
         ConnectCollidingPoints();

@@ -297,6 +297,8 @@ public class GameUIManager : MonoBehaviour
 
         if(isPlaying == false && trainManager.isStarted == false )
         {
+            OnNavbarDeactive(); // activate if buttons are disabled
+
             changeRailWayButton.GetComponent<RectTransform>().localPosition = Vector2.zero;
             // butonları gizle
             deleteButton.gameObject.SetActive(false);

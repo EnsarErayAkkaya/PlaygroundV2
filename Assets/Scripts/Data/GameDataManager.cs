@@ -158,7 +158,9 @@ public class GameDataManager: MonoBehaviour
             createdLevels.createdLevels[lvlIndex].levelIndex = lvlIndex + 1;
             createdLevels.createdLevels[lvlIndex - 1].levelIndex = lvlIndex;
 
-            SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )
+                SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+
             SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex - 1].levelIndex = lvlIndex;
         }
         else
@@ -173,6 +175,12 @@ public class GameDataManager: MonoBehaviour
             createdLevels.createdLevels.Swap( lvlIndex, lvlIndex + 1 );
             createdLevels.createdLevels[lvlIndex].levelIndex = lvlIndex + 1;
             createdLevels.createdLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
+
+            
+            SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            
+            if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )    
+                SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
         }
         else
         {

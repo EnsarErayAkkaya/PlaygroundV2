@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainCollectable : InteractibleBase
-{       
+{
     [SerializeField]
     private float trainStopDuration;
     LevelManager levelManager;
@@ -11,12 +11,9 @@ public class TrainCollectable : InteractibleBase
     private void Start() {
         levelManager = FindObjectOfType<LevelManager>();
         trainManager = FindObjectOfType<TrainManager>();
+
         if(levelManager != null)
             isSelectable = false;
-        else
-        {
-            colliders[0].enabled = false;
-        }
     }
     void OnTriggerEnter(Collider other)
     {

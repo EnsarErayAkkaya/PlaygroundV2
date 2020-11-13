@@ -54,7 +54,6 @@ public class EnvironmentObject : InteractibleBase
             }   
         }       
     }
-
     
     public override void Destroy()
     {

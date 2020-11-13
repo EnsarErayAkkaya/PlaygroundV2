@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1794764980301587388}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: TrainAA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1794764981323343504}
   - component: {fileID: 1794764981323343503}
   - component: {fileID: 1794764981323343502}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Train
   m_TagString: Interactible
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   isMoving: 0
   mesh: {fileID: 0}
   isSelected: 0
+  isSelectable: 1
   cost: 0
   trainManager: {fileID: 0}
   walker: {fileID: 1794764981323343504}
@@ -179,7 +180,7 @@ GameObject:
   - component: {fileID: 1794764981907588388}
   - component: {fileID: 3726324857551120954}
   - component: {fileID: 2052838465060291002}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Vagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +265,7 @@ GameObject:
   - component: {fileID: 177860410709377602}
   - component: {fileID: 3443717719587773026}
   - component: {fileID: 5747580250743936736}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: TrenMesh
   m_TagString: Interactible
   m_Icon: {fileID: 0}
@@ -366,7 +367,7 @@ GameObject:
   - component: {fileID: 2954868116837630381}
   - component: {fileID: 5574696199816354120}
   - component: {fileID: 2883454078574935823}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MeshVagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,6 +510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817944695578125805, guid: 6a58e17c17ced4441858f837445886ee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a58e17c17ced4441858f837445886ee, type: 3}

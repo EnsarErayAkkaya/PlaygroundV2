@@ -43,9 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd97284a8987fb4681069718033f321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementManager: {fileID: 0}
-  railManager: {fileID: 0}
-  cameraManager: {fileID: 0}
   multipleObjectParent: {fileID: 0}
   choosenObject: {fileID: 0}
   choosenObjects: []
@@ -53,4 +50,4 @@ MonoBehaviour:
   maxDistance: 100
   choosenLayers:
     serializedVersion: 2
-    m_Bits: 4608
+    m_Bits: 29184
