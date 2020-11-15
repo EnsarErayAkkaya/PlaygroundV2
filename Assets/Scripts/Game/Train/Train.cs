@@ -7,6 +7,8 @@ public class Train : InteractibleBase
 {
     [HideInInspector]public TrainManager trainManager;
     [SerializeField] BezierWalkerWithSpeed walker;
+    LevelUI levelUI;
+
     public List<Locomotiv> locomotives;
     public ParticleSystem particleSystem;
     public Rail rail;
@@ -19,6 +21,7 @@ public class Train : InteractibleBase
     {
         particleSystem.Stop();
         trainManager = FindObjectOfType<TrainManager>();
+        levelUI = FindObjectOfType<LevelUI>();
         
         if(FindObjectOfType<EntranceUI>() != null)
             StartTrain();
@@ -229,6 +232,9 @@ public class Train : InteractibleBase
     public override void Destroy()
     {
         trainManager.RemoveTrain(this);
+
+        if(levelUI != null)
+            levelUI.SetBudget( cost );
 
         Destroy(transform.parent.gameObject);
     }

@@ -91,10 +91,11 @@ public class LevelSystem : MonoBehaviour
     }
     public void HideLevelButtonsEdit()
     {
+        /* Debug.Log("levelButtons " + levelButtons.Count);
         foreach (var item in levelButtons)
         {
             item.HideEditButtons();
-        }
+        } */
         editButton.SetActive(true);
         stopEditButton.SetActive(false);
     }

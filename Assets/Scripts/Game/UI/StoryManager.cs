@@ -29,6 +29,10 @@ public class StoryManager : MonoBehaviour
             {
                 ShowRelatedStory(1);
             }
+            else if(GameDataManager.instance.currentlyPlayingLevelIndex == 2)
+            {
+                ShowRelatedStory(2);
+            }
         }
         
     }

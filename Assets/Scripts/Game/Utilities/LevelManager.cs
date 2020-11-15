@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         if(r == targetRail)
         {
             reachedTrainCount++;
-            if(reachedTrainCount == targetedTrainCount)
+            if(reachedTrainCount == targetedTrainCount && collectedCount == collectableCount)
             {
                 EndLevel();
                 SaveLevelData();

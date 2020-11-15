@@ -16,11 +16,10 @@ public class EnvironmentObject : InteractibleBase
         placementManager = FindObjectOfType<ObjectPlacementManager>();
         environmentManager = FindObjectOfType<EnvironmentManager>();
         levelUI = FindObjectOfType<LevelUI>();
-
-        DisableColliders(); 
     }
     public void StartPlacing()
     {
+        DisableColliders(); 
         if(placementManager == null)
             placementManager = FindObjectOfType<ObjectPlacementManager>();
         if( !isStatic )

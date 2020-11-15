@@ -75,6 +75,7 @@ public class LevelButton : MonoBehaviour
     }
     public void HideEditButtons()
     {
+        Debug.Log("button index " + index);
         if(GameDataManager.instance.levels[index].isMaster == false )
         {
             deleteButton.SetActive(false);

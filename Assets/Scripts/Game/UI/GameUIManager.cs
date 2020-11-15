@@ -76,16 +76,11 @@ public class GameUIManager : MonoBehaviour
         {
             foreach (var item in interactibles)
             {
-                if(levelUI != null)
-                    levelUI.SetBudget( item.cost );
                 item.Destroy();
             }
         }
         else
         {
-            if(levelUI != null)
-                levelUI.SetBudget( interactible.cost );
-
             interactible.Destroy();
 
             objectChooser.Unchoose();
