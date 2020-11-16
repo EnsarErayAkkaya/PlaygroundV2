@@ -124,31 +124,7 @@ public class ObjectPlacementManager : MonoBehaviour
             Rail rail = placingObject.GetComponent<Rail>();
             rail.ActivateColliders();
             objectChooser.Choose(placingObject);
-            if(rail.transform.position.y <= railManager.firstFloorY )
-            {
-                Debug.Log("0");
-                rail.currentFloor = 0;
-            }
-            else if(rail.transform.position.y >=  railManager.firstFloorY && rail.transform.position.y <=  railManager.secondFloorY)
-            {
-                Debug.Log("1");
-                rail.currentFloor = 1;
-            }
-            else if(rail.transform.position.y >=  railManager.secondFloorY && rail.transform.position.y <=  railManager.thirdFloorY)
-            {
-                Debug.Log("2");
-                rail.currentFloor = 2;
-            }
-            else if(rail.transform.position.y >=  railManager.thirdFloorY && rail.transform.position.y <=  railManager.heightLimit)
-            {
-                Debug.Log("3");
-                rail.currentFloor = 3;
-            }
-            else if(rail.transform.position.y >= railManager.heightLimit || rail.transform.position.y < 0)
-            {
-                Debug.Log("out");
-                rail.Destroy();
-            }
+            rail.ManualFloorControl();
         }
         else if(placementType == PlacementType.Env)
         {

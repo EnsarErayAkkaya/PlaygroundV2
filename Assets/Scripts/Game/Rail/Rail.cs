@@ -48,6 +48,10 @@ public class Rail : InteractibleBase
             var go = Instantiate(levelUI.endCanvas, transform);
             go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
         }
+        if(isStatic)
+        {
+            ManualFloorControl();
+        }
     }
     public void OnCollisionCallBack( CollidableBase collidedObject)
     {
@@ -162,6 +166,32 @@ public class Rail : InteractibleBase
         }
         else
             return true;
+    }
+    public void ManualFloorControl()
+    {
+        if(railManager == null)
+            railManager = FindObjectOfType<RailManager>();
+            
+        if(transform.position.y <= railManager.firstFloorY )
+        {
+            currentFloor = 0;
+        }
+        else if(transform.position.y >=  railManager.firstFloorY && transform.position.y <=  railManager.secondFloorY)
+        {
+            currentFloor = 1;
+        }
+        else if(transform.position.y >=  railManager.secondFloorY && transform.position.y <=  railManager.thirdFloorY)
+        {
+            currentFloor = 2;
+        }
+        else if(transform.position.y >=  railManager.thirdFloorY && transform.position.y <=  railManager.heightLimit)
+        {
+            currentFloor = 3;
+        }
+        else if(transform.position.y >= railManager.heightLimit || transform.position.y < 0)
+        {
+            Destroy();
+        }
     }
     public override void  Glow( bool b)
     {

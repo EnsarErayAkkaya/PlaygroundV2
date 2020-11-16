@@ -20,6 +20,7 @@ public class GameDataManager: MonoBehaviour
     void Awake()
     {
         levels = new List<LevelData>();
+        levels.AddRange(createdLevels.createdLevels);
 		if(instance != null)
 		{
 			Debug.LogWarning("More than one instance of DataManager found");

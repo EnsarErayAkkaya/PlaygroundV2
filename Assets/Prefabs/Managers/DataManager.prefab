@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3692831814693116277}
-  - component: {fileID: 3692831814693116278}
   - component: {fileID: 3692831814693116279}
+  - component: {fileID: 3692831814693116278}
   - component: {fileID: 3692831815383879226}
   m_Layer: 0
   m_Name: DataManager
@@ -33,40 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3692831814693116278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692831814693116168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a43e4caac6eaa6409455476035bd542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingGameData:
-    choosenPlayground: 0
-    playerRails: 000000000300000004000000
-    playerEnvs: 
-    playerPlaygrounds: 0000000001000000
-    playerTrains: 01000000
-    maxZenSceneSaveCount: 1
-    zenSceneDatas: []
-    unlockedLevels:
-    - levelIndex: 1
-      mark: 0
-    playerCreatedLevels: []
-  savedData:
-    choosenPlayground: 0
-    playerRails: 
-    playerEnvs: 
-    playerPlaygrounds: 
-    playerTrains: 
-    maxZenSceneSaveCount: 1
-    zenSceneDatas: []
-    unlockedLevels: []
-    playerCreatedLevels: []
 --- !u!114 &3692831814693116279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +199,40 @@ MonoBehaviour:
   generalButtonPrefab: {fileID: 5619827466366189225, guid: d5104aad17521874ab4cb7263bc8828f,
     type: 3}
   createdLevels: {fileID: 11400000, guid: b56d6022947ad0d488a1eac310e06b32, type: 2}
+--- !u!114 &3692831814693116278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692831814693116168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a43e4caac6eaa6409455476035bd542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingGameData:
+    choosenPlayground: 0
+    playerRails: 000000000300000004000000
+    playerEnvs: 
+    playerPlaygrounds: 0000000001000000
+    playerTrains: 01000000
+    maxZenSceneSaveCount: 1
+    zenSceneDatas: []
+    unlockedLevels:
+    - levelIndex: 1
+      mark: 0
+    playerCreatedLevels: []
+  savedData:
+    choosenPlayground: 0
+    playerRails: 
+    playerEnvs: 
+    playerPlaygrounds: 
+    playerTrains: 
+    maxZenSceneSaveCount: 1
+    zenSceneDatas: []
+    unlockedLevels: []
+    playerCreatedLevels: []
 --- !u!114 &3692831815383879226
 MonoBehaviour:
   m_ObjectHideFlags: 0

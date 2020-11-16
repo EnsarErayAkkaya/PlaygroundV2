@@ -25,6 +25,7 @@ public class TrainManager : MonoBehaviour
     public void ResumeStartedTrain()
     {
         if(lockTrains) return;
+        AudioManager.instance.Unmute("TrainMoving");
         foreach (Train item in trains)
         {
             item.ResumeTrain();
@@ -33,6 +34,7 @@ public class TrainManager : MonoBehaviour
     public void StopAllTrains()
     {
         if(lockTrains) return;
+        AudioManager.instance.Mute("TrainMoving");
         foreach (Train item in trains)
         {
             item.StopTrain();
@@ -50,6 +52,7 @@ public class TrainManager : MonoBehaviour
     {
         if(levelManager != null)
         {
+            AudioManager.instance.Stop("TrainMoving");
             levelManager.TrainCollided();
         }
     }
@@ -58,6 +61,8 @@ public class TrainManager : MonoBehaviour
         if(lockTrains) return;
         if( !isStarted && trains.Count > 0 )
         {
+            AudioManager.instance.Play("TrainHorn");
+            AudioManager.instance.Play("TrainMoving");
             foreach (Train item in trains)
             {
                 item.StartTrain();

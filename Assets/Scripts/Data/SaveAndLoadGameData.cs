@@ -23,7 +23,8 @@ public class SaveAndLoadGameData : MonoBehaviour
             savedData = startingGameData;
             Save();
         }
-        GameDataManager.instance.GetLevels();
+        if(savedData.playerCreatedLevels != null && savedData.playerCreatedLevels.Count > 0)
+            GameDataManager.instance.levels.AddRange(SaveAndLoadGameData.instance.savedData.playerCreatedLevels);
         DontDestroyOnLoad(this.gameObject);
     }
             

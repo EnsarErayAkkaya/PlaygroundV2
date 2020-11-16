@@ -484,6 +484,7 @@ public class RailManager : MonoBehaviour
                     break;
             }
         }
+        r.ManualFloorControl();
     }
 
 

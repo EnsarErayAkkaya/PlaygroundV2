@@ -478,6 +478,8 @@ public class GameUIManager : MonoBehaviour
                 }
                 else if( interactible.GetComponent<Train>() != null )
                 {
+                    AudioManager.instance.Play("TrainHorn");
+                    
                     if(levelUI == null)
                         startEndToggles.HideToggles();
 

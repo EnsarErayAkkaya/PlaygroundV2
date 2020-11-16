@@ -1066,7 +1066,7 @@ MonoBehaviour:
   creationTime: 16.190193
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 1839658039}
@@ -2058,7 +2058,7 @@ MonoBehaviour:
   creationTime: 17.590893
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 895367833}
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   creationTime: 15.6311865
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 1662609283}
@@ -3140,6 +3140,18 @@ MonoBehaviour:
     volume: 0.23
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: TrainHorn
+    clip: {fileID: 8300000, guid: 2126d4ef970c31b48b8e7ac23007f3be, type: 3}
+    volume: 0.23
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TrainMoving
+    clip: {fileID: 8300000, guid: 3c3bf34da76a2eb4ca7a1ae2540d2101, type: 3}
+    volume: 0.62
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &518193657
 Transform:
@@ -3552,7 +3564,7 @@ MonoBehaviour:
   creationTime: 14.964435
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 515629146}
@@ -3691,7 +3703,7 @@ MonoBehaviour:
   creationTime: 9.331332
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 2083812508}
@@ -10756,7 +10768,7 @@ MonoBehaviour:
   creationTime: 12.371097
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 759538138}
@@ -12462,7 +12474,7 @@ MonoBehaviour:
   creationTime: 17.127172
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 1287955973}
@@ -13502,7 +13514,7 @@ MonoBehaviour:
   creationTime: 16.666882
   lastCollisionTime: 0
   lastEditTime: 0
-  isStatic: 1
+  isStatic: 0
   lastCollided: {fileID: 0}
   colliders:
   - {fileID: 941984356}
@@ -13872,6 +13884,43 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[6].envPrefab
+      value: 
+      objectReference: {fileID: 2846238895277965383, guid: a46b23ae5469a4046a20a1c892797d19,
+        type: 3}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[6].envType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[6].envImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 7078a92ceb9160a44afce7a7fbafc07a,
+        type: 3}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[6].name
+      value: PassangerPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[6].cost
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allEnvs.Array.data[5].name
+      value: CylinderPlatform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ff91fdd06d44f4485cc7242c9a3c7a, type: 3}

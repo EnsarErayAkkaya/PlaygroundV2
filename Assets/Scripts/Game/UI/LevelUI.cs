@@ -43,6 +43,7 @@ public class LevelUI : MonoBehaviour
     }
     public void SetEndUI(int m)
     {
+        
         endUI.SetActive(true);
 
         if(m == 0 ) // you lost
@@ -65,6 +66,7 @@ public class LevelUI : MonoBehaviour
     }
     public void NextLevelButtonClick()
     {
+        AudioManager.instance.Stop("TrainMoving");
         LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 2 );
         GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
         GameDataManager.instance.zenSceneDataManager.LoadingScene = ld.levelData;
@@ -73,6 +75,7 @@ public class LevelUI : MonoBehaviour
     }
     public void RestartLevelButtonClick()
     {
+        AudioManager.instance.Stop("TrainMoving");
         GameDataManager.instance.zenSceneDataManager.isLoad = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
