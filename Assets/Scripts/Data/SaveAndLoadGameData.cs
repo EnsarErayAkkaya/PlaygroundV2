@@ -7,6 +7,7 @@ using UnityEngine;
 public class SaveAndLoadGameData : MonoBehaviour
 {
     public static SaveAndLoadGameData instance;
+    public GameData startingGameData;
     public GameData savedData = new GameData();
     void Awake()
     {
@@ -19,18 +20,10 @@ public class SaveAndLoadGameData : MonoBehaviour
         Load();
         if(savedData.playerRails.Count < 1)
         {
-            savedData.playerRails.AddRange( new List<RailType>{ RailType.A, RailType.EL, RailType.ER, RailType.F1, RailType.A1, RailType.A2
-                , RailType.A3, RailType.G1, RailType.G2, RailType.NUp, RailType.NDown});
-            savedData.playerEnvs.AddRange( new List<EnvType>{EnvType.R0, EnvType.R1, EnvType.ST, EnvType.OT});
-            savedData.playerTrains.Add( TrainType.A );
-            savedData.choosenPlayground = PlaygroundType.PuzzleCarpet;
-            savedData.unlockedLevels.Add(new PlayerLevelData(){
-                levelIndex = 1,
-                mark = 0
-            });
-            savedData.playerPlaygrounds.AddRange( new List<PlaygroundType>{PlaygroundType.PuzzleCarpet, PlaygroundType.CarpetDull});
+            savedData = startingGameData;
             Save();
         }
+        GameDataManager.instance.GetLevels();
         DontDestroyOnLoad(this.gameObject);
     }
             

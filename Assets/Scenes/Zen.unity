@@ -149,18 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190b5564eab6bb4419b5220aa53bbc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &447375419 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2968137773412333613, guid: d1589a4f6ead7d745a80d6e77fab634e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2968137773032362006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45dc6ab15f1551c4b9b15f04e154cd0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &471830620
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,18 +939,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8569910203972117272}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1747302649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8569910203303418849, guid: 2554b358db6421b43bb0a6a12beedf81,
-    type: 3}
-  m_PrefabInstance: {fileID: 8569910203972117272}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55910eb49117aa14da33bd4f15090fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2146189456 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7434099031795573767, guid: 5dd61915dd9ed564b9b87a13a404b598,
@@ -1429,36 +1405,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: railManager
-      value: 
-      objectReference: {fileID: 179739205}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: objectChooser
-      value: 
-      objectReference: {fileID: 2146189456}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: playgroundManager
-      value: 
-      objectReference: {fileID: 53041842773582700}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: cameraManager
-      value: 
-      objectReference: {fileID: 447375419}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: railMover
-      value: 
-      objectReference: {fileID: 1747302649}
-    - target: {fileID: 6478301130061538054, guid: 6a98e2b8d408ab24b87f8067c1a46769,
-        type: 3}
-      propertyPath: uIManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6478301130061538055, guid: 6a98e2b8d408ab24b87f8067c1a46769,
         type: 3}
       propertyPath: m_Name
@@ -1602,6 +1548,11 @@ PrefabInstance:
       propertyPath: multipleObjectParent
       value: 
       objectReference: {fileID: 1747302648}
+    - target: {fileID: 7434099031795573767, guid: 5dd61915dd9ed564b9b87a13a404b598,
+        type: 3}
+      propertyPath: choosenLayers.m_Bits
+      value: 61952
+      objectReference: {fileID: 0}
     - target: {fileID: 7434099031795573784, guid: 5dd61915dd9ed564b9b87a13a404b598,
         type: 3}
       propertyPath: m_Name

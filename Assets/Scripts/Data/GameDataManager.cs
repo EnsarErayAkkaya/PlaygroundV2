@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 public class GameDataManager: MonoBehaviour
 {
     public static GameDataManager instance;
@@ -18,10 +17,9 @@ public class GameDataManager: MonoBehaviour
     public GameObject generalButtonPrefab;
 
     public CreatedLevels createdLevels;
-
     void Awake()
     {
-        levels = createdLevels.createdLevels;
+        levels = new List<LevelData>();
 		if(instance != null)
 		{
 			Debug.LogWarning("More than one instance of DataManager found");
@@ -93,20 +91,154 @@ public class GameDataManager: MonoBehaviour
             }
         }
     }
+#if UNITY_EDITOR
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
-        levels = createdLevels.SaveCreatedLevel(levelSceneData, LevelContent);
+        
+            createdLevels.SaveCreatedLevel(levelSceneData, LevelContent);
+        
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
     }
     public void DeleteLevel(int lvlIndex)
     {
-        createdLevels.DeleteLevel(lvlIndex);
+        
+            createdLevels.DeleteLevel(lvlIndex);
+       
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
     }
     public void MoveLevelToLeft(int lvlIndex)
     {
-        createdLevels.MoveLevelToLeft(lvlIndex);
+        
+            createdLevels.MoveLevelToLeft(lvlIndex);
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
     }
     public void MoveLevelToRight(int lvlIndex)
     {
-        createdLevels.MoveLevelToRight(lvlIndex);
+        
+            createdLevels.MoveLevelToRight(lvlIndex);
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+#elif UNITY_ANDROID || UNITY_STANDALONE
+    public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
+    {
+        
+            Debug.Log("level data saving... ");
+            LevelData levelData;
+
+            int lastLevelIndex = SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count + createdLevels.createdLevels.Count;
+            
+            levelData = new LevelData()
+            {
+                levelIndex = lastLevelIndex + 1,
+                levelSceneIndex = -1,
+                levelContent = LevelContent,
+                levelData = levelSceneData
+            };
+                
+            SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Add(levelData);    
+        
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+    public void DeleteLevel(int lvlIndex)
+    {
+        
+        lvlIndex = (lvlIndex - createdLevels.createdLevels.Count);
+            
+            Debug.Log(lvlIndex);
+            if( !SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex].isMaster )
+            {
+                SaveAndLoadGameData.instance.savedData.playerCreatedLevels.RemoveAt(lvlIndex);
+
+                foreach (var item in SaveAndLoadGameData.instance.savedData.playerCreatedLevels) // decrease index by 1
+                {
+                    if( item.levelIndex >= lvlIndex + 1 )
+                    {
+                        item.levelIndex -= 1;
+                    }
+                }
+                foreach (var item in  SaveAndLoadGameData.instance.savedData.unlockedLevels)
+                {
+                    if( item.levelIndex >= lvlIndex + 1 )
+                    {
+                        item.levelIndex -= 1;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("One of the levels you wnat to edit is master!");
+            }
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+    public void MoveLevelToLeft(int lvlIndex)
+    {
+        
+            lvlIndex = (lvlIndex - createdLevels.createdLevels.Count);
+            Debug.Log(lvlIndex);
+            if( !SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex].isMaster 
+            && !SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex - 1].isMaster && lvlIndex - 1 >= 0 )
+            {
+                SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Swap( lvlIndex, lvlIndex - 1 );
+
+                SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+                SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex - 1].levelIndex = lvlIndex;
+
+                if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )
+                    SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+                if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )
+                    SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex - 1].levelIndex = lvlIndex;
+            }
+            else
+            {
+                Debug.Log("One of the levels you want to edit is master!");
+            }
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+    public void MoveLevelToRight(int lvlIndex)
+    {
+        
+            lvlIndex = (lvlIndex - createdLevels.createdLevels.Count);
+            Debug.Log(lvlIndex);
+            if( !SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex].isMaster 
+            && lvlIndex + 1 < SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count )
+        {
+            SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Swap( lvlIndex, lvlIndex + 1 );
+            SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            SaveAndLoadGameData.instance.savedData.playerCreatedLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
+
+            if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )
+                SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex].levelIndex = lvlIndex + 1;
+            
+            if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )    
+                SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
+        }
+        else
+        {
+            Debug.Log("One of the levels you wnat to edit is master or out of bound!");
+        }
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+#endif
+    public void GetLevels()
+    {
+        levels.Clear();
+        levels.AddRange(createdLevels.createdLevels);
+        if(SaveAndLoadGameData.instance.savedData.playerCreatedLevels != null && SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count > 0)
+            levels.AddRange(SaveAndLoadGameData.instance.savedData.playerCreatedLevels);
     }
 }

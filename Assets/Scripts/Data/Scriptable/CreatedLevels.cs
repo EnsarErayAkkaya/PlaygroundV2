@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine;
-using UnityEditor;
 using System.Linq;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "New CreatedLevels", menuName = "Playground/CreatedLevels", order = 0)]
 public class CreatedLevels : ScriptableObject 
 {
     public List<LevelData> createdLevels = new List<LevelData>();    
 
-    public List<LevelData> SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
+    public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
         Debug.Log("level data saving... ");
         LevelData levelData;
@@ -38,9 +38,9 @@ public class CreatedLevels : ScriptableObject
         }       
         createdLevels.Add(levelData);
 
+        #if UNITY_EDITOR // Only in Editor
         EditorUtility.SetDirty(this);
-        
-        return createdLevels;
+        #endif
     }
 
     public void DeleteLevel(int lvlIndex)
@@ -64,7 +64,9 @@ public class CreatedLevels : ScriptableObject
                     item.levelIndex -= 1;
                 }
             }
+            #if UNITY_EDITOR // Only in Editor
             EditorUtility.SetDirty(this);
+            #endif
         }
         else
         {
@@ -85,7 +87,9 @@ public class CreatedLevels : ScriptableObject
             if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )
                 SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex - 1].levelIndex = lvlIndex;
 
+            #if UNITY_EDITOR // Only in Editor
             EditorUtility.SetDirty(this);
+            #endif
         }
         else
         {
@@ -106,7 +110,9 @@ public class CreatedLevels : ScriptableObject
             if( lvlIndex < SaveAndLoadGameData.instance.savedData.unlockedLevels.Count )    
                 SaveAndLoadGameData.instance.savedData.unlockedLevels[lvlIndex + 1].levelIndex = lvlIndex + 2;
             
+            #if UNITY_EDITOR // Only in Editor
             EditorUtility.SetDirty(this);
+            #endif
         }
         else
         {

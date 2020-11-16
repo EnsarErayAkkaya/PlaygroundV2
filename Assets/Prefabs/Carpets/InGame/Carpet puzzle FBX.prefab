@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 6763142905033666226}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children:
   - {fileID: 6763142905033634448}
   - {fileID: 6763142905033634462}
@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a1c3d95361a674380a0253f9449c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -26
-  maxX: 26
-  minZ: -28
-  maxZ: 23
+  minX: -32.4
+  maxX: 33.8
+  minZ: -35.5
+  maxZ: 31.3
   playgroundType: 0
 --- !u!54 &5903548990081405426
 Rigidbody:

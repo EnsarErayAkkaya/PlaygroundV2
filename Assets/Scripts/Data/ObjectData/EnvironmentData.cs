@@ -13,5 +13,5 @@ public class EnvironmentData
 }
 public enum EnvType
 {
-    R0,R1,OT,ST,TrainStation
+    R0,R1,OT,ST,TrainStation,cylinderPlatform
 }

@@ -54,7 +54,7 @@ public class ObjectPlacementManager : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit, objectChooser.maxDistance, placementLayer, QueryTriggerInteraction.Collide))
             {
-                placingObject.transform.position = new Vector3(hit.point.x, height, hit.point.z);
+                placingObject.transform.position = new Vector3(hit.point.x, hit.point.y + height, hit.point.z);
                 if(placementType == PlacementType.RailSystem)
                 {
                     placingObject.transform.position = playgroundManager.ClampField(placingObject.transform.position
@@ -80,7 +80,7 @@ public class ObjectPlacementManager : MonoBehaviour
                 {   
                     //When a touch has first been detected, change the message and record the starting position
                     case TouchPhase.Began:
-                        placingObject.transform.position = new Vector3(hit.point.x, height, hit.point.z);
+                        placingObject.transform.position = new Vector3(hit.point.x, hit.point.y + height, hit.point.z);
                         if(placementType == PlacementType.RailSystem)
                         {
                             placingObject.transform.position = playgroundManager.ClampField(placingObject.transform.position
@@ -93,7 +93,7 @@ public class ObjectPlacementManager : MonoBehaviour
 
                     //Determine if the touch is a moving touch
                     case TouchPhase.Moved:
-                        placingObject.transform.position = new Vector3(hit.point.x, height, hit.point.z);
+                        placingObject.transform.position = new Vector3(hit.point.x, hit.point.y + height, hit.point.z);
                         if(placementType == PlacementType.RailSystem)
                         {
                             placingObject.transform.position = playgroundManager.ClampField(placingObject.transform.position
@@ -121,20 +121,67 @@ public class ObjectPlacementManager : MonoBehaviour
         if(placementType == PlacementType.Rail)
         {
             //placingObject.GetComponent<Rail>().Search();
-            placingObject.GetComponent<CollidableBase>().ActivateColliders();
+            Rail rail = placingObject.GetComponent<Rail>();
+            rail.ActivateColliders();
             objectChooser.Choose(placingObject);
+            if(rail.transform.position.y <= railManager.firstFloorY )
+            {
+                Debug.Log("0");
+                rail.currentFloor = 0;
+            }
+            else if(rail.transform.position.y >=  railManager.firstFloorY && rail.transform.position.y <=  railManager.secondFloorY)
+            {
+                Debug.Log("1");
+                rail.currentFloor = 1;
+            }
+            else if(rail.transform.position.y >=  railManager.secondFloorY && rail.transform.position.y <=  railManager.thirdFloorY)
+            {
+                Debug.Log("2");
+                rail.currentFloor = 2;
+            }
+            else if(rail.transform.position.y >=  railManager.thirdFloorY && rail.transform.position.y <=  railManager.heightLimit)
+            {
+                Debug.Log("3");
+                rail.currentFloor = 3;
+            }
+            else if(rail.transform.position.y >= railManager.heightLimit || rail.transform.position.y < 0)
+            {
+                Debug.Log("out");
+                rail.Destroy();
+            }
         }
         else if(placementType == PlacementType.Env)
         {
-            placingObject.GetComponent<CollidableBase>().ActivateColliders();
+            EnvironmentObject env =  placingObject.GetComponent<EnvironmentObject>();
+            env.ActivateColliders();
+
+            if(env.transform.position.y >= railManager.heightLimit || env.transform.position.y < 0)
+            {
+                Debug.Log("out");
+                env.Destroy();
+            }
             objectChooser.Choose(placingObject);
         }
         else if(placementType == PlacementType.RailSystem)
         {
             placingObject.GetComponent<RailMover>().MovingComplated();
+            if(placingObject.transform.position.y >= railManager.heightLimit || placingObject.transform.position.y < 0)
+            {
+                uIManager.buttonLock = false;
+                uIManager.DeleteButtonClick();
+                uIManager.buttonLock = true;
+                Debug.Log("out");
+            }
         }
         else if(placementType == PlacementType.Collectable)
         {
+            if(placingObject.transform.position.y >= railManager.heightLimit || placingObject.transform.position.y < 0)
+            {
+                uIManager.buttonLock = false;
+                uIManager.DeleteButtonClick();
+                uIManager.buttonLock = true;
+                Debug.Log("out");
+            }
             objectChooser.Choose(placingObject);
         }
         uIManager.buttonLock = false;

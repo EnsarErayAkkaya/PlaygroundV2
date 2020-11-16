@@ -47,9 +47,13 @@ MonoBehaviour:
   lightManager: {fileID: 0}
   railHeight: 0.24
   floorLimit: 3
+  firstFloorY: 2.64
+  secondFloorY: 5
+  thirdFloorY: 7.45
+  heightLimit: 10.5
   rotateAngle: 90
   rails: []
-  nextIndex: 0
+  nextIndex: 1
 --- !u!114 &3135135774104642961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,5 +66,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ad9a57ea4d6b48bfa75c56f8e9941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectChooser: {fileID: 0}
-  trainManager: {fileID: 0}

@@ -3,12 +3,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE
 public class ButtonLabel : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandler
 {
-    public Image labelBG;
-    public TextMeshProUGUI label;
-    public float fadeOutDuration = .5f;
+    Image labelBG;
+    TextMeshProUGUI label;
+    float fadeOutDuration = .5f;
     bool fadeIn;
     
     private void Start() 
@@ -70,9 +70,9 @@ public class ButtonLabel : MonoBehaviour ,IPointerEnterHandler, IPointerExitHand
 #elif UNITY_ANDROID
 public class ButtonLabel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Image labelBG;
-    public TextMeshProUGUI label;
-    public float fadeOutDuration = .5f;
+    Image labelBG;
+    TextMeshProUGUI label;
+    float fadeOutDuration = .5f;
     bool fadeIn;
     
     private void Start() 

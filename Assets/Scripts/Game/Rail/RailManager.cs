@@ -29,6 +29,7 @@ public class RailManager : MonoBehaviour
     // nokta seçiliyor mu 
     bool startChoosePointForConnection, startChoosePointForExistingConnection, willStartChoosePointForExistingConnection, mouseReleased;
     public int floorLimit;
+    public float firstFloorY, secondFloorY, thirdFloorY, heightLimit;
     [SerializeField] float rotateAngle = 90;
     [SerializeField] List<Rail> rails;
     public uint nextIndex = 0;
@@ -592,7 +593,7 @@ public class RailManager : MonoBehaviour
         // Ray değilse dön
         if(r.GetComponent<Rail>().floorAdder == -1) 
         { 
-            Debug.LogWarning("you canr create this rail to ground");
+            Debug.LogWarning("you cant create this rail to ground");
             uIManager.buttonLock = false; 
             return;
         }
@@ -707,5 +708,11 @@ public class RailManager : MonoBehaviour
     public List<Rail> GetRails()
     {
         return rails;
+    }
+    private void OnDrawGizmos() {
+        Gizmos.DrawCube( new Vector3(0,firstFloorY,0), Vector3.one);
+        Gizmos.DrawCube( new Vector3(0,secondFloorY,0), Vector3.one);
+        Gizmos.DrawCube( new Vector3(0,thirdFloorY,0), Vector3.one);
+        Gizmos.DrawCube( new Vector3(0,heightLimit,0), Vector3.one);
     }
 }

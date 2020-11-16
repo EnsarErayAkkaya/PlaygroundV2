@@ -148,7 +148,7 @@ public class Rail : InteractibleBase
     {
         RailConnectionPoint rcp = connectionPoints.First(s => s.connectedPoint != null );
         if(rcp.isInput) 
-            currentFloor = rcp.connectedPoint.rail.currentFloor + rcp.connectedPoint.rail.floorAdder;
+            currentFloor = rcp.connectedPoint.rail.currentFloor + floorAdder;
         else
             currentFloor = rcp.connectedPoint.rail.currentFloor - floorAdder;
         

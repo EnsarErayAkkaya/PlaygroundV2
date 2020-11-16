@@ -43,12 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f178c7ad84d4514e8c91182a79b6a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railManager: {fileID: 0}
-  objectChooser: {fileID: 0}
-  playgroundManager: {fileID: 0}
-  cameraManager: {fileID: 0}
   isPlacing: 0
   placementLayer:
     serializedVersion: 2
-    m_Bits: 1024
-  railMover: {fileID: 0}
+    m_Bits: 33792
