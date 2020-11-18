@@ -24,11 +24,15 @@ public class EntranceUI : MonoBehaviour
     
     public void OpenZenScene()
     {
+        AudioManager.instance.Stop("TrainMoving");
+        AudioManager.instance.Stop("TrainHorn");
         AudioManager.instance.Play("ButtonClick");
         SceneManager.LoadScene(1);
     }
-     public void OpenLevelScene()
+    public void OpenLevelScene()
     {
+        AudioManager.instance.Stop("TrainMoving");
+        AudioManager.instance.Stop("TrainHorn");
         AudioManager.instance.Play("ButtonClick");
         SceneManager.LoadScene("LevelScene");
     }

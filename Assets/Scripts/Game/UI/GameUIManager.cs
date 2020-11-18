@@ -20,7 +20,8 @@ public class GameUIManager : MonoBehaviour
     ObjectPlacementManager placementManager;
     CameraManager cameras;
     NavbarUIManager navbarUI;
-    LevelUI levelUI;
+    
+    [HideInInspector]public LevelUI levelUI;
     ScreenshotHandler screenshotHandler;
     CollectableManager collectableManager;
     #endregion
@@ -281,6 +282,8 @@ public class GameUIManager : MonoBehaviour
         playImage.gameObject.SetActive(true);
         stopImage.gameObject.SetActive(false);
 
+        collectableManager.OnReset();
+
         trainManager.ResetAllTrains();
         SetUI(null);
     }
@@ -389,17 +392,18 @@ public class GameUIManager : MonoBehaviour
     {
         isMultiple = false;
         moveButton.gameObject.SetActive(false);
+
+        deleteButton.gameObject.SetActive(false);
+        rotateButton.gameObject.SetActive(false);
+        setConnectionButton.gameObject.SetActive(false);
+        changeRailWayButton.gameObject.SetActive(false);
+        flipButton.gameObject.SetActive(false);
+
         if(obj == null)
         {
             buttonLock = false;
             interactible = null;
             interactibles = null;
-
-            deleteButton.gameObject.SetActive(false);
-            rotateButton.gameObject.SetActive(false);
-            setConnectionButton.gameObject.SetActive(false);
-            changeRailWayButton.gameObject.SetActive(false);
-            flipButton.gameObject.SetActive(false);
 
             if(levelUI == null)
                 startEndToggles.HideToggles();
@@ -479,7 +483,7 @@ public class GameUIManager : MonoBehaviour
                 else if( interactible.GetComponent<Train>() != null )
                 {
                     AudioManager.instance.Play("TrainHorn");
-                    
+
                     if(levelUI == null)
                         startEndToggles.HideToggles();
 

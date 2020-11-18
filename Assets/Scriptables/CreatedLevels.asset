@@ -889,7 +889,7 @@ MonoBehaviour:
       - id: 0
         isStatic: 0
         position:
-          x: -11.220704
+          x: -9
           y: 0
           z: -4.0566664
         rotation:
@@ -1301,7 +1301,7 @@ MonoBehaviour:
         position:
           x: -5.217678
           y: 0
-          z: -4.255868
+          z: -5.5
         rotation:
           x: -0
           y: 180
@@ -2418,7 +2418,7 @@ MonoBehaviour:
   - levelIndex: 9
     levelSceneIndex: -1
     levelContent:
-      budget: 1800
+      budget: 2000
       levelRails: 0000000003000000040000000b0000000c000000
       levelEnvs: 
       levelTrains: 

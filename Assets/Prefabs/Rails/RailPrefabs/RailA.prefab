@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: -36.669506, y: 1, z: -3.7581992}
+  m_position: {x: -3.0775063, y: 1, z: 0.029800892}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: -37.669506, y: 1, z: -3.7581992}
+  m_precedingControlPointPosition: {x: -4.077506, y: 1, z: 0.029800892}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: -35.669506, y: 1, z: -3.7581992}
+  m_followingControlPointPosition: {x: -2.0775063, y: 1, z: 0.029800892}
   m_handleMode: 2
   extraData:
     c1: 0
@@ -236,11 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf9c5931a3b3c4ba456c8213d7ebfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_position: {x: -31.136871, y: 1, z: -3.7459342}
+  m_position: {x: 2.4551284, y: 1, z: 0.04206586}
   m_precedingControlPointLocalPosition: {x: -1, y: -0, z: -0}
-  m_precedingControlPointPosition: {x: -32.13687, y: 1, z: -3.7459342}
+  m_precedingControlPointPosition: {x: 1.4551284, y: 1, z: 0.04206586}
   m_followingControlPointLocalPosition: {x: 1, y: 0, z: 0}
-  m_followingControlPointPosition: {x: -30.136871, y: 1, z: -3.7459342}
+  m_followingControlPointPosition: {x: 3.4551284, y: 1, z: 0.04206586}
   m_handleMode: 2
   extraData:
     c1: 0
@@ -581,6 +581,7 @@ MonoBehaviour:
   animator: {fileID: 6520520584826407847}
   isStart: 0
   isEnd: 0
+  finsihLine: {fileID: 0}
 --- !u!114 &3604196820160803323
 MonoBehaviour:
   m_ObjectHideFlags: 0

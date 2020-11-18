@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameControllUI : MonoBehaviour
 {
     public GameUIManager uiManager;
-    public GameObject restart, quit, levelCreatingModeToggle;
+    public GameObject restart, quit, levelCreatingModeToggle, soundButton, musicButton;
     bool isShowing, isLevel = false;
     public void SetIsLevel(bool isLevel = true)
     {
@@ -19,6 +19,8 @@ public class GameControllUI : MonoBehaviour
             isShowing = false;
             restart.SetActive(false);
             quit.SetActive(false);
+            soundButton.SetActive(false);
+            musicButton.SetActive(false);
             if(!isLevel)
                 levelCreatingModeToggle.SetActive(false);
         }
@@ -27,6 +29,8 @@ public class GameControllUI : MonoBehaviour
             isShowing = true;
             restart.SetActive(true);
             quit.SetActive(true);
+            soundButton.SetActive(true);
+            musicButton.SetActive(true);
             if(!isLevel)
                 levelCreatingModeToggle.SetActive(true);
         }
@@ -37,7 +41,12 @@ public class GameControllUI : MonoBehaviour
     }
     public void RestartButtonClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(uiManager.levelUI == null)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        else
+        {
+            uiManager.levelUI.RestartLevelButtonClick();
+        }
     }
     public void Quit()
     {

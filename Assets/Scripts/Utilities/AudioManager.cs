@@ -2,11 +2,13 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     public Sound[] sounds;
+    string[] themes;
     void Awake()
     {
         if(instance != null)
@@ -25,15 +27,31 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        themes = new string[] { "Theme1", "Theme2" };
         PlayTheme();
         DontDestroyOnLoad(this.gameObject);
     }
     public void PlayTheme()
     {
-        string[] themes = new string[] { "Theme1", "Theme2" };
 
         Sound s = Play( themes[ UnityEngine.Random.Range(0,themes.Length) ] );
         StartCoroutine( ThemeCountDown(s.source.clip.length) );
+    }
+    public void MuteTheme()
+    {
+
+        foreach (var item in themes)
+        {
+            Mute( item );
+        }
+    }
+    public void UnmuteTheme()
+    {
+
+        foreach (var item in themes)
+        {
+            Unmute( item );
+        }
     }
     public Sound Play(string name)
     {
@@ -75,12 +93,48 @@ public class AudioManager : MonoBehaviour
             throw e;
         }
     }
+    
     public void Unmute(string name)
     {
         try
         {
             Sound s  = Array.Find(sounds, sound => sound.name == name);
             s.source.mute = false;
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message);
+            throw e;
+        }
+    }
+    public void MuteAll()
+    {
+        try
+        {
+            foreach (var item in sounds)
+            {
+                if(themes.Any(s => s == item.name))
+                    continue;
+
+                item.source.mute = true;
+            }           
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message);
+            throw e;
+        }
+    }
+    public void UnmuteAll()
+    {
+        try
+        {
+            foreach (var item in sounds)
+            {
+                if(themes.Any(s => s == item.name))
+                    continue;
+                item.source.mute = false;
+            }           
         }
         catch (System.Exception e)
         {

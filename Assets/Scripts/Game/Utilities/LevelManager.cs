@@ -8,7 +8,8 @@ public class LevelManager : MonoBehaviour
     // Level geçildiğinide ödülleri verecek oyun sonu ekranını tetikleyecek
     RailManager railManager;
     LevelUI levelUI;
-    
+    CollectableUIManager collectableUIManager;
+
     [Header("Level Budget")]
     public int budget;
     int startingBudget;
@@ -39,11 +40,10 @@ public class LevelManager : MonoBehaviour
             levelUI = FindObjectOfType<LevelUI>();
 
         railManager = FindObjectOfType<RailManager>();
+        collectableUIManager = FindObjectOfType<CollectableUIManager>();
         
         gdm = GameDataManager.instance;
         railManager.AddCreatedRails();
-        
-        StartCoroutine( CheckGameEnded() );
     }
 
     
@@ -52,10 +52,9 @@ public class LevelManager : MonoBehaviour
         if(r == targetRail)
         {
             reachedTrainCount++;
-            if(reachedTrainCount == targetedTrainCount && collectedCount == collectableCount)
+            if( reachedTrainCount == targetedTrainCount )
             {
                 EndLevel();
-                SaveLevelData();
             }
             return true;
         }
@@ -65,22 +64,11 @@ public class LevelManager : MonoBehaviour
     {
         levelUI.SetEndUI(0);
     }
-
-    IEnumerator CheckGameEnded()
+    public void Reset()
     {
-        WaitForSeconds wait = new WaitForSeconds(1f);   
-        while( !isGameEnded )
-        {
-            if( collectedCount == collectableCount && targetRail == null )
-            {
-                EndLevel();
-            }
-            else if( targetRail != null && collectedCount == collectableCount && reachedTrainCount == targetedTrainCount )
-            {
-                EndLevel();
-            }
-            yield return wait;
-        }
+        reachedTrainCount = 0;
+        collectedCount = 0;
+        isGameEnded = false;
     }
 
     void GivePrizes()
@@ -108,20 +96,41 @@ public class LevelManager : MonoBehaviour
     }
     public int CalculateMark()
     {
-        int x = 1;
-        if(budget >= 0)
+        int x = 0;
+        if(collectableCount > 0)
         {
-            x = 3;
+            float multiplier = 60 / collectableCount;
+            float successCount = collectedCount * multiplier;
+            float successPrecent = (60.0f / successCount) * 100.0f;
+            if( successPrecent > 66 &&  successPrecent <= 100 )
+            {
+                x = 3;
+            }
+            else if( successPrecent > 33 &&  successPrecent <= 66 )
+            {
+                x = 2;
+            }
+            else if( successPrecent >= 0 &&  successPrecent <= 33 )
+            {
+                x = 1;
+            }
+            else
+            {
+                x = 1;
+            }
+        
         }
         else
         {
-            x = 1;
+            x = 3;
         }
+        
         levelUI.SetEndUI(x);
         return x;
     }
     public void EndLevel()
     {
+        AudioManager.instance.Play("Celebration");
         isGameEnded = true;
         GivePrizes();
         SaveLevelData();
@@ -145,6 +154,9 @@ public class LevelManager : MonoBehaviour
     public void TrainCollect()
     {
         collectedCount++;
+        
+        collectableUIManager.OnCollected(collectedCount);
+
         if(collectedCount > collectableCount)
             collectedCount = collectableCount;
     }

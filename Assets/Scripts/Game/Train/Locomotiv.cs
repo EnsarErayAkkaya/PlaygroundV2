@@ -56,7 +56,7 @@ public class Locomotiv : MonoBehaviour
         if(!move )
             return;
 
-        if( poses[0].rotation != null && poses[0].rotation != Quaternion.Euler( Vector3.zero) )
+        if( poses[0].rotation != null /* && poses[0].rotation != Quaternion.Euler( Vector3.zero) */ )
         {
             try
             {

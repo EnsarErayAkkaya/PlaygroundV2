@@ -28,6 +28,7 @@ public class Rail : InteractibleBase
     public Animator animator;
 
     public bool isStart, isEnd;
+    
 
     void Start()
     {
@@ -38,15 +39,10 @@ public class Rail : InteractibleBase
         levelUI = FindObjectOfType<LevelUI>();
 
         currentOutputPoint = GetOutputConnectionPoints().FirstOrDefault();
-        if(isStart)
+        if( isEnd )
         {
-            var go = Instantiate(levelUI.startCanvas, transform);
-            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
-        }
-        else if( isEnd )
-        {
-            var go = Instantiate(levelUI.endCanvas, transform);
-            go.transform.rotation = Quaternion.Euler(90, transform.rotation.y + 90, 0);
+            var go = Instantiate(levelUI.finishLine, transform);
+            go.transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
         if(isStatic)
         {

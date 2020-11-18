@@ -15,8 +15,7 @@ public class LevelUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI lostText, rewardText, budgetText;
     public Sprite[] stars;
 
-    public GameObject startCanvas;
-    public GameObject endCanvas;
+    public GameObject finishLine;
 
     void Start()
     {
@@ -54,7 +53,7 @@ public class LevelUI : MonoBehaviour
         }
         else // you passed
         {
-            markImage.sprite = stars[m-1];
+            markImage.sprite = stars[stars.Length - m];
             rewardText.gameObject.SetActive(true);
             StartCoroutine( FadeTextToZeroAlpha() );
         
@@ -66,6 +65,7 @@ public class LevelUI : MonoBehaviour
     }
     public void NextLevelButtonClick()
     {
+        AudioManager.instance.Stop("Celebration");
         AudioManager.instance.Stop("TrainMoving");
         LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 2 );
         GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
@@ -75,7 +75,11 @@ public class LevelUI : MonoBehaviour
     }
     public void RestartLevelButtonClick()
     {
+        AudioManager.instance.Stop("Celebration");
         AudioManager.instance.Stop("TrainMoving");
+        LevelData ld = GameDataManager.instance.levels.First( s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 1 );
+        GameDataManager.instance.currentlyPlayingLevelIndex = ld.levelIndex - 1;
+        GameDataManager.instance.zenSceneDataManager.LoadingScene = ld.levelData;
         GameDataManager.instance.zenSceneDataManager.isLoad = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

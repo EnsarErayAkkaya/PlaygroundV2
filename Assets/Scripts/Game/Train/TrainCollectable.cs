@@ -31,6 +31,7 @@ public class TrainCollectable : InteractibleBase
     }
     void OnCollision(Train t)
     {
+        AudioManager.instance.Play("CollectingSound");
         levelManager.TrainCollect();
         
         t.StopTrain();

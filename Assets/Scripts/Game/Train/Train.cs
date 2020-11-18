@@ -128,6 +128,7 @@ public class Train : InteractibleBase
     {
         if(started == true)
         {
+            AudioManager.instance.Stop("TrainMoving");
             walker.move = false;
             foreach (var item in locomotives)
             {
@@ -142,6 +143,7 @@ public class Train : InteractibleBase
     {
         if(started == true)
         {
+            AudioManager.instance.Play("TrainMoving");
             walker.move = true;
             foreach (var item in locomotives)
             {
@@ -155,6 +157,7 @@ public class Train : InteractibleBase
     {
         if(started == false)
         {
+            AudioManager.instance.Play("TrainMoving");
             if(rail == null)
             {
                 rail = FindObjectOfType<RailManager>().GetRails()[0];

@@ -172,9 +172,11 @@ public class ZenSceneDataManager : MonoBehaviour
                 t.rail = rails.FirstOrDefault( f => f.index == item.startingRailId );
                 t.isStatic = item.isStatic;
             }
+            CollectableManager collectableManager = FindObjectOfType<CollectableManager>(); 
             foreach (var item in LoadingScene.collectableData)
             {
                 TrainCollectable c = Instantiate( dataManager.collectablePrefab , item.position, Quaternion.Euler(item.rotation) ).GetComponent<TrainCollectable>();
+                collectableManager.Add(c);
                 c.isStatic = item.isStatic;            
             }            
         }   

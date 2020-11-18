@@ -617,9 +617,9 @@ MonoBehaviour:
   starImage: {fileID: 6299065968431651693}
   background: {fileID: 7542612614583040395}
   stars:
-  - {fileID: 21300000, guid: c29bd87ded9027f4e8a6f923f4e84ea9, type: 3}
-  - {fileID: 21300000, guid: 0ef9936b9209b0840916375cbb524700, type: 3}
   - {fileID: 21300000, guid: 9af65c77f0f0f4f468588eae4b111e01, type: 3}
+  - {fileID: 21300000, guid: 0ef9936b9209b0840916375cbb524700, type: 3}
+  - {fileID: 21300000, guid: c29bd87ded9027f4e8a6f923f4e84ea9, type: 3}
   locked: {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 1}
   unLocked: {r: 0.6627451, g: 0.6627451, b: 0.6627451, a: 1}
 --- !u!1 &7757442491872460723
