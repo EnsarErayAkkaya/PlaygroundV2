@@ -14,5 +14,5 @@ public class TrainData
 
 public enum TrainType
 {
-    A, AA
+    A, AA, Voxel
 }

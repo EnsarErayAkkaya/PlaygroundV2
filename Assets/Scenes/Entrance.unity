@@ -6521,7 +6521,7 @@ PrefabInstance:
     - target: {fileID: 7281417612141386132, guid: a58fead1a75c2f64e8676638a184c3fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7281417612141386132, guid: a58fead1a75c2f64e8676638a184c3fc,
         type: 3}
@@ -8309,7 +8309,7 @@ PrefabInstance:
     - target: {fileID: 7188733021120118586, guid: 54f37f40a8060a04eb8e6d13bc2605fb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7188733021120118586, guid: 54f37f40a8060a04eb8e6d13bc2605fb,
         type: 3}
@@ -11106,7 +11106,7 @@ PrefabInstance:
     - target: {fileID: 1794764980301587388, guid: 0b14676054d27b84abe2a3ff80351a5a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1794764980301587388, guid: 0b14676054d27b84abe2a3ff80351a5a,
         type: 3}
@@ -14036,6 +14036,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
         type: 3}
+      propertyPath: allTrains.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
       propertyPath: allEnvs.Array.data[6].envPrefab
       value: 
       objectReference: {fileID: 2846238895277965383, guid: a46b23ae5469a4046a20a1c892797d19,
@@ -14065,6 +14070,33 @@ PrefabInstance:
         type: 3}
       propertyPath: allEnvs.Array.data[5].name
       value: CylinderPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allTrains.Array.data[2].trainPrefab
+      value: 
+      objectReference: {fileID: 375248159738225561, guid: 8ae802c65b5115340b8c9d9cf2e0cc59,
+        type: 3}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allTrains.Array.data[2].trainImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 05d88d48733c51b44a49fc8a0c4ece5f,
+        type: 3}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allTrains.Array.data[2].name
+      value: Voxel Train
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allTrains.Array.data[2].trainType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
+        type: 3}
+      propertyPath: allTrains.Array.data[2].cost
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ff91fdd06d44f4485cc7242c9a3c7a, type: 3}
