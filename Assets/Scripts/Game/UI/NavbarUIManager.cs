@@ -164,6 +164,7 @@ public class NavbarUIManager : MonoBehaviour
         RefreshPosition();
         HideButtons();
         uIManager.OnNavbarActive();
+        Activete();
     }
     public void HideNavbar()
     {
@@ -171,6 +172,7 @@ public class NavbarUIManager : MonoBehaviour
         RefreshPosition();  
         ShowButtons();      
         uIManager.OnNavbarDeactive();
+        DeActivate();
     }
     public void ShowButtons()
     {

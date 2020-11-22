@@ -63,7 +63,7 @@ public class RTSCameraController : MonoBehaviour
     }
     public void MovementInput()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
         {
             if(KeyboardInput.normalized.magnitude != 0)
             {
@@ -110,7 +110,7 @@ public class RTSCameraController : MonoBehaviour
     
     public void RotationInput()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
         {
             if(Input.GetMouseButtonDown(1))
             {
@@ -156,7 +156,7 @@ public class RTSCameraController : MonoBehaviour
     }
     public void ZoomInput()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
         {
             if(!Camera.orthographic)
             {

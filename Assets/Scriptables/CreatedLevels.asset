@@ -347,7 +347,7 @@ MonoBehaviour:
           x: 0
           y: 270
           z: 0
-        trainType: 1
+        trainType: 2
         startingRailId: 2
       collectableData: []
       playgroundData:
@@ -765,7 +765,7 @@ MonoBehaviour:
       - id: 0
         isStatic: 1
         position:
-          x: 11.472717
+          x: 15.8
           y: 0
           z: -1.5516243
         rotation:
@@ -1099,7 +1099,7 @@ MonoBehaviour:
       - id: 0
         isStatic: 1
         position:
-          x: -1.1493092
+          x: -1
           y: 0
           z: 11.259586
         rotation:
@@ -1566,7 +1566,7 @@ MonoBehaviour:
         position:
           x: -17.425194
           y: 0
-          z: 16.134794
+          z: 21
         rotation:
           x: 0
           y: 270
@@ -1832,7 +1832,7 @@ MonoBehaviour:
           z: 1.0000002
         railType: 3
         isStart: 0
-        isEnd: 0
+        isEnd: 1
       envsData:
       - id: 0
         isStatic: 1
@@ -2065,7 +2065,7 @@ MonoBehaviour:
           x: -0
           y: 0.0000038146973
           z: -0
-        trainType: 1
+        trainType: 2
         startingRailId: 10
       collectableData:
       - id: 0
@@ -2495,7 +2495,7 @@ MonoBehaviour:
           z: 1.0000002
         railType: 0
         isStart: 0
-        isEnd: 0
+        isEnd: 1
       - id: 21
         isStatic: 1
         position:

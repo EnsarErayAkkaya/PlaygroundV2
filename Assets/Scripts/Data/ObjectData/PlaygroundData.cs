@@ -10,6 +10,6 @@ public class PlaygroundData
 }
 public enum PlaygroundType
 {
-    PuzzleCarpet,CarpetDull
+    PuzzleCarpet,CarpetDull,Lion
 }
 

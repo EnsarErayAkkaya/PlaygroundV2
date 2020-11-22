@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 public class ButtonLabel : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandler
 {
     Image labelBG;

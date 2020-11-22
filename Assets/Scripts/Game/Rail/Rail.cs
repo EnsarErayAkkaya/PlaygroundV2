@@ -42,6 +42,8 @@ public class Rail : InteractibleBase
         if( isEnd )
         {
             var go = Instantiate(levelUI.finishLine, transform);
+            if(transform.localScale.z == -1)
+                go.transform.localScale = new Vector3(-1,1,1);
             go.transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
         if(isStatic)

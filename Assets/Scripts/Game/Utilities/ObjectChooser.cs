@@ -36,7 +36,7 @@ public class ObjectChooser : MonoBehaviour
     {
         if( TouchUtility.IsPointerOverUIObject() || choosing == false || placementManager.isPlacing ) return;
        
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
             PC_FixedUpdate();
         else if (Application.platform == RuntimePlatform.Android)
             Android_FixedUpdate();

@@ -126,7 +126,7 @@ public class GameDataManager: MonoBehaviour
         SaveAndLoadGameData.instance.Save();
         GetLevels();
     }
-#elif UNITY_ANDROID || UNITY_STANDALONE
+#elif UNITY_ANDROID || UNITY_STANDALONE || UNITY_WEBGL
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
         

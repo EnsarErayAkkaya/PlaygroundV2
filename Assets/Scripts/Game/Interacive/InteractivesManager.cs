@@ -13,6 +13,12 @@ public class InteractivesManager : MonoBehaviour
         public int baloonCount;
         public float baloonStartingHeight;
     #endregion
+    [Header("FireBaloons")]
+    #region FireBaloons
+        public GameObject fireBaloonPrefab;
+        public int fireBaloonCount;
+        public float fireBaloonStartingHeight;
+    #endregion
     [Header("clouds")]
     #region clouds
         public GameObject cloudPrefab;
@@ -29,6 +35,7 @@ public class InteractivesManager : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         SetPlayGround();
         CreateBaloons();
+        CreateFireBaloons();
         CreateClouds();
     }
     public void SetPlayGround()
@@ -53,6 +60,16 @@ public class InteractivesManager : MonoBehaviour
         {
             Vector3 pos = new Vector3( Random.Range( (float)p.minX, (float)p.maxX ), baloonStartingHeight,  Random.Range( (float)p.minZ, (float)p.maxZ ));
             Ballon b = Instantiate(baloonPrefab,pos,Quaternion.identity).GetComponent<Ballon>();
+            b.SetBaloon(p);
+            b.transform.parent = this.transform;
+        }
+    }
+    public void CreateFireBaloons()
+    {
+        for (int i = 0; i < fireBaloonCount; i++)
+        {
+            Vector3 pos = new Vector3( Random.Range( (float)p.minX, (float)p.maxX ), fireBaloonStartingHeight,  Random.Range( (float)p.minZ, (float)p.maxZ ));
+            FireBallon b = Instantiate(fireBaloonPrefab,pos,Quaternion.identity).GetComponent<FireBallon>();
             b.SetBaloon(p);
             b.transform.parent = this.transform;
         }

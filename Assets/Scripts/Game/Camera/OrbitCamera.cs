@@ -16,7 +16,7 @@ public class OrbitCamera : MonoBehaviour
     private Vector3 newPos;
     void LateUpdate()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
             PC_Update();
         else if (Application.platform == RuntimePlatform.Android)
             ANDROID_Update();

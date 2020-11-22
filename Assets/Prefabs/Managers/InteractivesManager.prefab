@@ -43,12 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0d05bc1dbd2f54d805d86bbf089ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playgroundManager: {fileID: 0}
   baloonPrefab: {fileID: 1840277288584967178, guid: fabac9f625b16944d931869f2ecb7c67,
     type: 3}
   baloonCount: 22
   baloonStartingHeight: 1
+  fireBaloonPrefab: {fileID: 1840277288584967178, guid: a4981bfb39fa414409d39eb1e7c6016c,
+    type: 3}
+  fireBaloonCount: 5
+  fireBaloonStartingHeight: 5
   cloudPrefab: {fileID: 6593332686579218487, guid: 81586403668e3564782340e872ca3ce4,
     type: 3}
-  cloudCount: 8
+  cloudCount: 5
   cloudStartingHeight: 32
