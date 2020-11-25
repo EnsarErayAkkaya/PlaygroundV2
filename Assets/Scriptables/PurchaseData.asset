@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4b131c86c72764a849ad94b6aa0b58, type: 3}
+  m_Name: PurchaseData
+  m_EditorClassIdentifier: 
+  purchaseItems:
+  - name: pandacarpet
+    title: Panda Carpet
+    image: {fileID: 21300000, guid: 773081772851bdb4395a248572cc2f6e, type: 3}
+    cost: 3
+    isRail: 0
+    railType: 0
+    isTrain: 0
+    trainType: 0
+    isEnv: 0
+    envType: 0
+    isCarpet: 1
+    carpetType: 3
+  - name: lioncarpet
+    title: Lion Carpet
+    image: {fileID: 21300000, guid: 695132349678b19499ebdd7ca1287eaf, type: 3}
+    cost: 3
+    isRail: 0
+    railType: 0
+    isTrain: 0
+    trainType: 0
+    isEnv: 0
+    envType: 0
+    isCarpet: 1
+    carpetType: 2
+  - name: voxtrain
+    title: VoxTrain
+    image: {fileID: 21300000, guid: 05d88d48733c51b44a49fc8a0c4ece5f, type: 3}
+    cost: 3
+    isRail: 0
+    railType: 0
+    isTrain: 1
+    trainType: 2
+    isEnv: 0
+    envType: 0
+    isCarpet: 0
+    carpetType: 0

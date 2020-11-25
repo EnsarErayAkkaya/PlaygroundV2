@@ -49,7 +49,7 @@ MonoBehaviour:
   maxX: 30.1
   minZ: -30.5
   maxZ: 30.3
-  playgroundType: 0
+  playgroundType: 2
 --- !u!54 &1666384112408680429
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c7ad765ab2cf4fc46996a733dfe2a6dc,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.016666668
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c7ad765ab2cf4fc46996a733dfe2a6dc,
         type: 3}

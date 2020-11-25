@@ -9,6 +9,10 @@ public class Inventory : MonoBehaviour
     [SerializeField]Transform content;   
     void Start()
     {
+        foreach (Transform item in content)
+        {
+            Destroy(item.gameObject);
+        }
         foreach (var item in SaveAndLoadGameData.instance.savedData.playerRails)
         {
             RailData data = GameDataManager.instance.allRails.Find(s => s.railType == item);

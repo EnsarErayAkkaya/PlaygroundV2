@@ -14,6 +14,8 @@ public class GameData
     public List<ZenSceneData> zenSceneDatas;
     public List<PlayerLevelData> unlockedLevels;
     public List<LevelData> playerCreatedLevels;
+    public bool musicON = true;
+    public bool soundON = true;
    
     public GameData()
     {

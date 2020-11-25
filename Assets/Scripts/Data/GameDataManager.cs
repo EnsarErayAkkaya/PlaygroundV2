@@ -242,4 +242,14 @@ public class GameDataManager: MonoBehaviour
         if(SaveAndLoadGameData.instance.savedData.playerCreatedLevels != null && SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count > 0)
             levels.AddRange(SaveAndLoadGameData.instance.savedData.playerCreatedLevels);
     }
+    public void SetMusic(bool b)
+    {
+        SaveAndLoadGameData.instance.savedData.musicON = b;
+        SaveAndLoadGameData.instance.Save();
+    }
+    public void SetSound(bool b)
+    {
+        SaveAndLoadGameData.instance.savedData.soundON = b;
+        SaveAndLoadGameData.instance.Save();
+    }
 }
