@@ -25,6 +25,7 @@ public class RailManager : MonoBehaviour
 
     // objectPlacementManagerda kullanılan rayların yüksekliğini deopalayan değişken 
     public float railHeight;
+    public float connectCollidingPointsDistance = .5f;
 
     // nokta seçiliyor mu 
     bool startChoosePointForConnection, startChoosePointForExistingConnection, willStartChoosePointForExistingConnection, mouseReleased;
@@ -472,7 +473,7 @@ public class RailManager : MonoBehaviour
             {
                 foreach (var secondPoint in rail.GetFreeConnectionPoints())
                 {
-                    if(Vector3.Distance(firstPoint.point,secondPoint.point) < 0.1f )
+                    if(Vector3.Distance(firstPoint.point,secondPoint.point) < connectCollidingPointsDistance )
                     {
                         firstPoint.SetConnection(secondPoint);
                         secondPoint.SetConnection(firstPoint);

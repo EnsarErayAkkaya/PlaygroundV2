@@ -24,6 +24,9 @@ public class CollectableManager : MonoBehaviour
     }
     public void OnReset()
     {
+        if(FindObjectOfType<LevelManager>() == null)
+            return;
+        
         while(collectables.Count > 0)
         {
             if( collectables[0] != null && collectables[0].gameObject != null)
@@ -37,6 +40,7 @@ public class CollectableManager : MonoBehaviour
             Add(c);
             c.isStatic = item.isStatic;            
         }
+        
         collectableUIManager.Set(); 
     }
     public void Rotate(GameObject g)

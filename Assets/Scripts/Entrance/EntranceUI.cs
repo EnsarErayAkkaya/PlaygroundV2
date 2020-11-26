@@ -8,11 +8,9 @@ public class EntranceUI : MonoBehaviour
     public Transform myContent;
     void Start()
     {
-        /* foreach (RailType type in SaveAndLoadGameData.instance.savedData.playerRails)
-        {
-            GameObject a = Instantiate(GameDataManager.instance.allRails.Find(s => s.railType == type).railButton);
-            a.transform.SetParent(myContent);
-        } */
+        GameDataManager.instance.zenSceneDataManager.LoadingScene = null;
+        GameDataManager.instance.zenSceneDataManager.isLoad = false;
+
         if(SaveAndLoadGameData.instance.savedData.unlockedLevels.Count < 1)
         {
             SaveAndLoadGameData.instance.savedData.unlockedLevels.Add(new PlayerLevelData(){

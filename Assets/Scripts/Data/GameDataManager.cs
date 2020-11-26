@@ -92,6 +92,12 @@ public class GameDataManager: MonoBehaviour
             }
         }
     }
+    public void AddPlusOneLoadCount()
+    {
+        SaveAndLoadGameData.instance.savedData.maxZenSceneSaveCount += 1;
+        SaveAndLoadGameData.instance.Save();
+        Debug.Log("Now you have " + SaveAndLoadGameData.instance.savedData.maxZenSceneSaveCount + " save in load menu");
+    }
 #if UNITY_EDITOR
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {

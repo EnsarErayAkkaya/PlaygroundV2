@@ -22,6 +22,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
     public static string pandaCarpet = "pandacarpet";
     public static string lionCarpet = "lioncarpet";
     public static string voxTrain = "voxtrain";        
+    public static string plusOneLoad = "plusoneload";        
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class Purchaser : MonoBehaviour, IStoreListener
         builder.AddProduct(pandaCarpet, ProductType.NonConsumable);
         builder.AddProduct(lionCarpet, ProductType.NonConsumable);
         builder.AddProduct(voxTrain, ProductType.NonConsumable);
+        builder.AddProduct(plusOneLoad, ProductType.Consumable);
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -126,22 +128,27 @@ public class Purchaser : MonoBehaviour, IStoreListener
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
             //This means FORESTPROJECTIPACK BUYED!
-
-            
+            GameDataManager.instance.AddNewPlayerPlayground(PlaygroundType.Panda);
         }
         // LION CARPET
         else  if (String.Equals(args.purchasedProduct.definition.id, lionCarpet, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
-            
+            GameDataManager.instance.AddNewPlayerPlayground(PlaygroundType.Lion);
         }
         // VOX TRAIN
         else  if (String.Equals(args.purchasedProduct.definition.id, voxTrain, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
-            
+            GameDataManager.instance.AddNewPlayerTrain(TrainType.Voxel);
+        }
+        else  if (String.Equals(args.purchasedProduct.definition.id, plusOneLoad, StringComparison.Ordinal))
+        {
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
+            GameDataManager.instance.AddPlusOneLoadCount();
         }
         else 
         {

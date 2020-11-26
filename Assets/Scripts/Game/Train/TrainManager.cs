@@ -117,7 +117,8 @@ public class TrainManager : MonoBehaviour
     }
     public void ResetAllTrains()
     {
-        levelManager.Reset();
+        if(levelManager != null)
+            levelManager.Reset();
         foreach (var item in trains)
         {
             item.Reset();
