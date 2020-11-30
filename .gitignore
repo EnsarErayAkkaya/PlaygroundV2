@@ -9,6 +9,10 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Rr]ailCraftWebGL/
+/[Pp]laygroundBuild/
+/[Pp]laygroundDeskBuild/
+/[Rr]ailCraftWebGL.zip/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -42,6 +46,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.zip
 
 # Unity3D generated meta files
 *.pidb.meta
