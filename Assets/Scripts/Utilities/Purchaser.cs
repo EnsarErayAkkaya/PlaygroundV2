@@ -26,12 +26,16 @@ public class Purchaser : MonoBehaviour, IStoreListener
 
     void Start()
     {
-        // If we haven't set up the Unity Purchasing reference
-        if (m_StoreController == null)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            // Begin to configure our connection to Purchasing
-            InitializePurchasing();
+            // If we haven't set up the Unity Purchasing reference
+            if (m_StoreController == null)
+            {
+                // Begin to configure our connection to Purchasing
+                InitializePurchasing();
+            }
         }
+        
     }
 
     public void InitializePurchasing() 

@@ -77,7 +77,7 @@ MonoBehaviour:
       type: 3}
     railType: 7
     railImage: {fileID: 21300000, guid: eb5c8a6e41a462a43bb2d7cc5517f9c1, type: 3}
-    name: Split Tw8
+    name: Split
     cost: 150
     isStart: 0
     isEnd: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
       type: 3}
     railType: 8
     railImage: {fileID: 21300000, guid: dd35b9babf53f3b4e9ab2dffbe67ec41, type: 3}
-    name: Connect Two
+    name: Connect 2
     cost: 175
     isStart: 0
     isEnd: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
       type: 3}
     railType: 15
     railImage: {fileID: 21300000, guid: 51dd02b61e375a040942a21ac52b0b58, type: 3}
-    name: 3 Entrance Rail
+    name: Connect 1
     cost: 150
     isStart: 0
     isEnd: 0
@@ -172,7 +172,13 @@ MonoBehaviour:
       type: 3}
     envType: 5
     envImage: {fileID: 21300000, guid: c9673004c6b3c0c448314b1f631174b9, type: 3}
-    name: CylinderPlaform
+    name: CylinderPlatform
+    cost: 120
+  - envPrefab: {fileID: 2846238895277965383, guid: a46b23ae5469a4046a20a1c892797d19,
+      type: 3}
+    envType: 6
+    envImage: {fileID: 21300000, guid: 7078a92ceb9160a44afce7a7fbafc07a, type: 3}
+    name: PassangerPlatform
     cost: 120
   allPlaygrounds:
   - playgroundGamePrefab: {fileID: 6763142905033666226, guid: 7ebca034d031195488f91f04164e4059,
@@ -181,6 +187,12 @@ MonoBehaviour:
   - playgroundGamePrefab: {fileID: 7640563762776728995, guid: a4ffa4bb8109b494199126140fccfddb,
       type: 3}
     playgroundType: 1
+  - playgroundGamePrefab: {fileID: 1951804259241453741, guid: 165a87d7c80859e4996c6b004d894a73,
+      type: 3}
+    playgroundType: 2
+  - playgroundGamePrefab: {fileID: 9139583793973381189, guid: 91b6d43ccb4ebd545a300a87acfbf0ae,
+      type: 3}
+    playgroundType: 3
   allTrains:
   - trainPrefab: {fileID: 6004718391710473181, guid: 86d9049e928432144a6181455e749266,
       type: 3}
@@ -194,6 +206,12 @@ MonoBehaviour:
     name: Atilla Edition
     trainType: 1
     cost: 80
+  - trainPrefab: {fileID: 375248159738225561, guid: 8ae802c65b5115340b8c9d9cf2e0cc59,
+      type: 3}
+    trainImage: {fileID: 21300000, guid: 05d88d48733c51b44a49fc8a0c4ece5f, type: 3}
+    name: Voxel Train
+    trainType: 2
+    cost: 120
   collectablePrefab: {fileID: 6451550708474763239, guid: 1565151c44861424f8835b3905cbb5bf,
     type: 3}
   generalButtonPrefab: {fileID: 5619827466366189225, guid: d5104aad17521874ab4cb7263bc8828f,
@@ -223,6 +241,8 @@ MonoBehaviour:
     - levelIndex: 1
       mark: 0
     playerCreatedLevels: []
+    musicON: 0
+    soundON: 0
   savedData:
     choosenPlayground: 0
     playerRails: 
@@ -233,6 +253,8 @@ MonoBehaviour:
     zenSceneDatas: []
     unlockedLevels: []
     playerCreatedLevels: []
+    musicON: 0
+    soundON: 0
 --- !u!114 &3692831815383879226
 MonoBehaviour:
   m_ObjectHideFlags: 0

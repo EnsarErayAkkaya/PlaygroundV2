@@ -56,7 +56,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, railsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.railImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.RailButtonClick(data.railPrefab, data.cost); } );
             }
             foreach (var item in SaveAndLoadGameData.instance.savedData.playerEnvs)
@@ -65,7 +65,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, envsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.envImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); } );
             }
             foreach (var item in SaveAndLoadGameData.instance.savedData.playerTrains)
@@ -74,7 +74,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, trainsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.trainImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.TrainCreateButtonClick(data.trainPrefab, data.cost); } );
             }
         }
@@ -87,7 +87,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, railsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.railImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.RailButtonClick(data.railPrefab, data.cost); } );
             }
             foreach (var item in levelManager.levelEnvs)
@@ -96,7 +96,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, envsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.envImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); } );
             }
             foreach (var item in levelManager.levelTrains)
@@ -105,7 +105,7 @@ public class NavbarUIManager : MonoBehaviour
 
                 GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, trainsContent);
                 e.transform.GetChild(0).GetComponent<Image>().sprite = data.trainImage;
-                e.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = data.name;
+                e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
                 e.GetComponent<Button>().onClick.AddListener( delegate{ uIManager.TrainCreateButtonClick(data.trainPrefab, data.cost); } );
             }
         }

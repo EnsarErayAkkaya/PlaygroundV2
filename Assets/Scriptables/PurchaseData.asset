@@ -50,7 +50,7 @@ MonoBehaviour:
     isCarpet: 0
     carpetType: 0
   - name: plusoneload
-    title: Load Count
+    title: Plus One Save
     image: {fileID: 21300000, guid: 04218b9db0689d7408534895ca23d2d7, type: 3}
     cost: 2
     isRail: 0

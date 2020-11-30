@@ -101,16 +101,17 @@ public class LevelManager : MonoBehaviour
         {
             float multiplier = 60 / collectableCount;
             float successCount = collectedCount * multiplier;
-            float successPrecent = (60.0f / successCount) * 100.0f;
-            if( successPrecent > 66 &&  successPrecent <= 100 )
+            float successPrecent = (successCount / 60.0f) * 100.0f;
+            Debug.Log("successPercent: " + successPrecent);
+            if( successPrecent > 67 &&  successPrecent <= 100 )
             {
                 x = 3;
             }
-            else if( successPrecent > 33 &&  successPrecent <= 66 )
+            else if( successPrecent > 34 &&  successPrecent <= 67 )
             {
                 x = 2;
             }
-            else if( successPrecent >= 0 &&  successPrecent <= 33 )
+            else if( successPrecent >= 0 &&  successPrecent <= 34 )
             {
                 x = 1;
             }

@@ -326,11 +326,11 @@ RectTransform:
   m_Father: {fileID: 1976644618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1034.9395, y: 0.50001526}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.00030517578, y: 0.0000076293945}
   m_SizeDelta: {x: 2069.8782, y: 489}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &33790780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3740,7 +3740,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: TrainMoving
     clip: {fileID: 8300000, guid: 3c3bf34da76a2eb4ca7a1ae2540d2101, type: 3}
-    volume: 0.4
+    volume: 0.25
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -15652,117 +15652,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allPlaygrounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[6].envPrefab
-      value: 
-      objectReference: {fileID: 2846238895277965383, guid: a46b23ae5469a4046a20a1c892797d19,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[6].envType
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[6].envImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 7078a92ceb9160a44afce7a7fbafc07a,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[6].name
-      value: PassangerPlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[6].cost
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allEnvs.Array.data[5].name
-      value: CylinderPlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.data[2].trainPrefab
-      value: 
-      objectReference: {fileID: 375248159738225561, guid: 8ae802c65b5115340b8c9d9cf2e0cc59,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.data[2].trainImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 05d88d48733c51b44a49fc8a0c4ece5f,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.data[2].name
-      value: Voxel Train
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.data[2].trainType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allTrains.Array.data[2].cost
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allRails.Array.data[3].name
-      value: Split
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allRails.Array.data[4].name
-      value: Connect 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allRails.Array.data[8].name
-      value: Connect 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allPlaygrounds.Array.data[2].playgroundGamePrefab
-      value: 
-      objectReference: {fileID: 1951804259241453741, guid: 165a87d7c80859e4996c6b004d894a73,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allPlaygrounds.Array.data[2].playgroundType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allPlaygrounds.Array.data[3].playgroundGamePrefab
-      value: 
-      objectReference: {fileID: 9139583793973381189, guid: 91b6d43ccb4ebd545a300a87acfbf0ae,
-        type: 3}
-    - target: {fileID: 3692831814693116279, guid: b2ff91fdd06d44f4485cc7242c9a3c7a,
-        type: 3}
-      propertyPath: allPlaygrounds.Array.data[3].playgroundType
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ff91fdd06d44f4485cc7242c9a3c7a, type: 3}
