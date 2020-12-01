@@ -11,7 +11,20 @@ public class EntranceUI : MonoBehaviour
         GameDataManager.instance.zenSceneDataManager.LoadingScene = null;
         GameDataManager.instance.zenSceneDataManager.isLoad = false;
 
-        if(SaveAndLoadGameData.instance.savedData.unlockedLevels.Count < 1)
+        if (!SaveAndLoadGameData.instance.savedData.soundON)
+            AudioManager.instance.MuteAll();
+        else
+            AudioManager.instance.UnmuteAll();
+
+        if (!SaveAndLoadGameData.instance.savedData.musicON) // müzik kapalı ise
+            AudioManager.instance.MuteTheme(); // müziği kapat
+        else
+            AudioManager.instance.UnmuteTheme();
+            
+        
+
+
+        if (SaveAndLoadGameData.instance.savedData.unlockedLevels.Count < 1)
         {
             SaveAndLoadGameData.instance.savedData.unlockedLevels.Add(new PlayerLevelData(){
                 levelIndex = 1,

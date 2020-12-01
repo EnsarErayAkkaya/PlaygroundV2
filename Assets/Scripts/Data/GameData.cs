@@ -16,6 +16,7 @@ public class GameData
     public List<LevelData> playerCreatedLevels;
     public bool musicON = true;
     public bool soundON = true;
+    public int interactibleContentValue = 3;
    
     public GameData()
     {
@@ -23,7 +24,8 @@ public class GameData
         playerEnvs = new List<EnvType>();
         unlockedLevels = new List<PlayerLevelData>();
         playerCreatedLevels = new List<LevelData>();
-    }
+        interactibleContentValue = 3;
+}
     
 }
 

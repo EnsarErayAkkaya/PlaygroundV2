@@ -2129,7 +2129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7017002768301588984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9186,19 +9186,30 @@ MonoBehaviour:
   stories:
   - Name: First Tutorial
     texts:
-    - text: CLICK ON RAIL TO CHOOSE IT!
-    - text: CLICK RAIL IMAGE ON LEFT TO SEE ALL RAILS!
-    - text: WHILE RAIL SELECTED CLICK STRAIGHT RAIL!
-    - text: WHEN RAILWAY REACHES THE FINISHLINE CLICK START!
+    - text: CLICK ON A RAIL TO CHOOSE IT!
+      textPanelPos: {x: 0, y: 0}
+    - text: CLICK RAIL IMAGE ON RIGHT TO SEE AVAILABLE RAILS!
+      textPanelPos: {x: 0, y: 0}
+    - text: WHILE A RAIL SELECTED CLICK STRAIGHT RAIL TO CREATE ONE!
+      textPanelPos: {x: 0, y: 150}
+    - text: WHEN RAILWAY REACHES THE FINISHLINE CLICK PLAY!
+      textPanelPos: {x: 0, y: 150}
+    textPanelDefaultPos: {x: -683.5, y: 187}
   - Name: Second Tutorial
     texts:
     - text: USE TURNING RAILS TO AVOID OBJECTS!
+      textPanelPos: {x: 0, y: 0}
+    textPanelDefaultPos: {x: -683.5, y: 187}
   - Name: Third Tutorial
     texts:
     - text: DON'T FORGET TO COLLECT PASSENGERS!
+      textPanelPos: {x: 0, y: 0}
+    textPanelDefaultPos: {x: -683.5, y: 187}
   - Name: Fourth Tutorial
     texts:
     - text: USE DOUBLE RAILS TO CONTROL TRAIN WAY!
+      textPanelPos: {x: 0, y: 0}
+    textPanelDefaultPos: {x: -683.5, y: 187}
 --- !u!222 &3076260443889780150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10037,7 +10048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9146375212744502593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10081,6 +10092,7 @@ MonoBehaviour:
   story: 
   cancelWriting: 0
   writing: 0
+  writingSpeed: 0.5
 --- !u!114 &3074729092782430301
 MonoBehaviour:
   m_ObjectHideFlags: 0

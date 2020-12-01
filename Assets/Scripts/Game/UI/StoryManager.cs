@@ -52,6 +52,9 @@ public class StoryManager : MonoBehaviour
 
         while (textIndex < stories[storyIndex].texts.Count)
         {
+            storyPanel.anchoredPosition = stories[storyIndex].textPanelDefaultPos;
+            storyPanel.anchoredPosition += stories[storyIndex].texts[textIndex].textPanelPos;
+
             textWriterUI.story = stories[storyIndex].texts[textIndex].text;
             textWriterUI.CallPlayText();
 
@@ -97,10 +100,12 @@ public class StoryManager : MonoBehaviour
 public class TextHelper
 {
     public string text;
+    public Vector2 textPanelPos;
 }
 [System.Serializable]
 public class StoryHelper
 {
     public string Name;
     public List<TextHelper> texts;
+    public Vector2 textPanelDefaultPos;
 }

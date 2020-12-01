@@ -34,9 +34,13 @@ public class InteractivesManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.3f);
         SetPlayGround();
-        CreateBaloons();
-        CreateFireBaloons();
-        CreateClouds();
+
+        if(SaveAndLoadGameData.instance.savedData.interactibleContentValue >= 3)
+            CreateBaloons();
+        if(SaveAndLoadGameData.instance.savedData.interactibleContentValue >= 2)
+            CreateFireBaloons();
+        if (SaveAndLoadGameData.instance.savedData.interactibleContentValue >= 1)
+            CreateClouds();
     }
     public void SetPlayGround()
     {

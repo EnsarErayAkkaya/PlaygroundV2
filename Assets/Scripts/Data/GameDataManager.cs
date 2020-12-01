@@ -132,6 +132,11 @@ public class GameDataManager: MonoBehaviour
         SaveAndLoadGameData.instance.Save();
         GetLevels();
     }
+    public void SetInteractibleContentValue(int value)
+    {
+        SaveAndLoadGameData.instance.savedData.interactibleContentValue = value;
+        SaveAndLoadGameData.instance.Save();
+    }
 #elif UNITY_ANDROID || UNITY_STANDALONE || UNITY_WEBGL
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {

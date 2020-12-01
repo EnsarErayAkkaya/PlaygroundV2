@@ -8,6 +8,7 @@ public class TextWriterUI : MonoBehaviour
     public TextMeshProUGUI txt;
 	public string story;
     public bool cancelWriting, writing;
+    public float writingSpeed = .5f;
     private void Start() {
         txt = GetComponent<TextMeshProUGUI> ();
     }
@@ -20,7 +21,7 @@ public class TextWriterUI : MonoBehaviour
 
 	IEnumerator PlayText()
 	{
-        yield return new WaitForSeconds (0.5f);
+        yield return new WaitForSeconds (writingSpeed);
         writing = true;
         cancelWriting = false;
 		foreach (char c in story) 

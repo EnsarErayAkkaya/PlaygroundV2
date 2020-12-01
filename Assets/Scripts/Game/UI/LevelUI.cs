@@ -10,12 +10,14 @@ public class LevelUI : MonoBehaviour
     [HideInInspector]
     public LevelManager levelManager;
     [SerializeField] GameObject endUI;
+    [SerializeField] Transform rewardsContent;
     [SerializeField] Image markImage;
     [SerializeField] Button nextButton,restartButton;
-    [SerializeField] TextMeshProUGUI lostText, rewardText, budgetText;
+    [SerializeField] TextMeshProUGUI lostText, budgetText;
     public Sprite[] stars;
 
     public GameObject finishLine;
+    public GameObject rewardImagePrefab;
 
     void Start()
     {
@@ -42,8 +44,9 @@ public class LevelUI : MonoBehaviour
     }
     public void SetEndUI(int m)
     {
-        
         endUI.SetActive(true);
+
+        
 
         if(m == 0 ) // you lost
         {
@@ -53,14 +56,44 @@ public class LevelUI : MonoBehaviour
         }
         else // you passed
         {
+            ShowRewards();
+
             markImage.sprite = stars[stars.Length - m];
-            rewardText.gameObject.SetActive(true);
-            StartCoroutine( FadeTextToZeroAlpha() );
         
             if( GameDataManager.instance.levels.Any(s => s.levelIndex == GameDataManager.instance.currentlyPlayingLevelIndex + 2) )
                 nextButton.gameObject.SetActive(true);
             else
                 nextButton.gameObject.SetActive(false);
+        }
+    }
+    void ShowRewards()
+    {
+        // Clean
+        foreach (Transform child in rewardsContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in levelManager.levelRailPrize)
+        {
+            RailData data = GameDataManager.instance.allRails.Find(s => s.railType == item);
+
+            GameObject e = Instantiate(rewardImagePrefab, rewardsContent);
+            e.GetComponent<Image>().sprite = data.railImage;
+        }
+        foreach (var item in levelManager.levelEnvPrize)
+        {
+            EnvironmentData data = GameDataManager.instance.allEnvs.Find(s => s.envType == item);
+
+            GameObject e = Instantiate(rewardImagePrefab, rewardsContent);
+            e.GetComponent<Image>().sprite = data.envImage;
+        }
+        foreach (var item in levelManager.levelTrainPrize)
+        {
+            TrainData data = GameDataManager.instance.allTrains.Find(s => s.trainType == item);
+
+            GameObject e = Instantiate(rewardImagePrefab, rewardsContent);
+            e.GetComponent<Image>().sprite = data.trainImage;
         }
     }
     public void NextLevelButtonClick()
@@ -82,15 +115,5 @@ public class LevelUI : MonoBehaviour
         GameDataManager.instance.zenSceneDataManager.LoadingScene = ld.levelData;
         GameDataManager.instance.zenSceneDataManager.isLoad = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    IEnumerator FadeTextToZeroAlpha()
-    {
-        rewardText.color = new Color(rewardText.color.r, rewardText.color.g, rewardText.color.b, 1);
-        while (rewardText.color.a > 0.0f)
-        {
-            rewardText.color = new Color(rewardText.color.r, rewardText.color.g, rewardText.color.b, rewardText.color.a - (Time.deltaTime / 5));
-            yield return null;
-        }
-         rewardText.gameObject.SetActive(false);
     }
 }
