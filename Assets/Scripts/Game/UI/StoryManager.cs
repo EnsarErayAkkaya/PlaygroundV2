@@ -13,68 +13,69 @@ public class StoryManager : MonoBehaviour
     public List<StoryHelper> stories;
     bool nextButtonPressed;
 
-    private void Start() {
-        if(FindObjectOfType<LevelUI>() == null)
+    private void Start()
+    {
+        if (FindObjectOfType<LevelUI>() == null)
         {
-            gameObject.SetActive(false);    
+            gameObject.SetActive(false);
             enabled = false;
         }
         else
         {
-            if(GameDataManager.instance.currentlyPlayingLevelIndex == 0)
+            if (GameDataManager.instance.currentlyPlayingLevelIndex == 0)
             {
                 ShowRelatedStory(0);
             }
-            else if(GameDataManager.instance.currentlyPlayingLevelIndex == 1)
+            else if (GameDataManager.instance.currentlyPlayingLevelIndex == 1)
             {
                 ShowRelatedStory(1);
             }
-            else if(GameDataManager.instance.currentlyPlayingLevelIndex == 2)
+            else if (GameDataManager.instance.currentlyPlayingLevelIndex == 2)
             {
                 ShowRelatedStory(2);
             }
-            else if(GameDataManager.instance.currentlyPlayingLevelIndex == 4)
+            else if (GameDataManager.instance.currentlyPlayingLevelIndex == 4)
             {
                 ShowRelatedStory(3);
             }
         }
-        
+
     }
     public void ShowRelatedStory(int storyIndex)
     {
         ShowPanel();
-        StartCoroutine( StoryRoutine(storyIndex) );
+        StartCoroutine(StoryRoutine(storyIndex));
     }
     IEnumerator StoryRoutine(int storyIndex)
     {
         int textIndex = 0;
 
-        while( textIndex < stories[storyIndex].texts.Count  )
-        {             
-            
+        while (textIndex < stories[storyIndex].texts.Count)
+        {
             textWriterUI.story = stories[storyIndex].texts[textIndex].text;
             textWriterUI.CallPlayText();
-            
+
             textIndex += 1;
 
-            while ( !Input.GetKeyDown(KeyCode.Return) && !nextButtonPressed)
+            while (!Input.GetKeyDown(KeyCode.Return) && !nextButtonPressed)
             {
                 yield return null;
             }
 
             nextButtonPressed = false;
 
-            if( textWriterUI.writing )
+            if (textWriterUI.writing)
             {
                 textWriterUI.cancelWriting = true;
             }
 
             yield return null;
         }
-       
+
         CloseStory();
     }
     
+
     void CloseStory()
     {
         HidePanel();
@@ -85,7 +86,7 @@ public class StoryManager : MonoBehaviour
     }
     public void HidePanel()
     {
-        storyPanel.gameObject.SetActive(false);       
+        storyPanel.gameObject.SetActive(false);
     }
     public void NextButtonClick()
     {

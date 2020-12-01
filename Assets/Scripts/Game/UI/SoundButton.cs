@@ -10,28 +10,28 @@ public class SoundButton : MonoBehaviour
         if(!SaveAndLoadGameData.instance.savedData.soundON)
         {
             AudioManager.instance.MuteAll();
-            off.SetActive(false);
-            on.SetActive(true);
+            off.SetActive(true);
+            on.SetActive(false);
         }
         else
         {
             AudioManager.instance.UnmuteAll();
-            off.SetActive(true);
-            on.SetActive(false);
+            off.SetActive(false);
+            on.SetActive(true);
         }
     }
     public void MuteButton()
     {
         AudioManager.instance.MuteAll();
-        off.SetActive(false);
-        on.SetActive(true);
+        off.SetActive(true);
+        on.SetActive(false);
         GameDataManager.instance.SetSound(false);
     }
     public void UnmuteButton()
     {
         AudioManager.instance.UnmuteAll();
-        off.SetActive(true);
-        on.SetActive(false);
+        off.SetActive(false);
+        on.SetActive(true);
         GameDataManager.instance.SetSound(true);
     }
 }
