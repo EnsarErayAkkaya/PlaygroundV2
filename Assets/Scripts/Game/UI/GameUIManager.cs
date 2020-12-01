@@ -30,7 +30,7 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] Button changeRailWayButton;
     [SerializeField] Button moveButton, setConnectionButton, deleteButton, rotateButton, saveButton
-        , levelSaveButton, playStopButton, trainSpeedButton, camerasButton, cleanButton, flipButton, pauseButton, resetButton ;
+        , levelSaveButton, playStopButton, trainSpeedButton, camerasButton, cleanButton, flipButton, pauseButton, resetButton, replaceLevelButton ;
     [SerializeField] Image playImage, stopImage;
 
     public GameObject levelCreatingPanel;
@@ -258,6 +258,16 @@ public class GameUIManager : MonoBehaviour
         PlayButtonSound();
 
         GameDataManager.instance.zenSceneDataManager.SaveLevelSceneData(levelCreationManager.GetLevelContentData());
+    }
+    public void RaplaceLevelButtonClick()
+    {
+        PlayButtonSound();
+
+        if(GameDataManager.instance.zenSceneDataManager.isLevel)
+        {
+            GameDataManager.instance.zenSceneDataManager.SaveLevelSceneData(levelCreationManager.GetLevelContentData()
+                , GameDataManager.instance.zenSceneDataManager.levelIndex);
+        }
     }
     public void SetCamerasButton()
     {

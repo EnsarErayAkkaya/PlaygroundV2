@@ -41,6 +41,8 @@ public class InteractivesManager : MonoBehaviour
             CreateFireBaloons();
         if (SaveAndLoadGameData.instance.savedData.interactibleContentValue >= 1)
             CreateClouds();
+        if (SaveAndLoadGameData.instance.savedData.interactibleContentValue == 0)
+            enabled = false;
     }
     public void SetPlayGround()
     {

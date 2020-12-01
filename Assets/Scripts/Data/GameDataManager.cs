@@ -101,9 +101,14 @@ public class GameDataManager: MonoBehaviour
 #if UNITY_EDITOR
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
+        createdLevels.SaveCreatedLevel(levelSceneData, LevelContent);
         
-            createdLevels.SaveCreatedLevel(levelSceneData, LevelContent);
-        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+    public void ReplaceLevel(ZenSceneData levelSceneData, LevelContentData LevelContent, int index)
+    {
+        createdLevels.ReplaceLevel(levelSceneData, LevelContent, index);
         
         SaveAndLoadGameData.instance.Save();
         GetLevels();
@@ -111,7 +116,7 @@ public class GameDataManager: MonoBehaviour
     public void DeleteLevel(int lvlIndex)
     {
         
-            createdLevels.DeleteLevel(lvlIndex);
+        createdLevels.DeleteLevel(lvlIndex);
        
         SaveAndLoadGameData.instance.Save();
         GetLevels();
@@ -119,7 +124,7 @@ public class GameDataManager: MonoBehaviour
     public void MoveLevelToLeft(int lvlIndex)
     {
         
-            createdLevels.MoveLevelToLeft(lvlIndex);
+        createdLevels.MoveLevelToLeft(lvlIndex);
         
         SaveAndLoadGameData.instance.Save();
         GetLevels();
@@ -127,7 +132,7 @@ public class GameDataManager: MonoBehaviour
     public void MoveLevelToRight(int lvlIndex)
     {
         
-            createdLevels.MoveLevelToRight(lvlIndex);
+        createdLevels.MoveLevelToRight(lvlIndex);
         
         SaveAndLoadGameData.instance.Save();
         GetLevels();
@@ -141,25 +146,37 @@ public class GameDataManager: MonoBehaviour
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
         
-            Debug.Log("level data saving... ");
-            LevelData levelData;
+        Debug.Log("level data saving... ");
+        LevelData levelData;
 
-            int lastLevelIndex = SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count + createdLevels.createdLevels.Count;
+        int lastLevelIndex = SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count + createdLevels.createdLevels.Count;
             
-            levelData = new LevelData()
-            {
-                levelIndex = lastLevelIndex + 1,
-                levelSceneIndex = -1,
-                levelContent = LevelContent,
-                levelData = levelSceneData
-            };
+        levelData = new LevelData()
+        {
+            levelName = LevelContent.levelName,
+            levelIndex = lastLevelIndex + 1,
+            levelSceneIndex = -1,
+            levelContent = LevelContent,
+            levelData = levelSceneData
+        };
                 
-            SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Add(levelData);    
+        SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Add(levelData);    
         
         
         SaveAndLoadGameData.instance.Save();
         GetLevels();
     }
+
+    public void ReplaceLevel(ZenSceneData levelSceneData, LevelContentData LevelContent, int index)
+    {
+        SaveAndLoadGameData.instance.savedData.playerCreatedLevels[index].levelContent = LevelContent;
+        SaveAndLoadGameData.instance.savedData.playerCreatedLevels[index].levelName = LevelContent.levelName;
+        SaveAndLoadGameData.instance.savedData.playerCreatedLevels[index].levelData = levelSceneData;
+        
+        SaveAndLoadGameData.instance.Save();
+        GetLevels();
+    }
+
     public void DeleteLevel(int lvlIndex)
     {
         

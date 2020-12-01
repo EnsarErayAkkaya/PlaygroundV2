@@ -41,13 +41,13 @@ public class LevelSystem : MonoBehaviour
 
                 PlayerLevelData pld = SaveAndLoadGameData.instance.savedData.unlockedLevels.First(s => s.levelIndex == item.levelIndex);
                 
-                lb.Set(item.levelIndex, pld.mark, true, this );
+                lb.Set(item.levelIndex, pld.mark, true, this, ld.levelName );
                 
                 lb.GetComponent<Button>().onClick.AddListener( delegate{ LevelButtonOnClick(item); } );
             }
             else
             {
-                lb.Set(item.levelIndex, 0, false, this );
+                lb.Set(item.levelIndex, 0, false, this, item.levelName);
             }
             levelButtons.Add( lb );
         }
@@ -68,6 +68,14 @@ public class LevelSystem : MonoBehaviour
     {
         GameDataManager.instance.MoveLevelToRight(levelListIndex);
         Set();
+    }
+    public void EditLevel(int levelListIndex)
+    {
+        GameDataManager.instance.zenSceneDataManager.LoadingScene = GameDataManager.instance.levels[levelListIndex].levelData;
+        GameDataManager.instance.zenSceneDataManager.isLoad = true;
+        GameDataManager.instance.zenSceneDataManager.isLevel = true;
+        GameDataManager.instance.zenSceneDataManager.levelIndex = levelListIndex;
+        entranceUI.OpenZenScene();
     }
     public void ShowLevelButtonsEdit()
     {

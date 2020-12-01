@@ -39,7 +39,7 @@ public class Rail : InteractibleBase
         levelUI = FindObjectOfType<LevelUI>();
 
         currentOutputPoint = GetOutputConnectionPoints().FirstOrDefault();
-        if( isEnd )
+        if( levelUI != null && isEnd )
         {
             var go = Instantiate(levelUI.finishLine, transform);
             if(transform.localScale.z == -1)

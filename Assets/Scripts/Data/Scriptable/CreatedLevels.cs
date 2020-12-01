@@ -20,6 +20,7 @@ public class CreatedLevels : ScriptableObject
             LevelData lastLevel = createdLevels.Last();
             levelData = new LevelData()
             {
+                levelName = LevelContent.levelName,
                 levelIndex = lastLevel.levelIndex + 1,
                 levelSceneIndex = -1,
                 levelContent = LevelContent,
@@ -30,6 +31,7 @@ public class CreatedLevels : ScriptableObject
         {
             levelData = new LevelData()
             {
+                levelName = LevelContent.levelName,
                 levelIndex = 1,
                 levelSceneIndex = -1,
                 levelContent = LevelContent,
@@ -41,6 +43,16 @@ public class CreatedLevels : ScriptableObject
         #if UNITY_EDITOR // Only in Editor
         EditorUtility.SetDirty(this);
         #endif
+    }
+    public void ReplaceLevel(ZenSceneData levelSceneData, LevelContentData LevelContent, int index)
+    {
+        Debug.Log("level data saving... ");
+        createdLevels[index].levelContent = LevelContent;
+        createdLevels[index].levelName = LevelContent.levelName;
+        createdLevels[index].levelData = levelSceneData;
+#if UNITY_EDITOR // Only in Editor
+        EditorUtility.SetDirty(this);
+#endif
     }
 
     public void DeleteLevel(int lvlIndex)

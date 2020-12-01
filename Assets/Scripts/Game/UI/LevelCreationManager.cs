@@ -6,6 +6,8 @@ public class LevelCreationManager : MonoBehaviour
 {
 
     public TMP_InputField budgetField;
+    public TMP_InputField nameField;
+    public GameObject replaceLevelButton;
 
     [Header("Level Content" )]
     public Transform levelRailsContent;
@@ -21,6 +23,11 @@ public class LevelCreationManager : MonoBehaviour
     public GameObject railScrollViewPrefab;
     public GameObject envScrollViewPrefab;
     public GameObject trainsScrollViewPrefab;
+    void OnEnable()
+    {
+        if (GameDataManager.instance.zenSceneDataManager.isLevel)
+            replaceLevelButton.SetActive(true);
+    }
     
     #region rails
     public void AddNewLevelRailToList()
@@ -113,6 +120,7 @@ public class LevelCreationManager : MonoBehaviour
     {
         return new LevelContentData()
         {
+            levelName = nameField.text,
             budget = SetBudget(),
             levelRails = GetChoosenRails(),
             rewardRails = GetRewardRails(),

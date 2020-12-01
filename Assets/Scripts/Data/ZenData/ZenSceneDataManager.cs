@@ -9,6 +9,8 @@ public class ZenSceneDataManager : MonoBehaviour
     
     public ZenSceneData LoadingScene = null;
     public bool isLoad = false;
+    public bool isLevel = false;
+    public int levelIndex;
    
     public void SaveZenSceneData( string imagePath)
     {
@@ -62,7 +64,7 @@ public class ZenSceneDataManager : MonoBehaviour
 
         SaveData(data);
     }
-    public void SaveLevelSceneData(LevelContentData levelContentData)
+    public void SaveLevelSceneData(LevelContentData levelContentData, int index = -1)
     {
         ZenSceneData data = new ZenSceneData();
 
@@ -128,8 +130,10 @@ public class ZenSceneDataManager : MonoBehaviour
                 id = 0
             });
         }
-
-        SaveLevelData(data, levelContentData);
+        if (index != -1)
+            ReplaceLevelData(data, levelContentData, index);
+        else
+            SaveLevelData(data, levelContentData);
     }
     public void LoadZenSceneData()
     {
@@ -199,5 +203,9 @@ public class ZenSceneDataManager : MonoBehaviour
     void SaveLevelData(ZenSceneData data, LevelContentData levelContentData)
     {
         dataManager.SaveCreatedLevel(data, levelContentData);
+    }
+    void ReplaceLevelData(ZenSceneData data, LevelContentData levelContentData, int index)
+    {
+        dataManager.ReplaceLevel(data, levelContentData, index);
     }
 }

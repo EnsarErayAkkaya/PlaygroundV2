@@ -6,9 +6,11 @@ public class LevelButton : MonoBehaviour
     public GameObject leftButton;
     public GameObject rightButton;
     public GameObject deleteButton;
+    public GameObject levelNameObject;
+    public GameObject editButton;
 
     private int index;
-    public TextMeshProUGUI levelIndexText;
+    public TextMeshProUGUI levelIndexText, levelName;
     public Image starImage;
     public Image background;
     public Sprite[] stars;
@@ -17,11 +19,13 @@ public class LevelButton : MonoBehaviour
     
     LevelSystem levelSystem; 
 
-    public void Set(int lvlIndex, int mark, bool isUnlocked, LevelSystem ls )
+    public void Set(int lvlIndex, int mark, bool isUnlocked, LevelSystem ls, string name )
     {
         levelSystem = ls;
 
         index = lvlIndex - 1;
+        levelName.text = name;
+        levelNameObject.gameObject.SetActive(false);
 
         levelIndexText.text = lvlIndex.ToString();
 
@@ -59,6 +63,13 @@ public class LevelButton : MonoBehaviour
             levelSystem.MoveLevelRight(index);
         }
     }
+    public void EditButton()
+    {
+        if (GameDataManager.instance.levels[index].isMaster == false)
+        {
+            levelSystem.EditLevel(index);
+        }
+    }
     public bool ShowEditButtons()
     {
         if(GameDataManager.instance.levels[index].isMaster == false )
@@ -66,6 +77,8 @@ public class LevelButton : MonoBehaviour
             deleteButton.SetActive(true);
             leftButton.SetActive(true);
             rightButton.SetActive(true);
+            editButton.SetActive(true);
+            levelNameObject.gameObject.SetActive(true);
             return true;
         }
         else
@@ -75,12 +88,13 @@ public class LevelButton : MonoBehaviour
     }
     public void HideEditButtons()
     {
-        Debug.Log("button index " + index);
         if(GameDataManager.instance.levels[index].isMaster == false )
         {
             deleteButton.SetActive(false);
             leftButton.SetActive(false);
             rightButton.SetActive(false);
+            editButton.SetActive(false);
+            levelNameObject.gameObject.SetActive(false);
         }
     }
 }
