@@ -30,7 +30,7 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] Button changeRailWayButton;
     [SerializeField] Button moveButton, setConnectionButton, deleteButton, rotateButton, saveButton
-        , levelSaveButton, playStopButton, trainSpeedButton, camerasButton, cleanButton, flipButton, pauseButton, resetButton, replaceLevelButton ;
+        , levelSaveButton, playStopButton, trainSpeedButton, camerasButton, cleanButton, flipButton, pauseButton, resetButton;
     [SerializeField] Image playImage, stopImage;
 
     public GameObject levelCreatingPanel;
@@ -415,7 +415,7 @@ public class GameUIManager : MonoBehaviour
             interactible = null;
             interactibles = null;
 
-            if(levelUI == null)
+            if(levelUI == null && levelCreatingMode)
                 startEndToggles.HideToggles();
 
             if(trainManager.isStarted)
@@ -445,10 +445,10 @@ public class GameUIManager : MonoBehaviour
                 if(interactible.GetComponent<Rail>() != null)
                 {
                     Rail r = interactible.GetComponent<Rail>();
-                    if(levelUI == null)
+                    if(levelUI == null && levelCreatingMode)
                         startEndToggles.SetToggles( r );
 
-                    if(r.GetOutputConnectionPoints().Length > 1 )
+                    if (r.GetOutputConnectionPoints().Length > 1 )
                     {
                         changeRailWayButton.gameObject.SetActive(true);
                         r.splineManager.ShowTrack();
@@ -460,7 +460,7 @@ public class GameUIManager : MonoBehaviour
                 }
                 else
                 {
-                    if(levelUI == null)
+                    if(levelUI == null && levelCreatingMode)
                         startEndToggles.HideToggles();
                     changeRailWayButton.gameObject.SetActive(false);
                 }
@@ -468,7 +468,6 @@ public class GameUIManager : MonoBehaviour
             else
             {
                 deleteButton.gameObject.SetActive(true);
-                rotateButton.gameObject.SetActive(true);
                 
                 if(interactible.GetComponent<Rail>() != null)
                 {
@@ -476,11 +475,17 @@ public class GameUIManager : MonoBehaviour
                     
                     flipButton.gameObject.SetActive(true);
                     
-                    if(levelUI == null)
+                    if(levelUI == null && levelCreatingMode)
                         startEndToggles.SetToggles( r );
 
                     setConnectionButton.gameObject.SetActive(true);
-                    if(r.GetOutputConnectionPoints().Length > 1 )
+
+                    if (r.GetFreeConnectionPoints().Length == r.GetConnectionPoints().Length)
+                    {
+                        rotateButton.gameObject.SetActive(true);
+                    }
+
+                    if (r.GetOutputConnectionPoints().Length > 1 )
                     {
                         changeRailWayButton.gameObject.SetActive(true);
                         r.splineManager.ShowTrack();
@@ -494,7 +499,7 @@ public class GameUIManager : MonoBehaviour
                 {
                     AudioManager.instance.Play("TrainHorn");
 
-                    if(levelUI == null)
+                    if(levelUI == null && levelCreatingMode)
                         startEndToggles.HideToggles();
 
                     deleteButton.gameObject.SetActive(true);
@@ -506,7 +511,8 @@ public class GameUIManager : MonoBehaviour
                 }
                 else
                 {
-                    if(levelUI == null)
+                    rotateButton.gameObject.SetActive(true);
+                    if (levelUI == null && levelCreatingMode)
                         startEndToggles.HideToggles();
                 }
             }            
@@ -520,7 +526,7 @@ public class GameUIManager : MonoBehaviour
             {
                 Rail r = interactible.GetComponent<Rail>();
 
-                if(levelUI == null)
+                if(levelUI == null && levelCreatingMode)
                     startEndToggles.SetToggles( r );
 
                 if(r.GetOutputConnectionPoints().Length > 1 )
@@ -535,7 +541,7 @@ public class GameUIManager : MonoBehaviour
             }
             else
             {
-                if(levelUI == null)
+                if(levelUI == null && levelCreatingMode)
                     startEndToggles.HideToggles();
             }
         }

@@ -76,7 +76,7 @@ public class ZenSceneDataManager : MonoBehaviour
         foreach ( var item in FindObjectOfType<RailManager>().GetRails() )
         {
             data.railsData.Add(new RailSaveData(){
-                isStatic = true,
+                isStatic = item.isStatic,
                 scale = item.transform.localScale,
                 position = item.transform.position,
                 rotation = item.transform.rotation.eulerAngles,
@@ -148,16 +148,22 @@ public class ZenSceneDataManager : MonoBehaviour
                 Rail r = Instantiate(dataManager.allRails.First(s => s.railType == item.railType).railPrefab, item.position, Quaternion.Euler(item.rotation)).GetComponent<Rail>();
                 r.transform.localScale = item.scale;
                 railManager.AddRail( r,  item.id );
-                r.isStatic = item.isStatic;
                 r.isStart = item.isStart;
                 r.isEnd = item.isEnd;
+                if (isLevel)
+                    r.isStatic = false;
+                else
+                    r.isStatic = item.isStatic;
             }
             railManager.nextIndex = railManager.GetRails().Last().index + 1;
 
             foreach (var item in LoadingScene.envsData)
             {
                 EnvironmentObject env = Instantiate(dataManager.allEnvs.First(e => e.envType == item.envType).envPrefab, item.position, Quaternion.Euler(item.rotation)).GetComponent<EnvironmentObject>();
-                env.isStatic = item.isStatic;            
+                if (isLevel)
+                    env.isStatic = false;
+                else
+                    env.isStatic = item.isStatic;            
             }            
             Rail[] rails = FindObjectsOfType<Rail>();
             foreach (var item in LoadingScene.trainsData)
@@ -174,14 +180,20 @@ public class ZenSceneDataManager : MonoBehaviour
                 }
                 t.startingRailId = item.startingRailId;
                 t.rail = rails.FirstOrDefault( f => f.index == item.startingRailId );
-                t.isStatic = item.isStatic;
+                if (isLevel)
+                    t.isStatic = false;
+                else
+                    t.isStatic = item.isStatic;
             }
             CollectableManager collectableManager = FindObjectOfType<CollectableManager>(); 
             foreach (var item in LoadingScene.collectableData)
             {
                 TrainCollectable c = Instantiate( dataManager.collectablePrefab , item.position, Quaternion.Euler(item.rotation) ).GetComponent<TrainCollectable>();
                 collectableManager.Add(c);
-                c.isStatic = item.isStatic;            
+                if (isLevel)
+                    c.isStatic = false;
+                else
+                    c.isStatic = item.isStatic;            
             }            
         }   
     }

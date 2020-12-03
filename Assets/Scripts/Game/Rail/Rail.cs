@@ -196,9 +196,13 @@ public class Rail : InteractibleBase
         if(b)
         {
             mesh.material.SetInt("Vector1_114B864B", 3);
+            if(mesh.materials.Length > 1)
+                mesh.materials[1].SetInt("Vector1_114B864B", 3);
         }
         else{
             mesh.material.SetInt("Vector1_114B864B", 0);
+            if (mesh.materials.Length > 1)
+                mesh.materials[1].SetInt("Vector1_114B864B", 0);
         }
     }
     

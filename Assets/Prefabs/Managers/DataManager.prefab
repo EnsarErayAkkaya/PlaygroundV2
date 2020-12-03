@@ -85,7 +85,7 @@ MonoBehaviour:
       type: 3}
     railType: 8
     railImage: {fileID: 21300000, guid: dd35b9babf53f3b4e9ab2dffbe67ec41, type: 3}
-    name: Connect 2
+    name: Connect 3
     cost: 175
     isStart: 0
     isEnd: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
       type: 3}
     railType: 15
     railImage: {fileID: 21300000, guid: 51dd02b61e375a040942a21ac52b0b58, type: 3}
-    name: Connect 1
+    name: Connect 2
     cost: 150
     isStart: 0
     isEnd: 0
@@ -135,6 +135,14 @@ MonoBehaviour:
     railImage: {fileID: 21300000, guid: 1d3d7b89b876df1469258424b831e955, type: 3}
     name: Straight Rail 1
     cost: 65
+    isStart: 0
+    isEnd: 0
+  - railPrefab: {fileID: 8343015201170387457, guid: f6b657927133bce4a8e746b48aea4eb8,
+      type: 3}
+    railType: 17
+    railImage: {fileID: 21300000, guid: c0a1160f94000714bbefb1928b773d70, type: 3}
+    name: Split Three
+    cost: 135
     isStart: 0
     isEnd: 0
   allEnvs:
@@ -243,6 +251,7 @@ MonoBehaviour:
     playerCreatedLevels: []
     musicON: 0
     soundON: 0
+    interactibleContentValue: 3
   savedData:
     choosenPlayground: 0
     playerRails: 
@@ -255,6 +264,7 @@ MonoBehaviour:
     playerCreatedLevels: []
     musicON: 0
     soundON: 0
+    interactibleContentValue: 3
 --- !u!114 &3692831815383879226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +297,5 @@ MonoBehaviour:
         z: 0
       playgroundType: 0
   isLoad: 0
+  isLevel: 0
+  levelIndex: 0
