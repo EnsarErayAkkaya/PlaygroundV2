@@ -34,6 +34,10 @@ public class StoryManager : MonoBehaviour
             {
                 ShowRelatedStory(2);
             }
+            else if (GameDataManager.instance.currentlyPlayingLevelIndex == 3)
+            {
+                ShowRelatedStory(4);
+            }
             else if (GameDataManager.instance.currentlyPlayingLevelIndex == 4)
             {
                 ShowRelatedStory(3);
@@ -52,10 +56,28 @@ public class StoryManager : MonoBehaviour
 
         while (textIndex < stories[storyIndex].texts.Count)
         {
-            storyPanel.anchoredPosition = stories[storyIndex].textPanelDefaultPos;
-            storyPanel.anchoredPosition += stories[storyIndex].texts[textIndex].textPanelPos;
+            TextHelper text = stories[storyIndex].texts[textIndex];
 
-            textWriterUI.story = stories[storyIndex].texts[textIndex].text;
+            if (text.isAndroid) // on Android
+            {
+                if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer)
+                {
+                    textIndex += 1;
+                    continue;
+                }
+            }
+            else if (text.isPC) // on PC
+            {
+                if (Application.platform == RuntimePlatform.Android)
+                {
+                    textIndex += 1;
+                    continue;
+                }
+            }
+                
+            storyPanel.anchoredPosition += text.textPanelPos;
+
+            textWriterUI.story = text.text;
             textWriterUI.CallPlayText();
 
             textIndex += 1;
@@ -100,6 +122,8 @@ public class StoryManager : MonoBehaviour
 public class TextHelper
 {
     public string text;
+    public bool isAndroid = false;
+    public bool isPC = false;
     public Vector2 textPanelPos;
 }
 [System.Serializable]

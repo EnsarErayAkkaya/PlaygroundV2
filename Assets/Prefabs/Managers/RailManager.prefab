@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightManager: {fileID: 0}
   railHeight: 0.24
+  connectCollidingPointsDistance: 0.5
+  autoConnectRailRange: 10
   floorLimit: 3
   firstFloorY: 2.64
   secondFloorY: 5

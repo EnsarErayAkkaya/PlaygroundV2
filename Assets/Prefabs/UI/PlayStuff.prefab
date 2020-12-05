@@ -2543,10 +2543,10 @@ RectTransform:
   m_Father: {fileID: 2331798800311687482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -683.53, y: 187}
-  m_SizeDelta: {x: 1362.9048, y: 184.34329}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 974.2156, y: 260.34402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6223844658316019665
 CanvasRenderer:
@@ -10161,10 +10161,10 @@ RectTransform:
   m_Father: {fileID: 4125143960631894592}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -682.49, y: 92.171646}
-  m_SizeDelta: {x: 1364.98, y: 184.34329}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -92.17163}
+  m_SizeDelta: {x: 1364.98, y: 184.34326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6188354070619224137
 MonoBehaviour:
@@ -10183,32 +10183,55 @@ MonoBehaviour:
   stories:
   - Name: First Tutorial
     texts:
-    - text: CLICK ON A RAIL TO CHOOSE IT!
+    - text: Open RaIL Panel!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    - text: CLICK RAIL IMAGE ON RIGHT TO SEE AVAILABLE RAILS!
+    - text: Drag RAIL AND DROP TO ADD!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    - text: WHILE A RAIL SELECTED CLICK STRAIGHT RAIL TO CREATE ONE!
-      textPanelPos: {x: 0, y: 150}
-    - text: WHEN RAILWAY REACHES THE FINISHLINE CLICK PLAY!
-      textPanelPos: {x: 0, y: 150}
-    textPanelDefaultPos: {x: -683.5, y: 187}
+    textPanelDefaultPos: {x: 0, y: 0}
   - Name: Second Tutorial
     texts:
     - text: USE TURNING RAILS TO AVOID OBJECTS!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    textPanelDefaultPos: {x: -683.5, y: 187}
+    textPanelDefaultPos: {x: 0, y: 0}
   - Name: Third Tutorial
     texts:
     - text: DON'T FORGET TO COLLECT PASSENGERS!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    textPanelDefaultPos: {x: -683.5, y: 187}
+    textPanelDefaultPos: {x: 0, y: 0}
   - Name: Fourth Tutorial
     texts:
     - text: SELECT DOUBLE RAIL!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    - text: CLICK FLIP BUTTON TO PLACE RAIL!
+    - text: CLICK FLIP BUTTON TO CORRECT RAIL!
+      isAndroid: 0
+      isPC: 0
       textPanelPos: {x: 0, y: 0}
-    textPanelDefaultPos: {x: -683.5, y: 187}
+    textPanelDefaultPos: {x: 0, y: 0}
+  - Name: Fifth Tutorial
+    texts:
+    - text: You can move/zoom Camera with TWO FINGER.
+      isAndroid: 1
+      isPC: 0
+      textPanelPos: {x: 0, y: 0}
+    - text: You can Move Camera with WASD and Turn IT with right mouse button
+      isAndroid: 0
+      isPC: 1
+      textPanelPos: {x: 0, y: 0}
+    - text: You can change to diffrent cameras with camera button!
+      isAndroid: 0
+      isPC: 0
+      textPanelPos: {x: 0, y: 0}
+    textPanelDefaultPos: {x: 0, y: 0}
 --- !u!222 &3076260443889780150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11347,8 +11370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.1, y: 3}
-  m_SizeDelta: {x: 2218.1978, y: 290.45932}
+  m_AnchoredPosition: {x: -0.000083923, y: 2.08}
+  m_SizeDelta: {x: 1663.4731, y: 437.43423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1725992687410703636
 CanvasRenderer:
@@ -11395,7 +11418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: USE DOUBLE RAILS TO CONTROL TRAIN WAY!
+  m_text: "CONT\u0130NUE ADDING!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b037a2e362f632b41bdca6ce111c5e97, type: 2}
   m_sharedMaterial: {fileID: -3107718447445777882, guid: b037a2e362f632b41bdca6ce111c5e97,

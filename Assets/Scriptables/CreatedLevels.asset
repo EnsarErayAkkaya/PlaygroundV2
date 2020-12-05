@@ -178,7 +178,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Tutorial2
     levelIndex: 2
     levelSceneIndex: -1
@@ -366,7 +366,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Tutorial 3 Loop
     levelIndex: 3
     levelSceneIndex: -1
@@ -651,7 +651,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Bowtie
     levelIndex: 4
     levelSceneIndex: -1
@@ -936,7 +936,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Split Two Train Tuto
     levelIndex: 5
     levelSceneIndex: -1
@@ -1367,7 +1367,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Double Rail 2
     levelIndex: 6
     levelSceneIndex: -1
@@ -1741,7 +1741,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Eyes Level
     levelIndex: 7
     levelSceneIndex: -1
@@ -2221,7 +2221,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Up Rails and Platform
     levelIndex: 8
     levelSceneIndex: -1
@@ -2527,7 +2527,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: 5 Passengers
     levelIndex: 9
     levelSceneIndex: -1
@@ -2821,7 +2821,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Second Two Train
     levelIndex: 10
     levelSceneIndex: -1
@@ -3176,7 +3176,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Three Rail Tuto
     levelIndex: 11
     levelSceneIndex: -1
@@ -3826,7 +3826,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: 3 Way
     levelIndex: 12
     levelSceneIndex: -1
@@ -4212,7 +4212,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Snake
     levelIndex: 13
     levelSceneIndex: -1
@@ -4473,7 +4473,7 @@ MonoBehaviour:
           y: 44.999996
           z: -0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: Up Down OldTown
     levelIndex: 14
     levelSceneIndex: -1
@@ -4704,7 +4704,7 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1
   - levelName: 15th Nameless
     levelIndex: 15
     levelSceneIndex: -1
@@ -5120,4 +5120,4 @@ MonoBehaviour:
           y: 44.999996
           z: 0
         playgroundType: 0
-    isMaster: 0
+    isMaster: 1

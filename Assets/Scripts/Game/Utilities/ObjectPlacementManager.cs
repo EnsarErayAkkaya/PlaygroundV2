@@ -123,6 +123,7 @@ public class ObjectPlacementManager : MonoBehaviour
             //placingObject.GetComponent<Rail>().Search();
             Rail rail = placingObject.GetComponent<Rail>();
             rail.ActivateColliders();
+            railManager.ConnectClosestRailInRange(rail);
             objectChooser.Choose(placingObject);
             rail.ManualFloorControl();
         }

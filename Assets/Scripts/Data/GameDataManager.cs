@@ -98,6 +98,11 @@ public class GameDataManager: MonoBehaviour
         SaveAndLoadGameData.instance.Save();
         Debug.Log("Now you have " + SaveAndLoadGameData.instance.savedData.maxZenSceneSaveCount + " save in load menu");
     }
+    public void SetInteractibleContentValue(int value)
+    {
+        SaveAndLoadGameData.instance.savedData.interactibleContentValue = value;
+        SaveAndLoadGameData.instance.Save();
+    }
 #if UNITY_EDITOR
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)
     {
@@ -136,11 +141,6 @@ public class GameDataManager: MonoBehaviour
         
         SaveAndLoadGameData.instance.Save();
         GetLevels();
-    }
-    public void SetInteractibleContentValue(int value)
-    {
-        SaveAndLoadGameData.instance.savedData.interactibleContentValue = value;
-        SaveAndLoadGameData.instance.Save();
     }
 #elif UNITY_ANDROID || UNITY_STANDALONE || UNITY_WEBGL
     public void SaveCreatedLevel(ZenSceneData levelSceneData, LevelContentData LevelContent)

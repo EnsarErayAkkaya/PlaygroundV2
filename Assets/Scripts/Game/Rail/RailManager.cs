@@ -26,6 +26,7 @@ public class RailManager : MonoBehaviour
     // objectPlacementManagerda kullanılan rayların yüksekliğini deopalayan değişken 
     public float railHeight;
     public float connectCollidingPointsDistance = .5f;
+    public float autoConnectRailRange = 6f;
 
     // nokta seçiliyor mu 
     bool startChoosePointForConnection, startChoosePointForExistingConnection, willStartChoosePointForExistingConnection, mouseReleased;
@@ -35,7 +36,8 @@ public class RailManager : MonoBehaviour
     [SerializeField] List<Rail> rails;
     public uint nextIndex = 0;
 
-     private void Start() {
+    private void Start() 
+    {
         cameraManager = FindObjectOfType<CameraManager>();
         uIManager = FindObjectOfType<GameUIManager>();
         playgroundManager = FindObjectOfType<PlaygroundManager>();
@@ -605,6 +607,53 @@ public class RailManager : MonoBehaviour
         rail.cost = _cost;
         AddRail(rail);
         placementManager.PlaceMe(rail.gameObject, PlacementType.Rail);
+    }
+    public void ConnectClosestRailInRange(Rail r)
+    {
+        RailConnectionPoint closestPoint = null;
+        float closestDistance = -1;
+        float currentDistance = 0;
+        foreach (RailConnectionPoint firstPoint in r.GetFreeConnectionPoints())
+        {
+            foreach (Rail rail in rails.Where(s => s != r))
+            {
+                foreach (var secondPoint in rail.GetFreeConnectionPoints())
+                {
+                    currentDistance = Vector3.Distance(firstPoint.point, secondPoint.point);
+                    if (currentDistance < autoConnectRailRange && (closestDistance < 0 || closestDistance > currentDistance))
+                    {
+                        closestPoint = secondPoint;
+                        closestDistance = currentDistance;
+                    }
+                }
+            }
+        }
+        if(closestPoint != null && closestPoint.isInput)
+        {
+            closestPoint.SetConnection(r.GetFreeOutputConnectionPoints().FirstOrDefault());
+
+            RailConnection(closestPoint);
+
+            // açıyı ayarla
+            closestPoint.connectedPoint.transform.rotation = Quaternion.Euler(closestPoint.rail.transform.rotation.eulerAngles - new Vector3(0, closestPoint.connectedPoint.extraAngle, 0));
+
+            // parentları düzenle
+            closestPoint.connectedPoint.rail.transform.parent = null; // railın parentını temizle
+            closestPoint.connectedPoint.transform.parent = closestPoint.connectedPoint.rail.transform; // noktayı railın çocuğu yap
+        }
+        else if (closestPoint != null && !closestPoint.isInput)
+        {
+            closestPoint.SetConnection(r.GetFreeInputConnectionPoints().FirstOrDefault());
+
+            RailConnection(closestPoint);
+
+            // açıyı ayarla 
+            closestPoint.connectedPoint.transform.rotation = Quaternion.Euler(closestPoint.rail.transform.rotation.eulerAngles + new Vector3(0, closestPoint.extraAngle, 0));
+
+            // parentları düzenle
+            closestPoint.connectedPoint.rail.transform.parent = null; // railın parentını temizle
+            closestPoint.connectedPoint.transform.parent = closestPoint.connectedPoint.rail.transform; // noktayı railın çocuğu yap
+        }
     }
     public void GetRailBackToOldPosition()
     {
