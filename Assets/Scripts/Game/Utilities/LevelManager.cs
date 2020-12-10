@@ -138,6 +138,7 @@ public class LevelManager : MonoBehaviour
     }
     public bool SetBudget(int c)
     {
+        
         int temp = budget;
         temp += c;
         if(temp < 0)

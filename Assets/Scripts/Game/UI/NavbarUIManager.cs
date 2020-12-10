@@ -88,8 +88,9 @@ public class NavbarUIManager : MonoBehaviour
         GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, railsContent);
         e.transform.GetChild(0).GetComponent<Image>().sprite = data.railImage;
         e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
-        e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.RailButtonClick(data.railPrefab, data.cost); });
-        e.GetComponent<ButtonDragHandler>().SetDrager(0, data.railPrefab, data.cost);
+        //e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.RailButtonClick(data.railPrefab, data.cost); });
+        e.GetComponent<Button>().enabled = false;
+        e.transform.GetChild(0).GetComponent<ButtonDragHandler>().SetDrager(0, data.railPrefab, data.cost);
     }
     void CreateEnvButton(EnvType item)
     {
@@ -98,8 +99,9 @@ public class NavbarUIManager : MonoBehaviour
         GameObject e = Instantiate(GameDataManager.instance.generalButtonPrefab, envsContent);
         e.transform.GetChild(0).GetComponent<Image>().sprite = data.envImage;
         e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
-        e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); });
-        e.GetComponent<ButtonDragHandler>().SetDrager(0, data.envPrefab, data.cost);
+        //e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); });
+        e.GetComponent<Button>().enabled = false;
+        e.transform.GetChild(0).GetComponent<ButtonDragHandler>().SetDrager(0, data.envPrefab, data.cost);
     }
     void CreateTrainButton(TrainType item)
     {

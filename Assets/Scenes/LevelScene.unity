@@ -974,8 +974,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1893209008}
   - {fileID: 1676749083}
+  - {fileID: 1893209008}
   - {fileID: 2147227074}
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -1168,7 +1168,7 @@ PrefabInstance:
     - target: {fileID: 4125143960631894592, guid: 7f86c48e439437a488b321ed652f75e3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4125143960631894592, guid: 7f86c48e439437a488b321ed652f75e3,
         type: 3}
@@ -1336,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 7485947337610427909, guid: 4a13dc60162697c43948238455ca48b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7485947337610427909, guid: 4a13dc60162697c43948238455ca48b6,
         type: 3}
@@ -1495,6 +1495,11 @@ PrefabInstance:
     - target: {fileID: 3513214329315589952, guid: a00ef1adac51d9d49afeadb90611e132,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513214329315589952, guid: a00ef1adac51d9d49afeadb90611e132,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3513214330101454982, guid: a00ef1adac51d9d49afeadb90611e132,

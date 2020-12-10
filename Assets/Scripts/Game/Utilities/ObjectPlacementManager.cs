@@ -19,6 +19,7 @@ public class ObjectPlacementManager : MonoBehaviour
     GameObject placingObject;
     float height;
     private Touch touch;
+    private Rail rail;
 
     private void Start() 
     {
@@ -33,7 +34,7 @@ public class ObjectPlacementManager : MonoBehaviour
     {
         if(isPlacing && (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer))
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonUp(0))
             {
                 ObjectPlaced();
             }
@@ -61,8 +62,13 @@ public class ObjectPlacementManager : MonoBehaviour
                         , railMover.minX, railMover.maxX, railMover.minZ
                         ,railMover.maxZ );
                 }
-                else
-                    placingObject.transform.position = playgroundManager.ClampPoisiton(placingObject.transform.position);
+                else if (placementType == PlacementType.Rail)
+                {
+                    railManager.HighlightClosestConnectionPoint(rail);
+                }
+
+
+                placingObject.transform.position = playgroundManager.ClampPoisiton(placingObject.transform.position);
             }
         }
     }
@@ -126,6 +132,7 @@ public class ObjectPlacementManager : MonoBehaviour
             railManager.ConnectClosestRailInRange(rail);
             objectChooser.Choose(placingObject);
             rail.ManualFloorControl();
+            railManager.DownlightRails();
         }
         else if(placementType == PlacementType.Env)
         {
@@ -176,6 +183,7 @@ public class ObjectPlacementManager : MonoBehaviour
         if(type == PlacementType.Rail )
         {
             height = railManager.railHeight;
+            rail = obj.GetComponent<Rail>();
         }
         else if(type == PlacementType.RailSystem)
         {
@@ -189,6 +197,10 @@ public class ObjectPlacementManager : MonoBehaviour
         placingObject = obj;
         placementType = type;
         height = _height;
+        if (type == PlacementType.Rail)
+        {
+            rail = obj.GetComponent<Rail>();
+        }
         isPlacing = true;
     }
 }

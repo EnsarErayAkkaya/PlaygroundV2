@@ -82,10 +82,9 @@ public class GameUIManager : MonoBehaviour
         }
         else
         {
-            interactible.Destroy();
-
+            //SetInteractible(null);
             objectChooser.Unchoose();
-            SetInteractible(null);
+            interactible.Destroy();
 
             if( trainManager.trains.Count <= 0 )
             {
@@ -134,17 +133,17 @@ public class GameUIManager : MonoBehaviour
         if( levelUI != null && levelUI.SetBudget(-cost))
         {
             buttonLock = true;
-            if( interactible != null && interactible.GetComponent<Rail>() != null)
+            /*if( interactible != null && interactible.GetComponent<Rail>() != null)
                 railManager.NewRailConnection(interactible.GetComponent<Rail>(), obj, cost);
-            else
+            else*/
                 railManager.CreateFloatingRail(obj, cost);
         }
         else if( levelUI == null )
         {
             buttonLock = true;
-            if( interactible != null && interactible.GetComponent<Rail>() != null)
+            /*if( interactible != null && interactible.GetComponent<Rail>() != null)
                 railManager.NewRailConnection(interactible.GetComponent<Rail>(), obj, cost);
-            else
+            else*/
                 railManager.CreateFloatingRail(obj, cost);
         }
     }
@@ -391,7 +390,7 @@ public class GameUIManager : MonoBehaviour
                 }
             }
         }
-        catch (System.Exception e)
+        catch (Exception e)
         {
             Debug.Log(e.Message);
         }
@@ -423,10 +422,6 @@ public class GameUIManager : MonoBehaviour
                 //navbarı gizle
                 navbarUI.DeActivate();
                 //trainSpeedButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                navbarUI.HideNavbar();
             }
         }
         else if(obj != null && !trainManager.isStarted)

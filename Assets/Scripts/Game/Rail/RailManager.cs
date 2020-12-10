@@ -61,6 +61,7 @@ public class RailManager : MonoBehaviour
             Android_FixedUpdate();
     }
 
+    // used in custom rail
     public RailConnectionPoint ChooseConnectionPoint(RailConnectionPoint startPoint = null)
     {
         RailConnectionPoint railConnectionPoint = null;
@@ -594,19 +595,20 @@ public class RailManager : MonoBehaviour
 
     public void CreateFloatingRail(GameObject r, int _cost)
     {
-        // Ray değilse dön
-        if(r.GetComponent<Rail>().floorAdder == -1) 
-        { 
-            Debug.LogWarning("you cant create this rail to ground");
-            uIManager.buttonLock = false; 
-            return;
-        }
         Rail rail = Instantiate(r).GetComponent<Rail>();
         rail.DisableColliders();
         rail.creationTime = Time.time;
         rail.cost = _cost;
         AddRail(rail);
-        placementManager.PlaceMe(rail.gameObject, PlacementType.Rail);
+        
+        if (r.GetComponent<Rail>().floorAdder == -1)
+        {
+            placementManager.PlaceMe(rail.gameObject, PlacementType.Rail, 3);
+        }
+        else
+        {
+            placementManager.PlaceMe(rail.gameObject, PlacementType.Rail);
+        }
     }
     public void ConnectClosestRailInRange(Rail r)
     {
@@ -654,6 +656,45 @@ public class RailManager : MonoBehaviour
             closestPoint.connectedPoint.rail.transform.parent = null; // railın parentını temizle
             closestPoint.connectedPoint.transform.parent = closestPoint.connectedPoint.rail.transform; // noktayı railın çocuğu yap
         }
+
+        if(closestPoint != null)
+        {
+            ConnectCollidingRailPoints(r);
+            if (playgroundManager.playground.CheckInPlayground(r.transform) == false)// oyun alanında değilse
+            {
+                r.Destroy();
+            }
+            else if(r.FloorControl())// oyun alnındaysa kata bak, kat kontolünü geçtiyse davam et
+            {
+                //r.ShowObject();
+                //r.ActivateColliders();   
+                objectChooser.Choose(r.gameObject);
+            }
+        }
+    }
+    public void HighlightClosestConnectionPoint(Rail r)
+    {
+        RailConnectionPoint closestPoint = null;
+        float closestDistance = -1;
+        float currentDistance = 0;
+        foreach (RailConnectionPoint firstPoint in r.GetFreeConnectionPoints())
+        {
+            foreach (Rail rail in rails.Where(s => s != r))
+            {
+                foreach (var secondPoint in rail.GetFreeConnectionPoints())
+                {
+                    secondPoint.Downlight();
+                    currentDistance = Vector3.Distance(firstPoint.point, secondPoint.point);
+                    if (currentDistance < autoConnectRailRange && (closestDistance < 0 || closestDistance > currentDistance))
+                    {
+                        closestPoint = secondPoint;
+                        closestDistance = currentDistance;
+                    }
+                }
+            }
+        }
+        if(closestPoint != null)
+            closestPoint.Highlight();
     }
     public void GetRailBackToOldPosition()
     {
@@ -735,7 +776,30 @@ public class RailManager : MonoBehaviour
     }
     public void RemoveRail(Rail r)
     {
+        SelectConnectedRail(r);
         rails.Remove(r);
+    }
+    public void SelectConnectedRail(Rail r)
+    {
+        GameObject selectedRail = null;
+        foreach (RailConnectionPoint rcp in r.GetConnectionPoints())
+        {
+            if (rcp.hasConnectedRail)
+            {
+                Debug.Log("choosen Rail: " + rcp.connectedPoint.rail.gameObject.name);
+                selectedRail = rcp.connectedPoint.rail.gameObject;
+                break;
+            }
+        }
+        if (selectedRail != null)
+        {
+            objectChooser.Choose(selectedRail);
+        }
+        else
+        {
+            uIManager.SetInteractible(null);
+            objectChooser.Unchoose();
+        }
     }
     public void AddRail(Rail r)
     {
@@ -743,6 +807,7 @@ public class RailManager : MonoBehaviour
 
         nextIndex++;
         r.index = nextIndex;
+        r.gameObject.name += "_"+nextIndex;
     }
     public void AddRail(Rail r, uint id)
     {

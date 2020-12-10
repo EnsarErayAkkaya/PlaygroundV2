@@ -2533,7 +2533,7 @@ MonoBehaviour:
     levelSceneIndex: -1
     levelContent:
       levelName: 
-      budget: 2000
+      budget: 2500
       levelRails: 0000000003000000040000000b0000000c000000
       levelEnvs: 
       levelTrains: 

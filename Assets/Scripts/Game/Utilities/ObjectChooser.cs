@@ -212,7 +212,6 @@ public class ObjectChooser : MonoBehaviour
             uIManager.SetInteractible(null);
             return;
         }
-
         choosenObject = obj.GetComponent<InteractibleBase>();
         if(choosenObject.isSelectable)
         {
@@ -220,7 +219,6 @@ public class ObjectChooser : MonoBehaviour
             choosenObject.isSelected = true;
             uIManager.SetInteractible(obj);
         }
-        
     }
     public void ChooseMultiple()
     {
@@ -254,6 +252,7 @@ public class ObjectChooser : MonoBehaviour
         {
             try
             {
+                //uIManager.SetInteractible(null);
                 choosenObject.Glow( false );
             }
             catch (System.Exception e)
