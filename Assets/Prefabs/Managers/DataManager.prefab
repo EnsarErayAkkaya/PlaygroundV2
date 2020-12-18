@@ -220,6 +220,12 @@ MonoBehaviour:
     name: Voxel Train
     trainType: 2
     cost: 120
+  - trainPrefab: {fileID: 375248159738225561, guid: 8ae802c65b5115340b8c9d9cf2e0cc59,
+      type: 3}
+    trainImage: {fileID: 21300000, guid: 00e2f511cd7743b44a56d896bbc1dcfb, type: 3}
+    name: Wooden Train
+    trainType: 3
+    cost: 120
   collectablePrefab: {fileID: 6451550708474763239, guid: 1565151c44861424f8835b3905cbb5bf,
     type: 3}
   generalButtonPrefab: {fileID: 5619827466366189225, guid: d5104aad17521874ab4cb7263bc8828f,

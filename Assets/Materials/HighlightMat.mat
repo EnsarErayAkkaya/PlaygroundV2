@@ -20,11 +20,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_82436705:
-        m_Texture: {fileID: 2800000, guid: 427611625df3ed342bc50cf1a26582f1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1aa6b3dafda26c8449af57643b2689b8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8F5CC0AE:
+        m_Texture: {fileID: 2800000, guid: 0b7ddb0ce6dbd47429a5c51173691ef6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_AD85FF91:
-        m_Texture: {fileID: 2800000, guid: 6e041e0d9c74af14e9106193d66d35cd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c35602b688eaa34daf25fe474af2b71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_FFAA22EF:
+        m_Texture: {fileID: 2800000, guid: 8332b5c3834da0c41b73c4f3f05c613d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -74,6 +82,8 @@ Material:
     m_Floats:
     - Boolean_AB2E601E: 0
     - Vector1_114B864B: 3
+    - Vector1_548CFF86: 0.31
+    - Vector1_66A7CA0A: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
