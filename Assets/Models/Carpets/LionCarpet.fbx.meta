@@ -3,7 +3,12 @@ guid: c7ad765ab2cf4fc46996a733dfe2a6dc
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LionCarpetMat
+    second: {fileID: 2100000, guid: 2370ae975f366c84289a688dd5e6e71d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

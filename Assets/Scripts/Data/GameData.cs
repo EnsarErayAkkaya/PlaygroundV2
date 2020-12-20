@@ -17,7 +17,7 @@ public class GameData
     public bool musicON = true;
     public bool soundON = true;
     public int interactibleContentValue = 3;
-   
+    public bool postProccessing = true;
     public GameData()
     {
         playerRails = new List<RailType>();

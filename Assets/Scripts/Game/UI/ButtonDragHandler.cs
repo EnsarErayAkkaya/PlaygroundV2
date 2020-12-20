@@ -18,8 +18,8 @@ public class ButtonDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
     }
     /// <summary>
     ///  _type == 0 => rail
-    ///  _type == 0 => env
-    ///  _type == 0 => train
+    ///  _type == 1 => env
+    ///  _type == 2 => train
     /// </summary>
     /// <param name="_type"></param>
     public void SetDrager(int _type, GameObject g ,int _cost)

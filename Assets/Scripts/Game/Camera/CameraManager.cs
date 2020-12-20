@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
+
 public class CameraManager : MonoBehaviour
 {
+    Volume volume;
+
     TrainManager trainManager;
     public Camera rtsCamera;
     public Camera trainViewCamera;
@@ -14,9 +18,21 @@ public class CameraManager : MonoBehaviour
 
     private void Start() 
     {
+        UpdatePostProccessing();
         trainManager = FindObjectOfType<TrainManager>();    
     }
-
+    void UpdatePostProccessing()
+    {
+        volume = FindObjectOfType<Volume>();
+        if (SaveAndLoadGameData.instance.savedData.postProccessing)
+        {
+            volume.enabled = true;
+        }
+        else
+        {
+            volume.enabled = false;
+        }
+    }
 
     public void ChangeStyle()
     {

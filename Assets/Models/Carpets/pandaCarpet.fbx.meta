@@ -7,28 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: black
-    second: {fileID: 2100000, guid: 616c8328242a89045b078e668c790788, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey
-    second: {fileID: 2100000, guid: d55e2cb2951b6e641a0a8336cbcf22e9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pinksih
-    second: {fileID: 2100000, guid: 942708a2345cc8142965dca6248698ee, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: red
-    second: {fileID: 2100000, guid: b9022f97343859f42b1c838f3fb5799f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: white
-    second: {fileID: 2100000, guid: 3cd53e07d8eb43647918461e303a6ccc, type: 2}
+      name: PandaCarpetMat
+    second: {fileID: 2100000, guid: 19a3f251861aa1649b84029941b37904, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

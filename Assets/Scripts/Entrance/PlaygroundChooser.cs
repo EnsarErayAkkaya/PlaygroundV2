@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlaygroundChooser : MonoBehaviour
 {
-    [SerializeField] Transform scene;
+    //[SerializeField] Transform scene;
     [SerializeField] float rotateSpeed;
     List<GameObject> playgrounds = new List<GameObject>();
     List<PlaygroundType> playgroundTypes = new List<PlaygroundType>();
@@ -19,7 +19,7 @@ public class PlaygroundChooser : MonoBehaviour
         {
             PlaygroundData data = GameDataManager.instance.allPlaygrounds.Find(s => s.playgroundType == item);
 
-            GameObject obj = Instantiate(data.playgroundGamePrefab, scene);
+            GameObject obj = Instantiate(data.playgroundGamePrefab, transform);
 
             playgrounds.Add(obj);
             playgroundTypes.Add(item);

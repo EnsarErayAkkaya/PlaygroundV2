@@ -101,7 +101,7 @@ public class NavbarUIManager : MonoBehaviour
         e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
         //e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.EnvironmentCreateButtonClick(data.envPrefab, data.cost); });
         e.GetComponent<Button>().enabled = false;
-        e.transform.GetChild(0).GetComponent<ButtonDragHandler>().SetDrager(0, data.envPrefab, data.cost);
+        e.transform.GetChild(0).GetComponent<ButtonDragHandler>().SetDrager(1, data.envPrefab, data.cost);
     }
     void CreateTrainButton(TrainType item)
     {
