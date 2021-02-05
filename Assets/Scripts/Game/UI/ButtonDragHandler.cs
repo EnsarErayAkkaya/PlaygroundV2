@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
+public class ButtonDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     GameUIManager uIManager;
     int type = 0;
@@ -30,7 +30,7 @@ public class ButtonDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (dragLock) return;
+        if (dragLock && uIManager.GetChoosed() != null) return;
 
         if(type == 0)
         {
@@ -41,14 +41,24 @@ public class ButtonDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
             uIManager.EnvironmentCreateButtonClick(obj, cost);
         }
         dragLock = true;
-        /*else if (type == 2)
-        {
-            uIManager.(obj, cost);
-        }*/
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         dragLock = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (uIManager.GetChoosed() == null) return;
+
+        if (type == 0)
+        {
+            uIManager.RailButtonClick(obj, cost);
+        }
+        else if (type == 1)
+        {
+            uIManager.EnvironmentCreateButtonClick(obj, cost);
+        }
     }
 }

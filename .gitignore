@@ -13,6 +13,7 @@
 /[Pp]laygroundBuild/
 /[Pp]laygroundDeskBuild/
 /[Rr]ailCraftWebGL.zip/
+/[Pp]laygroundDeskBuild.zip/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -63,3 +64,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+RailCraftWebGL.zip
+*.gz
+*.zip
+*.html
+*.aab

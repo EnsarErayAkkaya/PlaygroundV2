@@ -6,8 +6,16 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]Transform content;   
-    void Start()
+    [SerializeField]Transform content;
+    private void Start()
+    {
+        Set();
+    }
+    private void OnEnable()
+    {
+        Set();
+    }
+    void Set()
     {
         foreach (Transform item in content)
         {

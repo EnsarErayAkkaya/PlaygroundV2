@@ -263,12 +263,25 @@ public class GameDataManager: MonoBehaviour
         GetLevels();
     }
 #endif
+    public void AddLeaf(int leafAmount)
+    {
+        SaveAndLoadGameData.instance.savedData.leaf += leafAmount;
+        SaveAndLoadGameData.instance.Save();
+    }
     public void GetLevels()
     {
         levels.Clear();
         levels.AddRange(createdLevels.createdLevels);
         if(SaveAndLoadGameData.instance.savedData.playerCreatedLevels != null && SaveAndLoadGameData.instance.savedData.playerCreatedLevels.Count > 0)
             levels.AddRange(SaveAndLoadGameData.instance.savedData.playerCreatedLevels);
+    }
+    public bool CheckLevelAlreadyPassed()
+    {
+        if(SaveAndLoadGameData.instance.savedData.unlockedLevels.First(s => s.levelIndex == currentlyPlayingLevelIndex + 1).mark != 0)
+        {
+            return true; // passed
+        }
+        return false; // not passed
     }
     public void SetMusic(bool b)
     {

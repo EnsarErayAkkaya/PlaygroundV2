@@ -71,18 +71,4 @@ public class EnvironmentObject : InteractibleBase
 
         Destroy(gameObject);    
     }
-    public override void  Glow( bool b)
-    {
-        if(mesh != null)
-        {
-            if(b)
-            {
-                mesh.material.SetInt("Vector1_5C3F79E1", 3);
-            }
-            else{
-                mesh.material.SetInt("Vector1_5C3F79E1", 0);
-            }
-        }
-        
-    }
 }

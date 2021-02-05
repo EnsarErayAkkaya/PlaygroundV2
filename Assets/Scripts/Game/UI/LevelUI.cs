@@ -10,10 +10,12 @@ public class LevelUI : MonoBehaviour
     [HideInInspector]
     public LevelManager levelManager;
     [SerializeField] GameObject endUI;
+    [SerializeField] GameObject adButton;
     [SerializeField] Transform rewardsContent;
     [SerializeField] Image markImage;
     [SerializeField] Button nextButton,restartButton;
     [SerializeField] TextMeshProUGUI lostText, budgetText;
+
     public Sprite[] stars;
 
     public GameObject finishLine;
@@ -21,6 +23,7 @@ public class LevelUI : MonoBehaviour
 
     void Start()
     {
+        adButton.SetActive(false);
         if(levelManager == null)
             levelManager = FindObjectOfType<LevelManager>();
     }
@@ -46,8 +49,6 @@ public class LevelUI : MonoBehaviour
     {
         endUI.SetActive(true);
 
-        
-
         if(m == 0 ) // you lost
         {
             markImage.gameObject.SetActive(false);
@@ -56,6 +57,11 @@ public class LevelUI : MonoBehaviour
         }
         else // you passed
         {
+            if(!GameDataManager.instance.CheckLevelAlreadyPassed())
+            {
+                adButton.gameObject.SetActive(true);
+            }
+
             ShowRewards();
 
             markImage.sprite = stars[stars.Length - m];

@@ -111,6 +111,7 @@ public class NavbarUIManager : MonoBehaviour
         e.transform.GetChild(0).GetComponent<Image>().sprite = data.trainImage;
         e.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = data.name;
         e.GetComponent<Button>().onClick.AddListener(delegate { uIManager.TrainCreateButtonClick(data.trainPrefab, data.cost); });
+        e.transform.GetChild(0).GetComponent<ButtonDragHandler>().enabled = false;
     }
 
     public void Activete()

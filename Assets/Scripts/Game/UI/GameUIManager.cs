@@ -133,17 +133,17 @@ public class GameUIManager : MonoBehaviour
         if( levelUI != null && levelUI.SetBudget(-cost))
         {
             buttonLock = true;
-            /*if( interactible != null && interactible.GetComponent<Rail>() != null)
+            if( interactible != null && interactible.GetComponent<Rail>() != null)
                 railManager.NewRailConnection(interactible.GetComponent<Rail>(), obj, cost);
-            else*/
+            else
                 railManager.CreateFloatingRail(obj, cost);
         }
         else if( levelUI == null )
         {
             buttonLock = true;
-            /*if( interactible != null && interactible.GetComponent<Rail>() != null)
+            if( interactible != null && interactible.GetComponent<Rail>() != null)
                 railManager.NewRailConnection(interactible.GetComponent<Rail>(), obj, cost);
-            else*/
+            else
                 railManager.CreateFloatingRail(obj, cost);
         }
     }
@@ -221,12 +221,12 @@ public class GameUIManager : MonoBehaviour
         if(interactible == null || buttonLock)
             return;
 
-        PlayButtonSound();    
+        PlayButtonSound();
 
         if( isMultiple )
         {   
             buttonLock = true;
-            placementManager.PlaceMe(objectChooser.multipleObjectParent.gameObject, PlacementType.RailSystem);
+            placementManager.PlaceMe(objectChooser.multipleObjectParent.gameObject, PlacementType.RailSystem, true);
         }
     }
     public void SetConnectionButtonClick()
@@ -281,8 +281,6 @@ public class GameUIManager : MonoBehaviour
         PlayButtonSound();
     
         trainManager.isStarted = false;
-
-        isPlaying = false;
 
         navbarUI.Activete();
         
@@ -565,6 +563,6 @@ public class GameUIManager : MonoBehaviour
     } 
     public GameObject GetChoosed()
     {
-        return interactible.gameObject;
+        return interactible == null? null : interactible.gameObject != null? interactible.gameObject : null;
     }
 }

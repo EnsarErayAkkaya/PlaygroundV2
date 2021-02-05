@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EntranceUI : MonoBehaviour
 {
-    public Transform myContent;
+    public TextMeshProUGUI leaf;
     void Start()
     {
         GameDataManager.instance.zenSceneDataManager.LoadingScene = null;
@@ -30,6 +31,13 @@ public class EntranceUI : MonoBehaviour
                 mark = 0
             });
         }
+
+        UpdateLeaftext();
+    }
+
+    public void UpdateLeaftext()
+    {
+        leaf.text = SaveAndLoadGameData.instance.savedData.leaf.ToString();
     }
     
     public void OpenZenScene()
