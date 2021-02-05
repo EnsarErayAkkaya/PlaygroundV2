@@ -58,7 +58,7 @@ MonoBehaviour:
   isSelectable: 1
   cost: 0
   height: 0
-  envType: 0
+  envType: 1
 --- !u!54 &7353443351052935522
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -128,7 +128,6 @@ public class Train : InteractibleBase
     {
         if(started == true)
         {
-            AudioManager.instance.Stop("TrainMoving");
             walker.move = false;
             foreach (var item in locomotives)
             {
@@ -143,7 +142,6 @@ public class Train : InteractibleBase
     {
         if(started == true)
         {
-            AudioManager.instance.Play("TrainMoving");
             walker.move = true;
             foreach (var item in locomotives)
             {
@@ -173,6 +171,11 @@ public class Train : InteractibleBase
 
             StartCoroutine( WaitForLocomotive() );
         }
+    }
+    public override void Glow(bool b)
+    {
+        base.Glow(b);
+        AudioManager.instance.Play("TrainHorn");
     }
 
     IEnumerator WaitForLocomotive()

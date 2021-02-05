@@ -6,13 +6,23 @@ using UnityEngine.UI;
 
 public class PlaygroundChooser : MonoBehaviour
 {
-    //[SerializeField] Transform scene;
-    [SerializeField] float rotateSpeed;
     List<GameObject> playgrounds = new List<GameObject>();
     List<PlaygroundType> playgroundTypes = new List<PlaygroundType>();
     int index;
     void Start()
     {
+        SetPlaygrounds();
+    }
+
+    void SetPlaygrounds()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        playgrounds.Clear();
+        playgroundTypes.Clear();
+
         index = 0;
         // fill
         foreach (var item in SaveAndLoadGameData.instance.savedData.playerPlaygrounds)
@@ -26,8 +36,20 @@ public class PlaygroundChooser : MonoBehaviour
 
             obj.SetActive(false);
         }
+        SelectLastSelectedPlayground();
+    }
+
+    public void OnNewPlaygroundPurchased()
+    {
+        SetPlaygrounds();
+    }
+    void SelectLastSelectedPlayground()
+    {
+        PlaygroundType pt = SaveAndLoadGameData.instance.savedData.choosenPlayground;
+        index =  playgroundTypes.FindIndex(s => s == pt);
         playgrounds[index].SetActive(true);
     }
+
     void OnDisable()
     {
         foreach (Transform child in transform)

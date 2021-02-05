@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactible
   - Carpet
+  - rewardAd
   layers:
   - Default
   - TransparentFX

@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d977cd7e540e44ebc2dacbc8db67dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -141
-  maxX: 81.7
-  minZ: -151.38
-  maxZ: 73.33
-  minY: 0
-  maxY: 100.96
+  minX: -80.7
+  maxX: 49.4
+  minZ: -89
+  maxZ: 48.2
+  minY: 3.7
+  maxY: 95.31
 --- !u!1 &1047993190211261407
 GameObject:
   m_ObjectHideFlags: 0

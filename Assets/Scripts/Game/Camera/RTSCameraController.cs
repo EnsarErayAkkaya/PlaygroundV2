@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RTSCameraController : MonoBehaviour
 {
+    public HouseManager houseManager;
     ObjectPlacementManager placementManager;
     public Transform cameraTransform;
     public Camera Camera;
@@ -17,7 +18,7 @@ public class RTSCameraController : MonoBehaviour
     #endregion
 
     #region Height
-        
+        public float minZoom, maxZoom;
         public Vector3 newZoom;
         public Vector3 zoomAmount; //value in range (0, 1) used as t in Matf.Lerp
         public float minOrtoSize, maxOrtoSize;
@@ -49,6 +50,7 @@ public class RTSCameraController : MonoBehaviour
     private void Start() 
     {
         placementManager = FindObjectOfType<ObjectPlacementManager>();
+        houseManager = FindObjectOfType<HouseManager>();
         newZoom = cameraTransform.localPosition;
         if(Camera.orthographic)
         {
@@ -103,6 +105,14 @@ public class RTSCameraController : MonoBehaviour
                     Delta1 = PlanePositionDelta(touch);
                     if (touch.phase == TouchPhase.Moved)
                         cameraTransform.Translate(Delta1, Space.World);
+
+                    Vector3 pos = cameraTransform.position;
+
+                    pos.x = Mathf.Clamp(pos.x, houseManager.minX, houseManager.maxX);
+                    pos.y = Mathf.Clamp(pos.y, houseManager.minY, houseManager.maxY);
+                    pos.z = Mathf.Clamp(pos.z, houseManager.minZ, houseManager.maxZ);
+
+                    transform.position = pos;
                 }
             }
         }
@@ -179,7 +189,14 @@ public class RTSCameraController : MonoBehaviour
     {
         dir *= Time.deltaTime * movementTime;
         dir *= movementSpeed;
-        transform.position += new Vector3(dir.x, 0, dir.z);
+
+        Vector3 pos = transform.position + new Vector3(dir.x, 0, dir.z);
+
+        pos.x = Mathf.Clamp(pos.x, houseManager.minX, houseManager.maxX);
+        pos.y = Mathf.Clamp(pos.y, houseManager.minY, houseManager.maxY);
+        pos.z = Mathf.Clamp(pos.z, houseManager.minZ, houseManager.maxZ);
+
+        transform.position =pos;
     }
     void Rotate(Vector3 dir)
     {
@@ -190,7 +207,12 @@ public class RTSCameraController : MonoBehaviour
     void Zoom(float multiplier)
     {
         newZoom -= multiplier * zoomAmount;
-        Camera.transform.localPosition = Vector3.Lerp(Camera.transform.localPosition, newZoom, Time.deltaTime * movementTime);
+
+        if(newZoom.y < maxZoom && newZoom.y > minZoom)
+        {
+            Camera.transform.localPosition = Vector3.Lerp(Camera.transform.localPosition, newZoom, Time.deltaTime * movementTime);
+        }
+
         newZoom = Camera.transform.localPosition;
     }
     protected Vector3 PlanePositionDelta(Touch touch)

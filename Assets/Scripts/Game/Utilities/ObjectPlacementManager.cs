@@ -20,6 +20,7 @@ public class ObjectPlacementManager : MonoBehaviour
     float height;
     private Touch touch;
     private Rail rail;
+    private bool waitMouseClick;
 
     private void Start() 
     {
@@ -34,10 +35,21 @@ public class ObjectPlacementManager : MonoBehaviour
     {
         if(isPlacing && (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WebGLPlayer))
         {
-            if(Input.GetMouseButtonUp(0))
+            if(!waitMouseClick)
             {
-                ObjectPlaced();
+                if(Input.GetMouseButtonUp(0))
+                {
+                    ObjectPlaced();
+                }
             }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ObjectPlaced();
+                }
+            }
+            
         }
     }
     void FixedUpdate()
@@ -174,12 +186,16 @@ public class ObjectPlacementManager : MonoBehaviour
     /// <summary>
     /// Call this for place an object.
     /// </summary>
-    public void PlaceMe(GameObject obj, PlacementType type)
+    public void PlaceMe(GameObject obj, PlacementType type, bool _waitMouseClick = false)
     {
-        if( type != PlacementType.RailSystem && obj.GetComponent<CollidableBase>().isStatic)
-            return;    
+        if (type != PlacementType.RailSystem && obj.GetComponent<CollidableBase>().isStatic)
+            return;
+
         placingObject = obj;
         placementType = type;
+
+        waitMouseClick = _waitMouseClick;
+
         if(type == PlacementType.Rail )
         {
             height = railManager.railHeight;

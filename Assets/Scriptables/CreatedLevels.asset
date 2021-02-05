@@ -780,7 +780,7 @@ MonoBehaviour:
           x: 0
           y: 270
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -1133,7 +1133,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -1955,7 +1955,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -1966,7 +1966,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -2350,7 +2350,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 5
+        envType: 8
       - id: 0
         isStatic: 1
         position:
@@ -2361,7 +2361,7 @@ MonoBehaviour:
           x: 0
           y: 270
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -2656,7 +2656,7 @@ MonoBehaviour:
           x: 0
           y: 270
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -2667,7 +2667,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 5
+        envType: 8
       - id: 0
         isStatic: 1
         position:
@@ -2678,7 +2678,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 5
+        envType: 8
       - id: 0
         isStatic: 1
         position:
@@ -2689,7 +2689,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: -0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -3052,7 +3052,7 @@ MonoBehaviour:
           x: -0
           y: 270
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -3063,7 +3063,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -3074,7 +3074,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -3085,7 +3085,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -3096,7 +3096,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -3107,7 +3107,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 5
+        envType: 8
       trainsData:
       - id: 0
         isStatic: 0
@@ -3745,7 +3745,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 4
+        envType: 7
       trainsData:
       - id: 0
         isStatic: 0
@@ -4602,7 +4602,7 @@ MonoBehaviour:
           x: -0
           y: 180
           z: 0
-        envType: 4
+        envType: 7
       - id: 0
         isStatic: 1
         position:
@@ -4613,7 +4613,7 @@ MonoBehaviour:
           x: -0
           y: 270
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -4624,7 +4624,7 @@ MonoBehaviour:
           x: -0
           y: 90
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -5020,7 +5020,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -5031,7 +5031,7 @@ MonoBehaviour:
           x: -0
           y: 90
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -5042,7 +5042,7 @@ MonoBehaviour:
           x: -0
           y: 270
           z: 0
-        envType: 6
+        envType: 9
       - id: 0
         isStatic: 1
         position:
@@ -5053,7 +5053,7 @@ MonoBehaviour:
           x: -0
           y: 0
           z: 0
-        envType: 4
+        envType: 7
       trainsData:
       - id: 0
         isStatic: 0

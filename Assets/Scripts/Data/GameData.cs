@@ -17,6 +17,7 @@ public class GameData
     public bool musicON = true;
     public bool soundON = true;
     public int interactibleContentValue = 3;
+    public int leaf = 0;
     public bool postProccessing = true;
     public GameData()
     {

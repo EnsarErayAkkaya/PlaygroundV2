@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6432294522913839741}
   - component: {fileID: 4552454432809967970}
   - component: {fileID: 8513299616184757214}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Locomotive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.017709384, y: 0.0072710826, z: 0.028211402}
-  m_Center: {x: 0.0068669347, y: 0.0032031592, z: -0.02225759}
+  m_Size: {x: 0.019809745, y: 0.009649164, z: 0.0510274}
+  m_Center: {x: 0.009897709, y: 0.005711656, z: -0.033665594}
 --- !u!1 &8089998365704894330
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,14 +153,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089998366262612450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.26, y: 0, z: -4.76}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3.33, y: 0, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6707303725265286747}
   m_Father: {fileID: 8089998365704894333}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!54 &6565029088286850811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,10 +185,10 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089998366262612450}
   m_ConnectedBody: {fileID: 8089998367099056716}
-  m_Anchor: {x: 0, y: -0.07, z: 0}
+  m_Anchor: {x: -0.21, y: 0.23, z: 1.79}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.48000026, y: -0.07, z: -4.76}
+  m_ConnectedAnchor: {x: -0.050000437, y: 0.23, z: -1.5400002}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -239,14 +239,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089998367099056714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.78, y: 0, z: -0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2745674132546114236}
   m_Father: {fileID: 8089998365704894333}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!54 &8089998367099056716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8532788617968396643}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.75, y: 0.4, z: 0.54}
+  m_LocalPosition: {x: -0.2, y: 0.5, z: -0.9}
   m_LocalScale: {x: 216.2, y: 174, z: 201.27771}
   m_Children: []
   m_Father: {fileID: 8089998366262612453}

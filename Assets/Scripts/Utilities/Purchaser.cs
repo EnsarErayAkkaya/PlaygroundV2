@@ -6,6 +6,7 @@ using UnityEngine.UI;
 // Deriving the Purchaser class from IStoreListener enables it to receive messages from Unity Purchasing.
 public class Purchaser : MonoBehaviour, IStoreListener
 {
+    StoreManager storeManager;
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
@@ -19,15 +20,16 @@ public class Purchaser : MonoBehaviour, IStoreListener
     // when defining the Product Identifiers on the store. Except, for illustration purposes, the 
     // kProductIDSubscription - it has custom Apple and Google identifiers. We declare their store-
     // specific mapping to Unity Purchasing's AddProduct, below.
-    public static string pandaCarpet = "pandacarpet";
-    public static string lionCarpet = "lioncarpet";
-    public static string voxTrain = "voxtrain";        
+    public static string leaf_500 = "leaf_500";
+    public static string leaf_1000 = "leaf_1000";
+    public static string leaf_5000 = "leaf_5000";        
     public static string plusOneLoad = "plusoneload";        
 
     void Start()
     {
         if (Application.platform == RuntimePlatform.Android)
         {
+            storeManager = FindObjectOfType<StoreManager>();
             // If we haven't set up the Unity Purchasing reference
             if (m_StoreController == null)
             {
@@ -52,9 +54,9 @@ public class Purchaser : MonoBehaviour, IStoreListener
 
         // Add a product to sell / restore by way of its identifier, associating the general identifier
         // with its store-specific identifiers.
-        builder.AddProduct(pandaCarpet, ProductType.NonConsumable);
-        builder.AddProduct(lionCarpet, ProductType.NonConsumable);
-        builder.AddProduct(voxTrain, ProductType.NonConsumable);
+        builder.AddProduct(leaf_500, ProductType.Consumable);
+        builder.AddProduct(leaf_1000, ProductType.Consumable);
+        builder.AddProduct(leaf_5000, ProductType.Consumable);
         builder.AddProduct(plusOneLoad, ProductType.Consumable);
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
@@ -126,33 +128,36 @@ public class Purchaser : MonoBehaviour, IStoreListener
     ////Satın alındıktan sonra yapılacak işlemler////
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
     {
-        // PANDA CARPET
-        if (String.Equals(args.purchasedProduct.definition.id, pandaCarpet, StringComparison.Ordinal))
+        // 500 LEAF
+        if (String.Equals(args.purchasedProduct.definition.id, leaf_500, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
-            //This means FORESTPROJECTIPACK BUYED!
-            GameDataManager.instance.AddNewPlayerPlayground(PlaygroundType.Panda);
+            GameDataManager.instance.AddLeaf(500);
+            storeManager.ShowPurchaseCompletedPanel();
         }
-        // LION CARPET
-        else  if (String.Equals(args.purchasedProduct.definition.id, lionCarpet, StringComparison.Ordinal))
+        // 1000 LEAF
+        else  if (String.Equals(args.purchasedProduct.definition.id, leaf_1000, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
-            GameDataManager.instance.AddNewPlayerPlayground(PlaygroundType.Lion);
+            GameDataManager.instance.AddLeaf(1000);
+            storeManager.ShowPurchaseCompletedPanel();
         }
-        // VOX TRAIN
-        else  if (String.Equals(args.purchasedProduct.definition.id, voxTrain, StringComparison.Ordinal))
+        // 5000 LEAF
+        else  if (String.Equals(args.purchasedProduct.definition.id, leaf_5000, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
-            GameDataManager.instance.AddNewPlayerTrain(TrainType.Voxel);
+            GameDataManager.instance.AddLeaf(5000);
+            storeManager.ShowPurchaseCompletedPanel();
         }
         else  if (String.Equals(args.purchasedProduct.definition.id, plusOneLoad, StringComparison.Ordinal))
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // TODO: The non-consumable item has been successfully purchased, grant this item to the player.
             GameDataManager.instance.AddPlusOneLoadCount();
+            storeManager.ShowPurchaseCompletedPanel();
         }
         else 
         {
